@@ -1,0 +1,7 @@
+id = "breg-dcat-ap"
+label = "BRegDCAT-AP"
+version = "3.0.0"
+standard_iri = "https://semiceu.github.io/BRegDCAT-AP/"
+artifact_kinds = ["dcat_catalog"]
+link_predicates = ["dcterms:conformsTo", "adms:status"]
+

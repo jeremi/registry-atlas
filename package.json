@@ -1,0 +1,50 @@
+{
+  "name": "dataspace-atlas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm build:wasm && concurrently -k -n atlas-server,atlas-ui \"node server/index.mjs\" \"vite --host 127.0.0.1\"",
+    "server": "node server/index.mjs",
+    "build:wasm": "node scripts/build-semantic-asset-discovery-wasm.mjs",
+    "build": "pnpm build:wasm && tsc --noEmit && vite build",
+    "preview": "node server/index.mjs",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "canonicalize:system-fixtures": "node scripts/canonicalize-system-capability-fixtures.mjs",
+    "check:rust": "cargo test --workspace",
+    "check": "pnpm lint && pnpm test && pnpm build",
+    "check:semantic": "node scripts/check-semantic-asset-discovery.mjs",
+    "check:release": "pnpm check:rust && pnpm check && pnpm check:semantic"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
+    "concurrently": "^9.2.1",
+    "express": "^5.2.1",
+    "lucide-react": "^0.561.0",
+    "vite": "^7.3.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@types/supertest": "^6.0.3",
+    "eslint": "^9.39.2",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "globals": "^16.5.0",
+    "jsdom": "^27.3.0",
+    "supertest": "^7.1.4",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.50.0",
+    "vitest": "^4.0.16"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

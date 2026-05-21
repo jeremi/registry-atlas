@@ -1,0 +1,7 @@
+id = "shacl"
+label = "SHACL"
+version = "1.0"
+standard_iri = "https://www.w3.org/TR/shacl/"
+artifact_kinds = ["shacl"]
+link_predicates = ["sh:shapesGraph", "sh:targetClass", "sh:property"]
+

@@ -1,0 +1,47 @@
+id = "https://example.org/publicschema/person"
+name = "example-person"
+title = "Example Person Semantic Model"
+version = "1.0.0"
+description = "Hypothetical PublicSchema-style semantic model package for parser tests."
+publisher = "Example Civic Schemas"
+license = "CC0-1.0"
+
+[[artifacts]]
+role = "linkml"
+path = "model.linkml.yaml"
+media_type = "application/linkml+yaml"
+conforms_to = "https://w3id.org/linkml/"
+
+[[artifacts]]
+role = "jsonld_context"
+path = "context.jsonld"
+media_type = "application/ld+json"
+
+[[artifacts]]
+role = "shacl"
+path = "shapes.ttl"
+media_type = "text/turtle"
+
+[[artifacts]]
+role = "json_schema"
+path = "../json-schema/person.schema.json"
+media_type = "application/schema+json"
+
+[[artifacts]]
+role = "skos"
+path = "concepts.ttl"
+media_type = "text/turtle"
+
+[[artifacts]]
+role = "alignment"
+path = "alignments.ttl"
+media_type = "text/turtle"
+
+[[artifacts]]
+role = "crosswalk"
+path = "alignments.ttl"
+media_type = "text/turtle"
+
+[links]
+profile = "https://example.org/profiles/person-record"
+documentation = "https://example.org/publicschema/person"

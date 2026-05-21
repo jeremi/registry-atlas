@@ -1,0 +1,7 @@
+id = "dcat-ap"
+label = "DCAT-AP"
+version = "3.0.0"
+standard_iri = "https://semiceu.github.io/DCAT-AP/releases/3.0.0/"
+artifact_kinds = ["dcat_catalog", "dcat_profile_catalog"]
+link_predicates = ["dcat:catalog", "dcat:dataset", "dcat:service", "dcat:distribution", "dcterms:conformsTo"]
+

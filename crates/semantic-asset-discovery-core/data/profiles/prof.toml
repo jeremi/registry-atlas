@@ -1,0 +1,7 @@
+id = "prof"
+label = "Profiles Vocabulary"
+version = "1.0"
+standard_iri = "https://www.w3.org/TR/dx-prof/"
+artifact_kinds = ["prof_profile", "prof_resource"]
+link_predicates = ["prof:hasResource", "prof:hasArtifact", "prof:isProfileOf"]
+

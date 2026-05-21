@@ -1,0 +1,55 @@
+{
+  "@context": {
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dct": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#"
+  },
+  "@id": "https://example.org/catalogs/community-services",
+  "@type": "dcat:Catalog",
+  "dct:title": "Community Services Semantic Catalog",
+  "dct:description": "Hypothetical DCAT-AP catalog for parser tests.",
+  "dct:publisher": {
+    "@id": "https://example.org/orgs/civic-data-lab",
+    "@type": "foaf:Agent",
+    "foaf:name": "Civic Data Lab"
+  },
+  "dct:conformsTo": {
+    "@id": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/"
+  },
+  "dcat:dataset": {
+    "@id": "https://example.org/datasets/community-service-locations",
+    "@type": "dcat:Dataset",
+    "dct:title": "Community Service Locations",
+    "dct:description": "Sample public service location data.",
+    "dct:conformsTo": {
+      "@id": "https://example.org/profiles/community-service-record"
+    },
+    "dcat:landingPage": {
+      "@id": "https://example.org/datasets/community-service-locations"
+    },
+    "dcat:distribution": {
+      "@id": "https://example.org/distributions/community-service-locations-json",
+      "@type": "dcat:Distribution",
+      "dct:title": "Community service locations JSON",
+      "dct:format": "application/json",
+      "dcat:downloadURL": {
+        "@id": "https://example.org/downloads/community-service-locations.json"
+      },
+      "dcat:accessURL": {
+        "@id": "https://example.org/api/community-service-locations"
+      }
+    }
+  },
+  "dcat:service": {
+    "@id": "https://example.org/services/community-services-api",
+    "@type": "dcat:DataService",
+    "dct:title": "Community Services API",
+    "dcat:endpointURL": {
+      "@id": "https://example.org/api"
+    },
+    "dcat:endpointDescription": {
+      "@id": "https://example.org/openapi.json"
+    }
+  }
+}

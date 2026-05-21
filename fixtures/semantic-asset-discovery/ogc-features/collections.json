@@ -1,0 +1,14 @@
+{
+  "title": "Community Service Feature Collections",
+  "description": "Minimal OGC API Features collections response for evidence tests.",
+  "collections": [
+    {
+      "id": "community-services",
+      "title": "Community services"
+    }
+  ],
+  "links": [],
+  "conformsTo": [
+    "http://www.opengis.net/spec/ogcapi-features-1/1.0/conf/core"
+  ]
+}

@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Rust build output
+target/
+
+# Frontend and local verification output
+dist/
+output/
+.playwright-cli/
+
+# Generated WASM web package. Regenerate with `pnpm build:wasm`.
+src/wasm/semantic-asset-discovery/
+
+# Local env and logs
+.env
+.env.*
+*.log
+
+# OS/editor noise
+.DS_Store

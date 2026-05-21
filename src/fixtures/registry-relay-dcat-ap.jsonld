@@ -1,0 +1,3647 @@
+{
+  "@context": {
+    "adms": "http://www.w3.org/ns/adms#",
+    "adms:status": {
+      "@type": "@id"
+    },
+    "cpsv": "http://purl.org/vocab/cpsv#",
+    "cpsv:produces": {
+      "@type": "@id"
+    },
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcat:accessURL": {
+      "@type": "@id"
+    },
+    "dcat:endpointDescription": {
+      "@type": "@id"
+    },
+    "dcat:endpointURL": {
+      "@type": "@id"
+    },
+    "dcat:landingPage": {
+      "@type": "@id"
+    },
+    "dcatap": "http://data.europa.eu/r5r/",
+    "dcatap:applicableLegislation": {
+      "@type": "@id"
+    },
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcterms:accessRights": {
+      "@type": "@id"
+    },
+    "dcterms:accrualPeriodicity": {
+      "@type": "@id"
+    },
+    "dcterms:conformsTo": {
+      "@type": "@id"
+    },
+    "dcterms:isPartOf": {
+      "@type": "@id"
+    },
+    "dcterms:spatial": {
+      "@type": "@id"
+    },
+    "dcterms:type": {
+      "@type": "@id"
+    },
+    "dspace": "https://w3id.org/dspace/2025/1/",
+    "eli": "http://data.europa.eu/eli/ontology#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "odrl:action": {
+      "@type": "@id"
+    },
+    "odrl:assignee": {
+      "@type": "@id"
+    },
+    "odrl:assigner": {
+      "@type": "@id"
+    },
+    "odrl:hasPolicy": {
+      "@type": "@id"
+    },
+    "odrl:leftOperand": {
+      "@type": "@id"
+    },
+    "odrl:operator": {
+      "@type": "@id"
+    },
+    "odrl:profile": {
+      "@type": "@id"
+    },
+    "odrl:target": {
+      "@type": "@id"
+    },
+    "odrl:uid": {
+      "@type": "@id"
+    },
+    "odrl:unit": {
+      "@type": "@id"
+    },
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "rdfs:seeAlso": {
+      "@type": "@id"
+    },
+    "registry_relay": "https://registry-relay.dev/ns#",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "sh:class": {
+      "@type": "@id"
+    },
+    "sh:datatype": {
+      "@type": "@id"
+    },
+    "sh:nodeKind": {
+      "@type": "@id"
+    },
+    "sh:path": {
+      "@type": "@id"
+    },
+    "sh:targetClass": {
+      "@type": "@id"
+    },
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "skos:hasTopConcept": {
+      "@type": "@id"
+    },
+    "skos:inScheme": {
+      "@type": "@id"
+    },
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "http://127.0.0.1:4242/metadata/dcat.bregdcat-ap.jsonld",
+  "@included": [
+    {
+      "@id": "https://schema.spdci.org/extensions/crvs/v1/Person",
+      "@type": "dcterms:Standard"
+    },
+    {
+      "@id": "https://schema.spdci.org/extensions/dr/v1/DisabledPerson",
+      "@type": "dcterms:Standard"
+    },
+    {
+      "@id": "https://schema.spdci.org/extensions/fr/v1/FRPerson",
+      "@type": "dcterms:Standard"
+    },
+    {
+      "@id": "https://schema.spdci.org/extensions/social/v1/Group",
+      "@type": "dcterms:Standard"
+    },
+    {
+      "@id": "#dataset-benefits_casework",
+      "@type": "foaf:Document"
+    },
+    {
+      "@id": "#dataset-civil_registry",
+      "@type": "foaf:Document"
+    },
+    {
+      "@id": "#dataset-clinic_capacity",
+      "@type": "foaf:Document"
+    },
+    {
+      "@id": "#dataset-disability_registry",
+      "@type": "foaf:Document"
+    },
+    {
+      "@id": "#dataset-education_registry",
+      "@type": "foaf:Document"
+    },
+    {
+      "@id": "#dataset-farmer_registry",
+      "@type": "foaf:Document"
+    },
+    {
+      "@id": "#dataset-public_works_projects",
+      "@type": "foaf:Document"
+    },
+    {
+      "@id": "#dataset-social_registry",
+      "@type": "foaf:Document"
+    },
+    {
+      "@id": "#dataset-subject_registry",
+      "@type": "foaf:Document"
+    },
+    {
+      "@id": "http://127.0.0.1:4242",
+      "@type": "foaf:Document"
+    },
+    {
+      "@id": "https://demo.example.gov/services/disability-registration",
+      "@type": "cpsv:PublicService",
+      "cpsv:produces": "#dataset-disability_registry",
+      "dcterms:description": "Public service responsible for registering and maintaining certified disability status in the demo environment.",
+      "dcterms:title": "Disability registration service"
+    },
+    {
+      "@id": "https://demo.example.gov/services/farmer-registration",
+      "@type": "cpsv:PublicService",
+      "cpsv:produces": "#dataset-farmer_registry",
+      "dcterms:description": "Public service responsible for registering and maintaining farmer status in the demo environment.",
+      "dcterms:title": "Farmer registration service"
+    },
+    {
+      "@id": "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
+      "@type": "dcterms:RightsStatement"
+    },
+    {
+      "@id": "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+      "@type": "dcterms:RightsStatement"
+    },
+    {
+      "@id": "http://publications.europa.eu/resource/authority/frequency/MONTHLY",
+      "@type": "dcterms:Frequency"
+    },
+    {
+      "@id": "http://publications.europa.eu/resource/authority/frequency/UNKNOWN",
+      "@type": "dcterms:Frequency"
+    },
+    {
+      "@id": "http://publications.europa.eu/resource/authority/frequency/WEEKLY",
+      "@type": "dcterms:Frequency"
+    }
+  ],
+  "@type": "dcat:Catalog",
+  "dcat:dataset": [
+    {
+      "@id": "#dataset-benefits_casework",
+      "@type": "dcat:Dataset",
+      "adms:status": "http://purl.org/adms/status/UnderDevelopment",
+      "dcat:distribution": [
+        {
+          "@id": "#dataset-benefits_casework#distribution-case",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/benefits_casework/case#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/benefits_casework/case",
+            "dcat:servesDataset": "#dataset-benefits_casework",
+            "dcterms:identifier": "benefits_casework:case:entity-api",
+            "dcterms:title": "Benefit Case REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/benefits_casework/case",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Benefit Case API"
+        },
+        {
+          "@id": "#dataset-benefits_casework#distribution-household",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/benefits_casework/household#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/benefits_casework/household",
+            "dcat:servesDataset": "#dataset-benefits_casework",
+            "dcterms:identifier": "benefits_casework:household:entity-api",
+            "dcterms:title": "Household REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/benefits_casework/household",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Household API"
+        },
+        {
+          "@id": "#dataset-benefits_casework#distribution-payment",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/benefits_casework/payment#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/benefits_casework/payment",
+            "dcat:servesDataset": "#dataset-benefits_casework",
+            "dcterms:identifier": "benefits_casework:payment:entity-api",
+            "dcterms:title": "Benefit Payment REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/benefits_casework/payment",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Benefit Payment API"
+        },
+        {
+          "@id": "#dataset-benefits_casework#distribution-person",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/benefits_casework/person#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/benefits_casework/person",
+            "dcat:servesDataset": "#dataset-benefits_casework",
+            "dcterms:identifier": "benefits_casework:person:entity-api",
+            "dcterms:title": "Person REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/benefits_casework/person",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Person API"
+        }
+      ],
+      "dcat:landingPage": "#dataset-benefits_casework",
+      "dcterms:accessRights": "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+      "dcterms:accrualPeriodicity": "http://publications.europa.eu/resource/authority/frequency/MONTHLY",
+      "dcterms:conformsTo": [],
+      "dcterms:description": "Household, person, benefit case, and payment data for social protection programme administration. Used for eligibility checks, grievance follow-up, reconciliation, and planning aggregates.",
+      "dcterms:identifier": "benefits_casework",
+      "dcterms:publisher": {
+        "@type": "foaf:Agent",
+        "foaf:name": "Government Data Reuse Cell (Demo)"
+      },
+      "dcterms:rightsHolder": "Ministry of Social Affairs",
+      "dcterms:title": "Benefits Casework",
+      "odrl:hasPolicy": {
+        "@id": "http://127.0.0.1:4242/datasets/benefits_casework#offer",
+        "@type": "odrl:Offer",
+        "odrl:assigner": {
+          "@id": "http://127.0.0.1:4242"
+        },
+        "odrl:permission": [
+          {
+            "odrl:action": {
+              "@id": "odrl:use"
+            },
+            "odrl:assigner": {
+              "@id": "http://127.0.0.1:4242"
+            },
+            "odrl:target": {
+              "@id": "http://127.0.0.1:4242/datasets/benefits_casework"
+            }
+          }
+        ],
+        "odrl:uid": "http://127.0.0.1:4242/datasets/benefits_casework#offer"
+      }
+    },
+    {
+      "@id": "#dataset-civil_registry",
+      "@type": "dcat:Dataset",
+      "adms:status": "http://purl.org/adms/status/UnderDevelopment",
+      "dcat:distribution": [
+        {
+          "@id": "#dataset-civil_registry#distribution-civil_person",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/civil_registry/civil_person#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/civil_registry/civil_person",
+            "dcat:servesDataset": "#dataset-civil_registry",
+            "dcterms:identifier": "civil_registry:civil_person:entity-api",
+            "dcterms:title": "Civil Person REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/civil_registry/civil_person",
+          "dcterms:conformsTo": [
+            "https://schema.spdci.org/extensions/crvs/v1/Person",
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Civil Person API"
+        }
+      ],
+      "dcat:landingPage": "#dataset-civil_registry",
+      "dcterms:accessRights": "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+      "dcterms:accrualPeriodicity": "http://publications.europa.eu/resource/authority/frequency/MONTHLY",
+      "dcterms:conformsTo": [
+        "https://schema.spdci.org/extensions/crvs/v1/Person"
+      ],
+      "dcterms:description": "Synthetic civil registry backed by the SP DCI demo workbook. It demonstrates the CRVS sync-search adapter without making the disability registry the system owner.",
+      "dcterms:identifier": "civil_registry",
+      "dcterms:publisher": {
+        "@type": "foaf:Agent",
+        "foaf:name": "Government Data Reuse Cell (Demo)"
+      },
+      "dcterms:rightsHolder": "Civil Registration Authority",
+      "dcterms:title": "SP DCI Civil Registry",
+      "odrl:hasPolicy": {
+        "@id": "http://127.0.0.1:4242/datasets/civil_registry#offer",
+        "@type": "odrl:Offer",
+        "odrl:assigner": {
+          "@id": "http://127.0.0.1:4242"
+        },
+        "odrl:permission": [
+          {
+            "odrl:action": {
+              "@id": "odrl:use"
+            },
+            "odrl:assigner": {
+              "@id": "http://127.0.0.1:4242"
+            },
+            "odrl:target": {
+              "@id": "http://127.0.0.1:4242/datasets/civil_registry"
+            }
+          }
+        ],
+        "odrl:uid": "http://127.0.0.1:4242/datasets/civil_registry#offer"
+      }
+    },
+    {
+      "@id": "#dataset-clinic_capacity",
+      "@type": "dcat:Dataset",
+      "adms:status": "http://purl.org/adms/status/UnderDevelopment",
+      "dcat:distribution": [
+        {
+          "@id": "#dataset-clinic_capacity#distribution-facility",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/clinic_capacity/facility#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/clinic_capacity/facility",
+            "dcat:servesDataset": "#dataset-clinic_capacity",
+            "dcterms:identifier": "clinic_capacity:facility:entity-api",
+            "dcterms:title": "Health Facility REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/clinic_capacity/facility",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Health Facility API"
+        },
+        {
+          "@id": "#dataset-clinic_capacity#distribution-service_capacity",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/clinic_capacity/service_capacity#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/clinic_capacity/service_capacity",
+            "dcat:servesDataset": "#dataset-clinic_capacity",
+            "dcterms:identifier": "clinic_capacity:service_capacity:entity-api",
+            "dcterms:title": "Service Capacity Record REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/clinic_capacity/service_capacity",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Service Capacity Record API"
+        },
+        {
+          "@id": "#dataset-clinic_capacity#distribution-stock_event",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/clinic_capacity/stock_event#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/clinic_capacity/stock_event",
+            "dcat:servesDataset": "#dataset-clinic_capacity",
+            "dcterms:identifier": "clinic_capacity:stock_event:entity-api",
+            "dcterms:title": "Stock Event REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/clinic_capacity/stock_event",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Stock Event API"
+        }
+      ],
+      "dcat:landingPage": "#dataset-clinic_capacity",
+      "dcterms:accessRights": "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+      "dcterms:accrualPeriodicity": "http://publications.europa.eu/resource/authority/frequency/WEEKLY",
+      "dcterms:conformsTo": [],
+      "dcterms:description": "Operational data about health facilities, monthly service capacity, and medicine stock events. Used by emergency planners and supply teams. No patient-level data.",
+      "dcterms:identifier": "clinic_capacity",
+      "dcterms:publisher": {
+        "@type": "foaf:Agent",
+        "foaf:name": "Government Data Reuse Cell (Demo)"
+      },
+      "dcterms:rightsHolder": "Ministry of Health",
+      "dcterms:title": "Clinic Capacity",
+      "odrl:hasPolicy": {
+        "@id": "http://127.0.0.1:4242/datasets/clinic_capacity#offer",
+        "@type": "odrl:Offer",
+        "odrl:assigner": {
+          "@id": "http://127.0.0.1:4242"
+        },
+        "odrl:permission": [
+          {
+            "odrl:action": {
+              "@id": "odrl:use"
+            },
+            "odrl:assigner": {
+              "@id": "http://127.0.0.1:4242"
+            },
+            "odrl:target": {
+              "@id": "http://127.0.0.1:4242/datasets/clinic_capacity"
+            }
+          }
+        ],
+        "odrl:uid": "http://127.0.0.1:4242/datasets/clinic_capacity#offer"
+      }
+    },
+    {
+      "@id": "#dataset-disability_registry",
+      "@type": "dcat:Dataset",
+      "adms:status": "http://purl.org/adms/status/UnderDevelopment",
+      "dcat:distribution": [
+        {
+          "@id": "#dataset-disability_registry#distribution-disabled_person",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person",
+            "dcat:servesDataset": "#dataset-disability_registry",
+            "dcterms:identifier": "disability_registry:disabled_person:entity-api",
+            "dcterms:title": "Disabled Person REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person",
+          "dcterms:conformsTo": [
+            "https://schema.spdci.org/extensions/dr/v1/DisabledPerson",
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Disabled Person API"
+        }
+      ],
+      "dcat:landingPage": "#dataset-disability_registry",
+      "dcatap:applicableLegislation": [
+        "https://demo.example.gov/legislation/disability-registry-act"
+      ],
+      "dcterms:accessRights": "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+      "dcterms:accrualPeriodicity": "http://publications.europa.eu/resource/authority/frequency/MONTHLY",
+      "dcterms:conformsTo": [
+        "https://schema.spdci.org/extensions/dr/v1/DisabledPerson"
+      ],
+      "dcterms:description": "Synthetic disability registry backed by the SP DCI demo workbook. It demonstrates disabled-status, disability-details, and disability-support lookups.",
+      "dcterms:identifier": "disability_registry",
+      "dcterms:publisher": {
+        "@type": "foaf:Agent",
+        "foaf:name": "Government Data Reuse Cell (Demo)"
+      },
+      "dcterms:rightsHolder": "Ministry of Social Affairs",
+      "dcterms:title": "SP DCI Disability Registry",
+      "odrl:hasPolicy": {
+        "@id": "https://demo.example.gov/datasets/disability_registry#illustrative-offer",
+        "@type": "odrl:Offer",
+        "odrl:assigner": {
+          "@id": "did:web:social-affairs.demo.example.gov"
+        },
+        "odrl:permission": [
+          {
+            "odrl:action": {
+              "@id": "odrl:use"
+            },
+            "odrl:assigner": {
+              "@id": "did:web:social-affairs.demo.example.gov"
+            },
+            "odrl:constraint": [
+              {
+                "odrl:leftOperand": {
+                  "@id": "odrl:purpose"
+                },
+                "odrl:operator": {
+                  "@id": "odrl:isA"
+                },
+                "odrl:rightOperand": {
+                  "@id": "https://demo.example.gov/purpose/disability-benefit-eligibility"
+                }
+              },
+              {
+                "odrl:leftOperand": {
+                  "@id": "odrl:recipient"
+                },
+                "odrl:operator": {
+                  "@id": "odrl:isA"
+                },
+                "odrl:rightOperand": {
+                  "@id": "https://demo.example.gov/recipient/social-protection-program"
+                }
+              }
+            ],
+            "odrl:duty": [
+              {
+                "odrl:action": {
+                  "@id": "odrl:attribute"
+                }
+              },
+              {
+                "odrl:action": {
+                  "@id": "odrl:delete"
+                },
+                "odrl:constraint": [
+                  {
+                    "odrl:leftOperand": {
+                      "@id": "odrl:elapsedTime"
+                    },
+                    "odrl:operator": {
+                      "@id": "odrl:lteq"
+                    },
+                    "odrl:rightOperand": {
+                      "@type": "xsd:duration",
+                      "@value": "P90D"
+                    }
+                  }
+                ]
+              }
+            ],
+            "odrl:target": {
+              "@id": "http://127.0.0.1:4242/datasets/disability_registry"
+            }
+          }
+        ],
+        "odrl:profile": [
+          {
+            "@id": "https://demo.example.gov/odrl/profile/illustrative-government-data-sharing"
+          }
+        ],
+        "odrl:prohibition": [
+          {
+            "odrl:action": {
+              "@id": "odrl:sell"
+            },
+            "odrl:assigner": {
+              "@id": "did:web:social-affairs.demo.example.gov"
+            },
+            "odrl:target": {
+              "@id": "http://127.0.0.1:4242/datasets/disability_registry"
+            }
+          },
+          {
+            "odrl:action": {
+              "@id": "https://demo.example.gov/odrl/action/reidentify"
+            },
+            "odrl:assigner": {
+              "@id": "did:web:social-affairs.demo.example.gov"
+            },
+            "odrl:target": {
+              "@id": "http://127.0.0.1:4242/datasets/disability_registry"
+            }
+          }
+        ],
+        "odrl:uid": "https://demo.example.gov/datasets/disability_registry#illustrative-offer"
+      }
+    },
+    {
+      "@id": "#dataset-education_registry",
+      "@type": "dcat:Dataset",
+      "adms:status": "http://purl.org/adms/status/UnderDevelopment",
+      "dcat:distribution": [
+        {
+          "@id": "#dataset-education_registry#distribution-attendance_summary",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/education_registry/attendance_summary#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/education_registry/attendance_summary",
+            "dcat:servesDataset": "#dataset-education_registry",
+            "dcterms:identifier": "education_registry:attendance_summary:entity-api",
+            "dcterms:title": "Attendance Summary REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/education_registry/attendance_summary",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Attendance Summary API"
+        },
+        {
+          "@id": "#dataset-education_registry#distribution-enrollment",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/education_registry/enrollment#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/education_registry/enrollment",
+            "dcat:servesDataset": "#dataset-education_registry",
+            "dcterms:identifier": "education_registry:enrollment:entity-api",
+            "dcterms:title": "Enrollment REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/education_registry/enrollment",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Enrollment API"
+        },
+        {
+          "@id": "#dataset-education_registry#distribution-guardian",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/education_registry/guardian#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/education_registry/guardian",
+            "dcat:servesDataset": "#dataset-education_registry",
+            "dcterms:identifier": "education_registry:guardian:entity-api",
+            "dcterms:title": "Guardian REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/education_registry/guardian",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Guardian API"
+        },
+        {
+          "@id": "#dataset-education_registry#distribution-school",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/education_registry/school#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/education_registry/school",
+            "dcat:servesDataset": "#dataset-education_registry",
+            "dcterms:identifier": "education_registry:school:entity-api",
+            "dcterms:title": "School REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/education_registry/school",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "School API"
+        },
+        {
+          "@id": "#dataset-education_registry#distribution-student",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/education_registry/student#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/education_registry/student",
+            "dcat:servesDataset": "#dataset-education_registry",
+            "dcterms:identifier": "education_registry:student:entity-api",
+            "dcterms:title": "Student REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/education_registry/student",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Student API"
+        },
+        {
+          "@id": "#dataset-education_registry#distribution-support_need",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/education_registry/support_need#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/education_registry/support_need",
+            "dcat:servesDataset": "#dataset-education_registry",
+            "dcterms:identifier": "education_registry:support_need:entity-api",
+            "dcterms:title": "Support Need REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/education_registry/support_need",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Support Need API"
+        }
+      ],
+      "dcat:landingPage": "#dataset-education_registry",
+      "dcterms:accessRights": "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+      "dcterms:accrualPeriodicity": "http://publications.europa.eu/resource/authority/frequency/UNKNOWN",
+      "dcterms:conformsTo": [],
+      "dcterms:description": "Student registry for the national education system. Covers students, guardians, schools, enrolments, support needs, and attendance summaries. Governed personal data; scholarship, transport, meals, and planning systems access via controlled scopes.",
+      "dcterms:identifier": "education_registry",
+      "dcterms:publisher": {
+        "@type": "foaf:Agent",
+        "foaf:name": "Government Data Reuse Cell (Demo)"
+      },
+      "dcterms:rightsHolder": "Ministry of Education",
+      "dcterms:title": "Education Student Registry",
+      "odrl:hasPolicy": {
+        "@id": "https://demo.example.gov/datasets/education_registry#illustrative-offer",
+        "@type": "odrl:Offer",
+        "odrl:assigner": {
+          "@id": "did:web:education.demo.example.gov"
+        },
+        "odrl:permission": [
+          {
+            "odrl:action": {
+              "@id": "odrl:use"
+            },
+            "odrl:assigner": {
+              "@id": "did:web:education.demo.example.gov"
+            },
+            "odrl:constraint": [
+              {
+                "odrl:leftOperand": {
+                  "@id": "odrl:purpose"
+                },
+                "odrl:operator": {
+                  "@id": "odrl:isA"
+                },
+                "odrl:rightOperand": {
+                  "@id": "https://demo.example.gov/purpose/student-support-planning"
+                }
+              }
+            ],
+            "odrl:duty": [
+              {
+                "odrl:action": {
+                  "@id": "odrl:reviewPolicy"
+                }
+              },
+              {
+                "odrl:action": {
+                  "@id": "odrl:attribute"
+                }
+              }
+            ],
+            "odrl:target": {
+              "@id": "http://127.0.0.1:4242/datasets/education_registry"
+            }
+          }
+        ],
+        "odrl:profile": [
+          {
+            "@id": "https://demo.example.gov/odrl/profile/illustrative-government-data-sharing"
+          }
+        ],
+        "odrl:prohibition": [
+          {
+            "odrl:action": {
+              "@id": "odrl:sell"
+            },
+            "odrl:assigner": {
+              "@id": "did:web:education.demo.example.gov"
+            },
+            "odrl:target": {
+              "@id": "http://127.0.0.1:4242/datasets/education_registry"
+            }
+          },
+          {
+            "odrl:action": {
+              "@id": "https://demo.example.gov/odrl/action/reidentify"
+            },
+            "odrl:assigner": {
+              "@id": "did:web:education.demo.example.gov"
+            },
+            "odrl:target": {
+              "@id": "http://127.0.0.1:4242/datasets/education_registry"
+            }
+          }
+        ],
+        "odrl:uid": "https://demo.example.gov/datasets/education_registry#illustrative-offer"
+      }
+    },
+    {
+      "@id": "#dataset-farmer_registry",
+      "@type": "dcat:Dataset",
+      "adms:status": "http://purl.org/adms/status/UnderDevelopment",
+      "dcat:distribution": [
+        {
+          "@id": "#dataset-farmer_registry#distribution-farmer",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/farmer_registry/farmer#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/farmer_registry/farmer",
+            "dcat:servesDataset": "#dataset-farmer_registry",
+            "dcterms:identifier": "farmer_registry:farmer:entity-api",
+            "dcterms:title": "Farmer REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/farmer_registry/farmer",
+          "dcterms:conformsTo": [
+            "https://schema.spdci.org/extensions/fr/v1/FRPerson",
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Farmer API"
+        }
+      ],
+      "dcat:landingPage": "#dataset-farmer_registry",
+      "dcatap:applicableLegislation": [
+        "https://demo.example.gov/legislation/farmer-registry-act"
+      ],
+      "dcterms:accessRights": "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+      "dcterms:accrualPeriodicity": "http://publications.europa.eu/resource/authority/frequency/MONTHLY",
+      "dcterms:conformsTo": [
+        "https://schema.spdci.org/extensions/fr/v1/FRPerson"
+      ],
+      "dcterms:description": "Synthetic farmer registry backed by the SP DCI demo workbook. It demonstrates the Farmer Registry sync-search adapter as its own system boundary.",
+      "dcterms:identifier": "farmer_registry",
+      "dcterms:publisher": {
+        "@type": "foaf:Agent",
+        "foaf:name": "Government Data Reuse Cell (Demo)"
+      },
+      "dcterms:rightsHolder": "Ministry of Agriculture",
+      "dcterms:title": "SP DCI Farmer Registry",
+      "odrl:hasPolicy": {
+        "@id": "https://demo.example.gov/datasets/farmer_registry#illustrative-offer",
+        "@type": "odrl:Offer",
+        "odrl:assigner": {
+          "@id": "did:web:agriculture.demo.example.gov"
+        },
+        "odrl:permission": [
+          {
+            "odrl:action": {
+              "@id": "odrl:use"
+            },
+            "odrl:assigner": {
+              "@id": "did:web:agriculture.demo.example.gov"
+            },
+            "odrl:constraint": [
+              {
+                "odrl:leftOperand": {
+                  "@id": "odrl:purpose"
+                },
+                "odrl:operator": {
+                  "@id": "odrl:isA"
+                },
+                "odrl:rightOperand": {
+                  "@id": "https://demo.example.gov/purpose/agricultural-subsidy-eligibility"
+                }
+              }
+            ],
+            "odrl:duty": [
+              {
+                "odrl:action": {
+                  "@id": "odrl:attribute"
+                }
+              },
+              {
+                "odrl:action": {
+                  "@id": "odrl:inform"
+                }
+              }
+            ],
+            "odrl:target": {
+              "@id": "http://127.0.0.1:4242/datasets/farmer_registry"
+            }
+          }
+        ],
+        "odrl:profile": [
+          {
+            "@id": "https://demo.example.gov/odrl/profile/illustrative-government-data-sharing"
+          }
+        ],
+        "odrl:prohibition": [
+          {
+            "odrl:action": {
+              "@id": "odrl:sell"
+            },
+            "odrl:assigner": {
+              "@id": "did:web:agriculture.demo.example.gov"
+            },
+            "odrl:target": {
+              "@id": "http://127.0.0.1:4242/datasets/farmer_registry"
+            }
+          },
+          {
+            "odrl:action": {
+              "@id": "https://demo.example.gov/odrl/action/reidentify"
+            },
+            "odrl:assigner": {
+              "@id": "did:web:agriculture.demo.example.gov"
+            },
+            "odrl:target": {
+              "@id": "http://127.0.0.1:4242/datasets/farmer_registry"
+            }
+          }
+        ],
+        "odrl:uid": "https://demo.example.gov/datasets/farmer_registry#illustrative-offer"
+      }
+    },
+    {
+      "@id": "#dataset-public_works_projects",
+      "@type": "dcat:Dataset",
+      "adms:status": "http://purl.org/adms/status/UnderDevelopment",
+      "dcat:distribution": [
+        {
+          "@id": "#dataset-public_works_projects#distribution-contract",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/public_works_projects/contract#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/public_works_projects/contract",
+            "dcat:servesDataset": "#dataset-public_works_projects",
+            "dcterms:identifier": "public_works_projects:contract:entity-api",
+            "dcterms:title": "Project Contract REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/public_works_projects/contract",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Project Contract API"
+        },
+        {
+          "@id": "#dataset-public_works_projects#distribution-disbursement",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/public_works_projects/disbursement#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/public_works_projects/disbursement",
+            "dcat:servesDataset": "#dataset-public_works_projects",
+            "dcterms:identifier": "public_works_projects:disbursement:entity-api",
+            "dcterms:title": "Project Disbursement REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/public_works_projects/disbursement",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Project Disbursement API"
+        },
+        {
+          "@id": "#dataset-public_works_projects#distribution-milestone",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/public_works_projects/milestone#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/public_works_projects/milestone",
+            "dcat:servesDataset": "#dataset-public_works_projects",
+            "dcterms:identifier": "public_works_projects:milestone:entity-api",
+            "dcterms:title": "Project Milestone REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/public_works_projects/milestone",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Project Milestone API"
+        },
+        {
+          "@id": "#dataset-public_works_projects#distribution-project",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/public_works_projects/project#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/public_works_projects/project",
+            "dcat:servesDataset": "#dataset-public_works_projects",
+            "dcterms:identifier": "public_works_projects:project:entity-api",
+            "dcterms:title": "Infrastructure Project REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/public_works_projects/project",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Infrastructure Project API"
+        }
+      ],
+      "dcat:landingPage": "#dataset-public_works_projects",
+      "dcterms:accessRights": "http://publications.europa.eu/resource/authority/access-right/NON_PUBLIC",
+      "dcterms:accrualPeriodicity": "http://publications.europa.eu/resource/authority/frequency/MONTHLY",
+      "dcterms:conformsTo": [],
+      "dcterms:description": "Infrastructure projects, contracts, milestones, and disbursements tracked by the delivery unit. Non-personal but commercially and politically sensitive.",
+      "dcterms:identifier": "public_works_projects",
+      "dcterms:publisher": {
+        "@type": "foaf:Agent",
+        "foaf:name": "Government Data Reuse Cell (Demo)"
+      },
+      "dcterms:rightsHolder": "Delivery Unit",
+      "dcterms:title": "Public Works Projects",
+      "odrl:hasPolicy": {
+        "@id": "http://127.0.0.1:4242/datasets/public_works_projects#offer",
+        "@type": "odrl:Offer",
+        "odrl:assigner": {
+          "@id": "http://127.0.0.1:4242"
+        },
+        "odrl:permission": [
+          {
+            "odrl:action": {
+              "@id": "odrl:use"
+            },
+            "odrl:assigner": {
+              "@id": "http://127.0.0.1:4242"
+            },
+            "odrl:target": {
+              "@id": "http://127.0.0.1:4242/datasets/public_works_projects"
+            }
+          }
+        ],
+        "odrl:uid": "http://127.0.0.1:4242/datasets/public_works_projects#offer"
+      }
+    },
+    {
+      "@id": "#dataset-social_registry",
+      "@type": "dcat:Dataset",
+      "adms:status": "http://purl.org/adms/status/UnderDevelopment",
+      "dcat:distribution": [
+        {
+          "@id": "#dataset-social_registry#distribution-social_group",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/social_registry/social_group#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/social_registry/social_group",
+            "dcat:servesDataset": "#dataset-social_registry",
+            "dcterms:identifier": "social_registry:social_group:entity-api",
+            "dcterms:title": "Social Registry Group REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/social_registry/social_group",
+          "dcterms:conformsTo": [
+            "https://schema.spdci.org/extensions/social/v1/Group",
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Social Registry Group API"
+        }
+      ],
+      "dcat:landingPage": "#dataset-social_registry",
+      "dcterms:accessRights": "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+      "dcterms:accrualPeriodicity": "http://publications.europa.eu/resource/authority/frequency/MONTHLY",
+      "dcterms:conformsTo": [
+        "https://schema.spdci.org/extensions/social/v1/Group"
+      ],
+      "dcterms:description": "Synthetic social registry backed by the SP DCI demo workbook. It demonstrates the Social Registry sync-search adapter as its own system boundary.",
+      "dcterms:identifier": "social_registry",
+      "dcterms:publisher": {
+        "@type": "foaf:Agent",
+        "foaf:name": "Government Data Reuse Cell (Demo)"
+      },
+      "dcterms:rightsHolder": "Ministry of Social Protection",
+      "dcterms:title": "SP DCI Social Registry",
+      "odrl:hasPolicy": {
+        "@id": "http://127.0.0.1:4242/datasets/social_registry#offer",
+        "@type": "odrl:Offer",
+        "odrl:assigner": {
+          "@id": "http://127.0.0.1:4242"
+        },
+        "odrl:permission": [
+          {
+            "odrl:action": {
+              "@id": "odrl:use"
+            },
+            "odrl:assigner": {
+              "@id": "http://127.0.0.1:4242"
+            },
+            "odrl:target": {
+              "@id": "http://127.0.0.1:4242/datasets/social_registry"
+            }
+          }
+        ],
+        "odrl:uid": "http://127.0.0.1:4242/datasets/social_registry#offer"
+      }
+    },
+    {
+      "@id": "#dataset-subject_registry",
+      "@type": "dcat:Dataset",
+      "adms:status": "http://purl.org/adms/status/UnderDevelopment",
+      "dcat:distribution": [
+        {
+          "@id": "#dataset-subject_registry#distribution-subject",
+          "@type": "dcat:Distribution",
+          "dcat:accessService": {
+            "@id": "http://127.0.0.1:4242/datasets/subject_registry/subject#service",
+            "@type": "dcat:DataService",
+            "dcat:endpointDescription": "http://127.0.0.1:4242/openapi.json",
+            "dcat:endpointURL": "http://127.0.0.1:4242/datasets/subject_registry/subject",
+            "dcat:servesDataset": "#dataset-subject_registry",
+            "dcterms:identifier": "subject_registry:subject:entity-api",
+            "dcterms:title": "Subject REST access service"
+          },
+          "dcat:accessURL": "http://127.0.0.1:4242/datasets/subject_registry/subject",
+          "dcterms:conformsTo": [
+            "https://spec.openapis.org/oas/v3.1.0"
+          ],
+          "dcterms:format": {
+            "@id": "https://www.iana.org/assignments/media-types/application/json",
+            "@type": [
+              "dcterms:MediaType",
+              "dcterms:MediaTypeOrExtent"
+            ]
+          },
+          "dcterms:title": "Subject API"
+        }
+      ],
+      "dcat:landingPage": "#dataset-subject_registry",
+      "dcterms:accessRights": "http://publications.europa.eu/resource/authority/access-right/RESTRICTED",
+      "dcterms:accrualPeriodicity": "http://publications.europa.eu/resource/authority/frequency/UNKNOWN",
+      "dcterms:conformsTo": [],
+      "dcterms:description": "Canonical mapping between subject identifiers used by different administrative datasets. Contains no personal data: only opaque canonical ids and per-dataset aliases. The linkage itself is the sensitive surface; access is gated to the linkage_service persona only.",
+      "dcterms:identifier": "subject_registry",
+      "dcterms:publisher": {
+        "@type": "foaf:Agent",
+        "foaf:name": "Government Data Reuse Cell (Demo)"
+      },
+      "dcterms:rightsHolder": "Government Identity Coordination Function",
+      "dcterms:title": "Subject Registry",
+      "odrl:hasPolicy": {
+        "@id": "http://127.0.0.1:4242/datasets/subject_registry#offer",
+        "@type": "odrl:Offer",
+        "odrl:assigner": {
+          "@id": "http://127.0.0.1:4242"
+        },
+        "odrl:permission": [
+          {
+            "odrl:action": {
+              "@id": "odrl:use"
+            },
+            "odrl:assigner": {
+              "@id": "http://127.0.0.1:4242"
+            },
+            "odrl:target": {
+              "@id": "http://127.0.0.1:4242/datasets/subject_registry"
+            }
+          }
+        ],
+        "odrl:uid": "http://127.0.0.1:4242/datasets/subject_registry#offer"
+      }
+    }
+  ],
+  "dcat:landingPage": "http://127.0.0.1:4242",
+  "dcterms:conformsTo": [],
+  "dcterms:description": "",
+  "dcterms:identifier": "all-standards",
+  "dcterms:publisher": {
+    "@type": "foaf:Agent",
+    "foaf:name": "Government Data Reuse Cell (Demo)"
+  },
+  "dcterms:title": "Government Demo Registry Relay (All Standards Demo)",
+  "dspace:participantId": "http://127.0.0.1:4242",
+  "sh:shapesGraph": [
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/benefits_casework/case/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "benefits_casework:case",
+      "dcterms:isPartOf": "#dataset-benefits_casework",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "case",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "case_status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/case/fields/case_status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "case_type",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/case/fields/case_type"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "closed_on",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/case/fields/closed_on"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "household_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/case/fields/household_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/case/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "opened_on",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/case/fields/opened_on"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "priority",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/case/fields/priority"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "zero_or_one",
+          "registry_relay:targetEntity": "household",
+          "sh:class": "http://127.0.0.1:4242/datasets/benefits_casework/household/schema",
+          "sh:maxCount": 1,
+          "sh:name": "household",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/case/relationships/household"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/benefits_casework/case/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/benefits_casework/household/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "benefits_casework:household",
+      "dcterms:isPartOf": "#dataset-benefits_casework",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "household",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "district",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/household/fields/district"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "enrolled_on",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/household/fields/enrolled_on"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "enrollment_status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/household/fields/enrollment_status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:decimal",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "household_size",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/household/fields/household_size"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/household/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "municipality",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/household/fields/municipality"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "poverty_band",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/household/fields/poverty_band"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "many",
+          "registry_relay:targetEntity": "person",
+          "sh:class": "http://127.0.0.1:4242/datasets/benefits_casework/person/schema",
+          "sh:name": "members",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/household/relationships/members"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "many",
+          "registry_relay:targetEntity": "case",
+          "sh:class": "http://127.0.0.1:4242/datasets/benefits_casework/case/schema",
+          "sh:name": "cases",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/household/relationships/cases"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "many",
+          "registry_relay:targetEntity": "payment",
+          "sh:class": "http://127.0.0.1:4242/datasets/benefits_casework/payment/schema",
+          "sh:name": "payments",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/household/relationships/payments"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/benefits_casework/household/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/benefits_casework/payment/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "benefits_casework:payment",
+      "dcterms:isPartOf": "#dataset-benefits_casework",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "payment",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:decimal",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "amount",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/payment/fields/amount"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "cycle",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/payment/fields/cycle"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "household_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/payment/fields/household_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/payment/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "paid_on",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/payment/fields/paid_on"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "payment_channel",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/payment/fields/payment_channel"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "payment_status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/payment/fields/payment_status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "zero_or_one",
+          "registry_relay:targetEntity": "household",
+          "sh:class": "http://127.0.0.1:4242/datasets/benefits_casework/household/schema",
+          "sh:maxCount": 1,
+          "sh:name": "household",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/payment/relationships/household"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/benefits_casework/payment/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/benefits_casework/person/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "benefits_casework:person",
+      "dcterms:isPartOf": "#dataset-benefits_casework",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "person",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "age_band",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/person/fields/age_band"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "benefit_role",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/person/fields/benefit_role"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "disability_status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/person/fields/disability_status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "eligibility_status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/person/fields/eligibility_status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "household_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/person/fields/household_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/person/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "sex",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/person/fields/sex"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "zero_or_one",
+          "registry_relay:targetEntity": "household",
+          "sh:class": "http://127.0.0.1:4242/datasets/benefits_casework/household/schema",
+          "sh:maxCount": 1,
+          "sh:name": "household",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/benefits_casework/person/relationships/household"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/benefits_casework/person/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/civil_registry/civil_person/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "civil_registry:civil_person",
+      "dcterms:isPartOf": "#dataset-civil_registry",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "civil_person",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "address_line",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/civil_registry/civil_person/fields/address_line"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "birth_date",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/civil_registry/civil_person/fields/birth_date"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "birth_place",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/civil_registry/civil_person/fields/birth_place"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "district",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/civil_registry/civil_person/fields/district"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "email",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/civil_registry/civil_person/fields/email"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "given_name",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/civil_registry/civil_person/fields/given_name"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/civil_registry/civil_person/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "last_updated",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/civil_registry/civil_person/fields/last_updated"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "national_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/civil_registry/civil_person/fields/national_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "phone",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/civil_registry/civil_person/fields/phone"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "registration_date",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/civil_registry/civil_person/fields/registration_date"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "sex",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/civil_registry/civil_person/fields/sex"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "surname",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/civil_registry/civil_person/fields/surname"
+        }
+      ],
+      "sh:targetClass": "https://schema.spdci.org/extensions/crvs/v1/Person"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/clinic_capacity/facility/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "clinic_capacity:facility",
+      "dcterms:isPartOf": "#dataset-clinic_capacity",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "facility",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "district",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/facility/fields/district"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "facility_name",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/facility/fields/facility_name"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "facility_type",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/facility/fields/facility_type"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/facility/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "latitude_band",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/facility/fields/latitude_band"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "longitude_band",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/facility/fields/longitude_band"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:decimal",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "map_latitude",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/facility/fields/map_latitude"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:decimal",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "map_longitude",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/facility/fields/map_longitude"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "ownership",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/facility/fields/ownership"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "service_level",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/facility/fields/service_level"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "many",
+          "registry_relay:targetEntity": "service_capacity",
+          "sh:class": "http://127.0.0.1:4242/datasets/clinic_capacity/service_capacity/schema",
+          "sh:name": "service_capacity",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/facility/relationships/service_capacity"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "many",
+          "registry_relay:targetEntity": "stock_event",
+          "sh:class": "http://127.0.0.1:4242/datasets/clinic_capacity/stock_event/schema",
+          "sh:name": "stock_events",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/facility/relationships/stock_events"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/clinic_capacity/facility/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/clinic_capacity/service_capacity/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "clinic_capacity:service_capacity",
+      "dcterms:isPartOf": "#dataset-clinic_capacity",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "service_capacity",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:decimal",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "beds_available",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/service_capacity/fields/beds_available"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "facility_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/service_capacity/fields/facility_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/service_capacity/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "month",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/service_capacity/fields/month"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:decimal",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "open_days",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/service_capacity/fields/open_days"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "service_type",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/service_capacity/fields/service_type"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:decimal",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "staff_on_roster",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/service_capacity/fields/staff_on_roster"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "zero_or_one",
+          "registry_relay:targetEntity": "facility",
+          "sh:class": "http://127.0.0.1:4242/datasets/clinic_capacity/facility/schema",
+          "sh:maxCount": 1,
+          "sh:name": "facility",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/service_capacity/relationships/facility"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/clinic_capacity/service_capacity/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/clinic_capacity/stock_event/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "clinic_capacity:stock_event",
+      "dcterms:isPartOf": "#dataset-clinic_capacity",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "stock_event",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:decimal",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "days_stocked_out",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/stock_event/fields/days_stocked_out"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "event_month",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/stock_event/fields/event_month"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "facility_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/stock_event/fields/facility_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/stock_event/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "medicine_code",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/stock_event/fields/medicine_code"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "stock_status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/stock_event/fields/stock_status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "zero_or_one",
+          "registry_relay:targetEntity": "facility",
+          "sh:class": "http://127.0.0.1:4242/datasets/clinic_capacity/facility/schema",
+          "sh:maxCount": 1,
+          "sh:name": "facility",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/clinic_capacity/stock_event/relationships/facility"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/clinic_capacity/stock_event/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/disability_registry/disabled_person/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "disability_registry:disabled_person",
+      "dcterms:isPartOf": "#dataset-disability_registry",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "disabled_person",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "age_band",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/age_band"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "birth_date",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/birth_date"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "disability_details",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/disability_details"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "disability_level",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/disability_level"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "disability_status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/disability_status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "disability_support",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/disability_support"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "given_name",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/given_name"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "home_district",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/home_district"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "human_assistance_type",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/human_assistance_type"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "impairment_level",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/impairment_level"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "impairment_type",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/impairment_type"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "last_updated",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/last_updated"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "member_identifier",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/member_identifier"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "registration_date",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/registration_date"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "sex",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/sex"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "support_frequency",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/support_frequency"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "support_status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/support_status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "surname",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/disability_registry/disabled_person/fields/surname"
+        }
+      ],
+      "sh:targetClass": "https://schema.spdci.org/extensions/dr/v1/DisabledPerson"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/education_registry/attendance_summary/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "education_registry:attendance_summary",
+      "dcterms:isPartOf": "#dataset-education_registry",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "attendance_summary",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:decimal",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "attendance_rate",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/attendance_summary/fields/attendance_rate"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:boolean",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "chronic_absence_flag",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/attendance_summary/fields/chronic_absence_flag"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/attendance_summary/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "school_year",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/attendance_summary/fields/school_year"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "student_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/attendance_summary/fields/student_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "term",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/attendance_summary/fields/term"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "zero_or_one",
+          "registry_relay:targetEntity": "student",
+          "sh:class": "http://127.0.0.1:4242/datasets/education_registry/student/schema",
+          "sh:maxCount": 1,
+          "sh:name": "student",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/attendance_summary/relationships/student"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/education_registry/attendance_summary/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/education_registry/enrollment/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "education_registry:enrollment",
+      "dcterms:isPartOf": "#dataset-education_registry",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "enrollment",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "enrolled_on",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/enrollment/fields/enrolled_on"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "exited_on",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/enrollment/fields/exited_on"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "grade_level",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/enrollment/fields/grade_level"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/enrollment/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "school_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/enrollment/fields/school_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "school_year",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/enrollment/fields/school_year"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/enrollment/fields/status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "student_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/enrollment/fields/student_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "zero_or_one",
+          "registry_relay:targetEntity": "student",
+          "sh:class": "http://127.0.0.1:4242/datasets/education_registry/student/schema",
+          "sh:maxCount": 1,
+          "sh:name": "student",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/enrollment/relationships/student"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "zero_or_one",
+          "registry_relay:targetEntity": "school",
+          "sh:class": "http://127.0.0.1:4242/datasets/education_registry/school/schema",
+          "sh:maxCount": 1,
+          "sh:name": "school",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/enrollment/relationships/school"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/education_registry/enrollment/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/education_registry/guardian/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "education_registry:guardian",
+      "dcterms:isPartOf": "#dataset-education_registry",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "guardian",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:boolean",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "contact_verified",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/guardian/fields/contact_verified"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/guardian/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "relationship",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/guardian/fields/relationship"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "student_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/guardian/fields/student_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "zero_or_one",
+          "registry_relay:targetEntity": "student",
+          "sh:class": "http://127.0.0.1:4242/datasets/education_registry/student/schema",
+          "sh:maxCount": 1,
+          "sh:name": "student",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/guardian/relationships/student"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/education_registry/guardian/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/education_registry/school/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "education_registry:school",
+      "dcterms:isPartOf": "#dataset-education_registry",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "school",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "district",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/school/fields/district"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "education_level",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/school/fields/education_level"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:boolean",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "has_accessibility_support",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/school/fields/has_accessibility_support"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:boolean",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "has_meal_program",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/school/fields/has_meal_program"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/school/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "school_name",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/school/fields/school_name"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "school_type",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/school/fields/school_type"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "many",
+          "registry_relay:targetEntity": "student",
+          "sh:class": "http://127.0.0.1:4242/datasets/education_registry/student/schema",
+          "sh:name": "students",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/school/relationships/students"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "many",
+          "registry_relay:targetEntity": "enrollment",
+          "sh:class": "http://127.0.0.1:4242/datasets/education_registry/enrollment/schema",
+          "sh:name": "enrollments",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/school/relationships/enrollments"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/education_registry/school/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/education_registry/student/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "education_registry:student",
+      "dcterms:isPartOf": "#dataset-education_registry",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "student",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "age_band",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/student/fields/age_band"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "current_enrollment_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/student/fields/current_enrollment_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "disability_status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/student/fields/disability_status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "enrollment_status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/student/fields/enrollment_status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "grade_level",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/student/fields/grade_level"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "home_district",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/student/fields/home_district"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/student/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "language_group",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/student/fields/language_group"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:boolean",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "scholarship_eligible",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/student/fields/scholarship_eligible"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "school_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/student/fields/school_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "sex",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/student/fields/sex"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "zero_or_one",
+          "registry_relay:targetEntity": "school",
+          "sh:class": "http://127.0.0.1:4242/datasets/education_registry/school/schema",
+          "sh:maxCount": 1,
+          "sh:name": "school",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/student/relationships/school"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "many",
+          "registry_relay:targetEntity": "guardian",
+          "sh:class": "http://127.0.0.1:4242/datasets/education_registry/guardian/schema",
+          "sh:name": "guardians",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/student/relationships/guardians"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "many",
+          "registry_relay:targetEntity": "enrollment",
+          "sh:class": "http://127.0.0.1:4242/datasets/education_registry/enrollment/schema",
+          "sh:name": "enrollments",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/student/relationships/enrollments"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "many",
+          "registry_relay:targetEntity": "support_need",
+          "sh:class": "http://127.0.0.1:4242/datasets/education_registry/support_need/schema",
+          "sh:name": "support_needs",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/student/relationships/support_needs"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "many",
+          "registry_relay:targetEntity": "attendance_summary",
+          "sh:class": "http://127.0.0.1:4242/datasets/education_registry/attendance_summary/schema",
+          "sh:name": "attendance_summaries",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/student/relationships/attendance_summaries"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/education_registry/student/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/education_registry/support_need/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "education_registry:support_need",
+      "dcterms:isPartOf": "#dataset-education_registry",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "support_need",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:boolean",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "active",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/support_need/fields/active"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "assessment_date",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/support_need/fields/assessment_date"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "eligibility_status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/support_need/fields/eligibility_status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/support_need/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "student_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/support_need/fields/student_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "support_type",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/support_need/fields/support_type"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "zero_or_one",
+          "registry_relay:targetEntity": "student",
+          "sh:class": "http://127.0.0.1:4242/datasets/education_registry/student/schema",
+          "sh:maxCount": 1,
+          "sh:name": "student",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/education_registry/support_need/relationships/student"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/education_registry/support_need/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/farmer_registry/farmer/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "farmer_registry:farmer",
+      "dcterms:isPartOf": "#dataset-farmer_registry",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "farmer",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "birth_date",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/farmer_registry/farmer/fields/birth_date"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "crop_type",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/farmer_registry/farmer/fields/crop_type"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "district",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/farmer_registry/farmer/fields/district"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "family_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/farmer_registry/farmer/fields/family_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "farm_place_name",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/farmer_registry/farmer/fields/farm_place_name"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "farm_type",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/farmer_registry/farmer/fields/farm_type"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "given_name",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/farmer_registry/farmer/fields/given_name"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/farmer_registry/farmer/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:boolean",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "irrigation",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/farmer_registry/farmer/fields/irrigation"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "last_updated",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/farmer_registry/farmer/fields/last_updated"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:integer",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "livestock_count",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/farmer_registry/farmer/fields/livestock_count"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "livestock_type",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/farmer_registry/farmer/fields/livestock_type"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "national_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/farmer_registry/farmer/fields/national_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "registration_date",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/farmer_registry/farmer/fields/registration_date"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "sex",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/farmer_registry/farmer/fields/sex"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "surname",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/farmer_registry/farmer/fields/surname"
+        }
+      ],
+      "sh:targetClass": "https://schema.spdci.org/extensions/fr/v1/FRPerson"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/public_works_projects/contract/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "public_works_projects:contract",
+      "dcterms:isPartOf": "#dataset-public_works_projects",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "contract",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "contract_status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/contract/fields/contract_status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:decimal",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "contract_value",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/contract/fields/contract_value"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "contractor_ref",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/contract/fields/contractor_ref"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/contract/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "procurement_method",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/contract/fields/procurement_method"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "project_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/contract/fields/project_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "signed_on",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/contract/fields/signed_on"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "zero_or_one",
+          "registry_relay:targetEntity": "project",
+          "sh:class": "http://127.0.0.1:4242/datasets/public_works_projects/project/schema",
+          "sh:maxCount": 1,
+          "sh:name": "project",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/contract/relationships/project"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/public_works_projects/contract/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/public_works_projects/disbursement/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "public_works_projects:disbursement",
+      "dcterms:isPartOf": "#dataset-public_works_projects",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "disbursement",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:decimal",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "amount",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/disbursement/fields/amount"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "contract_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/disbursement/fields/contract_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "fiscal_year",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/disbursement/fields/fiscal_year"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/disbursement/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "payment_status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/disbursement/fields/payment_status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "project_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/disbursement/fields/project_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "quarter",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/disbursement/fields/quarter"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "zero_or_one",
+          "registry_relay:targetEntity": "project",
+          "sh:class": "http://127.0.0.1:4242/datasets/public_works_projects/project/schema",
+          "sh:maxCount": 1,
+          "sh:name": "project",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/disbursement/relationships/project"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "zero_or_one",
+          "registry_relay:targetEntity": "contract",
+          "sh:class": "http://127.0.0.1:4242/datasets/public_works_projects/contract/schema",
+          "sh:maxCount": 1,
+          "sh:name": "contract",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/disbursement/relationships/contract"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/public_works_projects/disbursement/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/public_works_projects/milestone/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "public_works_projects:milestone",
+      "dcterms:isPartOf": "#dataset-public_works_projects",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "milestone",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "completed_on",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/milestone/fields/completed_on"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "delay_reason",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/milestone/fields/delay_reason"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "due_date",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/milestone/fields/due_date"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/milestone/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "milestone_name",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/milestone/fields/milestone_name"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "milestone_status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/milestone/fields/milestone_status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "project_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/milestone/fields/project_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "zero_or_one",
+          "registry_relay:targetEntity": "project",
+          "sh:class": "http://127.0.0.1:4242/datasets/public_works_projects/project/schema",
+          "sh:maxCount": 1,
+          "sh:name": "project",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/milestone/relationships/project"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/public_works_projects/milestone/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/public_works_projects/project/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "public_works_projects:project",
+      "dcterms:isPartOf": "#dataset-public_works_projects",
+      "registry_relay:primaryKey": "id",
+      "sh:name": "project",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "asset_ref",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/project/fields/asset_ref"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "asset_type",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/project/fields/asset_type"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "district",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/project/fields/district"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/project/fields/id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "implementing_agency",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/project/fields/implementing_agency"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "planned_end_date",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/project/fields/planned_end_date"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "project_name",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/project/fields/project_name"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "project_status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/project/fields/project_status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "risk_rating",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/project/fields/risk_rating"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "sector",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/project/fields/sector"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "start_date",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/project/fields/start_date"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "many",
+          "registry_relay:targetEntity": "contract",
+          "sh:class": "http://127.0.0.1:4242/datasets/public_works_projects/contract/schema",
+          "sh:name": "contracts",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/project/relationships/contracts"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "many",
+          "registry_relay:targetEntity": "milestone",
+          "sh:class": "http://127.0.0.1:4242/datasets/public_works_projects/milestone/schema",
+          "sh:name": "milestones",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/project/relationships/milestones"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "registry_relay:relationshipKind": "many",
+          "registry_relay:targetEntity": "disbursement",
+          "sh:class": "http://127.0.0.1:4242/datasets/public_works_projects/disbursement/schema",
+          "sh:name": "disbursements",
+          "sh:nodeKind": "sh:IRI",
+          "sh:path": "http://127.0.0.1:4242/datasets/public_works_projects/project/relationships/disbursements"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/public_works_projects/project/schema"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/social_registry/social_group/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "social_registry:social_group",
+      "dcterms:isPartOf": "#dataset-social_registry",
+      "registry_relay:primaryKey": "group_id",
+      "sh:name": "social_group",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "address_line",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/social_registry/social_group/fields/address_line"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "district",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/social_registry/social_group/fields/district"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "group_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/social_registry/social_group/fields/group_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:integer",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "group_size",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/social_registry/social_group/fields/group_size"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "group_type",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/social_registry/social_group/fields/group_type"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "head_birth_date",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/social_registry/social_group/fields/head_birth_date"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "head_disability_status",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/social_registry/social_group/fields/head_disability_status"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "head_given_name",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/social_registry/social_group/fields/head_given_name"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "head_member_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/social_registry/social_group/fields/head_member_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "head_national_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/social_registry/social_group/fields/head_national_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "head_sex",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/social_registry/social_group/fields/head_sex"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "head_surname",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/social_registry/social_group/fields/head_surname"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "last_updated",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/social_registry/social_group/fields/last_updated"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:decimal",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "poverty_score",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/social_registry/social_group/fields/poverty_score"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "poverty_score_type",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/social_registry/social_group/fields/poverty_score_type"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "registration_date",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/social_registry/social_group/fields/registration_date"
+        }
+      ],
+      "sh:targetClass": "https://schema.spdci.org/extensions/social/v1/Group"
+    },
+    {
+      "@id": "http://127.0.0.1:4242/metadata/schema/subject_registry/subject/schema.json",
+      "@type": "sh:NodeShape",
+      "dcterms:identifier": "subject_registry:subject",
+      "dcterms:isPartOf": "#dataset-subject_registry",
+      "registry_relay:primaryKey": "canonical_id",
+      "sh:name": "subject",
+      "sh:nodeKind": "sh:IRI",
+      "sh:property": [
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "benefits_household_alias",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/subject_registry/subject/fields/benefits_household_alias"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "benefits_person_alias",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/subject_registry/subject/fields/benefits_person_alias"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "canonical_id",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/subject_registry/subject/fields/canonical_id"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "education_guardian_alias",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/subject_registry/subject/fields/education_guardian_alias"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 0,
+          "sh:name": "education_student_alias",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/subject_registry/subject/fields/education_student_alias"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "linkage_confidence",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/subject_registry/subject/fields/linkage_confidence"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:string",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "linkage_method",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/subject_registry/subject/fields/linkage_method"
+        },
+        {
+          "@type": "sh:PropertyShape",
+          "sh:datatype": "xsd:date",
+          "sh:maxCount": 1,
+          "sh:minCount": 1,
+          "sh:name": "linked_on",
+          "sh:nodeKind": "sh:Literal",
+          "sh:path": "http://127.0.0.1:4242/datasets/subject_registry/subject/fields/linked_on"
+        }
+      ],
+      "sh:targetClass": "http://127.0.0.1:4242/datasets/subject_registry/subject/schema"
+    }
+  ]
+}

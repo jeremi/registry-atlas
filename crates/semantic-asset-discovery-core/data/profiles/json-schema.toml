@@ -1,0 +1,7 @@
+id = "json-schema"
+label = "JSON Schema"
+version = "2020-12"
+standard_iri = "https://json-schema.org/draft/2020-12/schema"
+artifact_kinds = ["json_schema"]
+link_predicates = ["$schema", "$id", "$ref"]
+

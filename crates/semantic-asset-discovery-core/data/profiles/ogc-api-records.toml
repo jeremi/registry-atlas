@@ -1,0 +1,7 @@
+id = "ogc-api-records"
+label = "OGC API Records"
+version = "1.0"
+standard_iri = "http://www.opengis.net/spec/ogcapi-records-1/1.0/conf/core"
+artifact_kinds = ["ogc_records", "ogc_landing"]
+link_predicates = ["rel:self", "rel:alternate", "rel:conformance"]
+

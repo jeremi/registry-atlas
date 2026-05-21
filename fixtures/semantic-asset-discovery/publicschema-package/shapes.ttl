@@ -1,0 +1,20 @@
+@prefix experson: <https://example.org/publicschema/person#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+experson:PersonShape
+  a sh:NodeShape ;
+  sh:targetClass experson:Person ;
+  sh:property [
+    a sh:PropertyShape ;
+    sh:path foaf:name ;
+    sh:minCount 1 ;
+    sh:datatype xsd:string
+  ] ;
+  sh:property [
+    a sh:PropertyShape ;
+    sh:path experson:birthDate ;
+    sh:datatype xsd:date ;
+    sh:maxCount 1
+  ] .

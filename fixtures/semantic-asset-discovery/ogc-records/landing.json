@@ -1,0 +1,28 @@
+{
+  "title": "Community Metadata Records",
+  "description": "Hypothetical OGC API Records landing page for parser tests.",
+  "links": [
+    {
+      "href": "https://example.org/ogc/records/api",
+      "rel": "service-desc",
+      "type": "application/vnd.oai.openapi+json;version=3.0",
+      "title": "OpenAPI definition"
+    },
+    {
+      "href": "https://example.org/ogc/records/conformance",
+      "rel": "conformance",
+      "type": "application/json",
+      "title": "Conformance classes"
+    },
+    {
+      "href": "https://example.org/ogc/records/collections",
+      "rel": "data",
+      "type": "application/json",
+      "title": "Record collections"
+    }
+  ],
+  "conformsTo": [
+    "http://www.opengis.net/spec/ogcapi-records-1/1.0/conf/core",
+    "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/core"
+  ]
+}

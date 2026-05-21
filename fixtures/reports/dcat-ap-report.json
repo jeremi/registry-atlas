@@ -1,0 +1,472 @@
+{
+  "schema_version": "semantic-asset-discovery.report.v1",
+  "run_id": "run-9076e57da38ff094",
+  "entry_url": "https://example.org/",
+  "analyzed_at": "2026-05-19T15:51:03.034596+00:00",
+  "summary": {
+    "artifact_count": 1,
+    "asset_count": 4,
+    "standard_count": 0,
+    "profile_count": 2,
+    "failed_artifact_count": 0,
+    "unsupported_artifact_count": 0,
+    "parse_error_count": 0,
+    "next_fetch_count": 9,
+    "truncated": false
+  },
+  "artifacts": [
+    {
+      "id": "artifact-ddb4fec6ddf79ddf",
+      "url": "https://example.org/catalog.jsonld",
+      "final_url": null,
+      "kind": "dcat_catalog",
+      "status": "fetched",
+      "media_type": "application/ld+json",
+      "http_status": 200,
+      "title": "Community Services Semantic Catalog",
+      "description": "Hypothetical DCAT-AP catalog for parser tests.",
+      "discovered_from": null,
+      "discovered_by": null,
+      "byte_length": 1874,
+      "hash": "sha256:25b3f5cb1df3229bd40650c5bb1ed527990cdc429fd635c197df7f2fbdfbb848",
+      "error": null,
+      "analyzed_at": "2026-05-19T15:51:03.034596+00:00"
+    }
+  ],
+  "assets": [
+    {
+      "id": "asset-642c2bff8544ac45",
+      "kind": "catalog",
+      "artifact_id": "artifact-ddb4fec6ddf79ddf",
+      "uri": "https://example.org/catalogs/community-services",
+      "title": "Community Services Semantic Catalog",
+      "description": "Hypothetical DCAT-AP catalog for parser tests.",
+      "publisher": "https://example.org/orgs/civic-data-lab",
+      "endpoint_url": null,
+      "conforms_to": [
+        "https://semiceu.github.io/DCAT-AP/releases/3.0.0/"
+      ],
+      "source_hints": [
+        {
+          "label": "dcat:Catalog",
+          "predicate": "@type",
+          "path": "/@type",
+          "artifact_id": "artifact-ddb4fec6ddf79ddf"
+        }
+      ],
+      "raw_refs": [
+        {
+          "artifact_id": "artifact-ddb4fec6ddf79ddf",
+          "pointer": null,
+          "subject_iri": null
+        }
+      ]
+    },
+    {
+      "id": "asset-ba4c870d11a58334",
+      "kind": "dataset",
+      "artifact_id": "artifact-ddb4fec6ddf79ddf",
+      "uri": "https://example.org/datasets/community-service-locations",
+      "title": "Community Service Locations",
+      "description": "Sample public service location data.",
+      "publisher": null,
+      "endpoint_url": null,
+      "conforms_to": [
+        "https://example.org/profiles/community-service-record"
+      ],
+      "source_hints": [
+        {
+          "label": "dcat:Dataset",
+          "predicate": "@type",
+          "path": "/@type",
+          "artifact_id": "artifact-ddb4fec6ddf79ddf"
+        }
+      ],
+      "raw_refs": [
+        {
+          "artifact_id": "artifact-ddb4fec6ddf79ddf",
+          "pointer": null,
+          "subject_iri": null
+        }
+      ]
+    },
+    {
+      "id": "asset-2b2026bf0a25c456",
+      "kind": "distribution",
+      "artifact_id": "artifact-ddb4fec6ddf79ddf",
+      "uri": "https://example.org/distributions/community-service-locations-json",
+      "title": "Community service locations JSON",
+      "description": null,
+      "publisher": null,
+      "endpoint_url": "https://example.org/api/community-service-locations",
+      "conforms_to": [],
+      "source_hints": [
+        {
+          "label": "dcat:Distribution",
+          "predicate": "@type",
+          "path": "/@type",
+          "artifact_id": "artifact-ddb4fec6ddf79ddf"
+        }
+      ],
+      "raw_refs": [
+        {
+          "artifact_id": "artifact-ddb4fec6ddf79ddf",
+          "pointer": null,
+          "subject_iri": null
+        }
+      ]
+    },
+    {
+      "id": "asset-a0d5445b91f56c1a",
+      "kind": "data_service",
+      "artifact_id": "artifact-ddb4fec6ddf79ddf",
+      "uri": "https://example.org/services/community-services-api",
+      "title": "Community Services API",
+      "description": null,
+      "publisher": null,
+      "endpoint_url": "https://example.org/api",
+      "conforms_to": [],
+      "source_hints": [
+        {
+          "label": "dcat:DataService",
+          "predicate": "@type",
+          "path": "/@type",
+          "artifact_id": "artifact-ddb4fec6ddf79ddf"
+        }
+      ],
+      "raw_refs": [
+        {
+          "artifact_id": "artifact-ddb4fec6ddf79ddf",
+          "pointer": null,
+          "subject_iri": null
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "id": "link-4ef2cdaa5e4d4384",
+      "from_artifact_id": "artifact-ddb4fec6ddf79ddf",
+      "from_url": "https://example.org/catalog.jsonld",
+      "to_url": "https://example.org/datasets/community-service-locations",
+      "rel": null,
+      "predicate": "dcat:dataset",
+      "role": "dataset",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dcat:dataset",
+        "pointer": null,
+        "value": "https://example.org/datasets/community-service-locations"
+      }
+    },
+    {
+      "id": "link-b941e22e2fd9e965",
+      "from_artifact_id": "artifact-ddb4fec6ddf79ddf",
+      "from_url": "https://example.org/catalog.jsonld",
+      "to_url": "https://example.org/distributions/community-service-locations-json",
+      "rel": null,
+      "predicate": "dcat:distribution",
+      "role": "distribution",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dcat:distribution",
+        "pointer": null,
+        "value": "https://example.org/distributions/community-service-locations-json"
+      }
+    },
+    {
+      "id": "link-ce8954722f74a4ea",
+      "from_artifact_id": "artifact-ddb4fec6ddf79ddf",
+      "from_url": "https://example.org/catalog.jsonld",
+      "to_url": "https://example.org/api/community-service-locations",
+      "rel": null,
+      "predicate": "dcat:accessURL",
+      "role": null,
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dcat:accessURL",
+        "pointer": null,
+        "value": "https://example.org/api/community-service-locations"
+      }
+    },
+    {
+      "id": "link-55c98634157181f7",
+      "from_artifact_id": "artifact-ddb4fec6ddf79ddf",
+      "from_url": "https://example.org/catalog.jsonld",
+      "to_url": "https://example.org/downloads/community-service-locations.json",
+      "rel": null,
+      "predicate": "dcat:downloadURL",
+      "role": null,
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dcat:downloadURL",
+        "pointer": null,
+        "value": "https://example.org/downloads/community-service-locations.json"
+      }
+    },
+    {
+      "id": "link-561ce34c68710e8f",
+      "from_artifact_id": "artifact-ddb4fec6ddf79ddf",
+      "from_url": "https://example.org/catalog.jsonld",
+      "to_url": "https://example.org/profiles/community-service-record",
+      "rel": null,
+      "predicate": "dct:conformsTo",
+      "role": null,
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dct:conformsTo",
+        "pointer": null,
+        "value": "https://example.org/profiles/community-service-record"
+      }
+    },
+    {
+      "id": "link-12a4150d5524d3fd",
+      "from_artifact_id": "artifact-ddb4fec6ddf79ddf",
+      "from_url": "https://example.org/catalog.jsonld",
+      "to_url": "https://example.org/services/community-services-api",
+      "rel": null,
+      "predicate": "dcat:service",
+      "role": "service",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dcat:service",
+        "pointer": null,
+        "value": "https://example.org/services/community-services-api"
+      }
+    },
+    {
+      "id": "link-c7c53cb407ac38f4",
+      "from_artifact_id": "artifact-ddb4fec6ddf79ddf",
+      "from_url": "https://example.org/catalog.jsonld",
+      "to_url": "https://example.org/openapi.json",
+      "rel": null,
+      "predicate": "dcat:endpointDescription",
+      "role": "endpoint-description",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dcat:endpointDescription",
+        "pointer": null,
+        "value": "https://example.org/openapi.json"
+      }
+    },
+    {
+      "id": "link-197b71b69842557a",
+      "from_artifact_id": "artifact-ddb4fec6ddf79ddf",
+      "from_url": "https://example.org/catalog.jsonld",
+      "to_url": "https://example.org/api",
+      "rel": null,
+      "predicate": "dcat:endpointURL",
+      "role": null,
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dcat:endpointURL",
+        "pointer": null,
+        "value": "https://example.org/api"
+      }
+    },
+    {
+      "id": "link-e69eb2132f10804a",
+      "from_artifact_id": "artifact-ddb4fec6ddf79ddf",
+      "from_url": "https://example.org/catalog.jsonld",
+      "to_url": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/",
+      "rel": null,
+      "predicate": "dct:conformsTo",
+      "role": null,
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dct:conformsTo",
+        "pointer": null,
+        "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/"
+      }
+    }
+  ],
+  "standards": [],
+  "profiles": [
+    {
+      "id": "profile-88206ddeb88a5267",
+      "iri": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/",
+      "label": "DCAT-AP",
+      "version": null,
+      "base_standard_iri": null,
+      "claimed_by_artifact_id": "artifact-ddb4fec6ddf79ddf",
+      "evidence": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dcterms:conformsTo",
+        "pointer": null,
+        "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/"
+      }
+    },
+    {
+      "id": "profile-6d5f0bde382c6036",
+      "iri": "https://example.org/profiles/community-service-record",
+      "label": null,
+      "version": null,
+      "base_standard_iri": null,
+      "claimed_by_artifact_id": "artifact-ddb4fec6ddf79ddf",
+      "evidence": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dcterms:conformsTo",
+        "pointer": null,
+        "value": "https://example.org/profiles/community-service-record"
+      }
+    }
+  ],
+  "findings": [],
+  "next_fetches": [
+    {
+      "id": "fetch-76c4d7136c85aa9a",
+      "url": "https://example.org/datasets/community-service-locations",
+      "depth": 1,
+      "priority": 10,
+      "reason": "dcat:dataset",
+      "discovered_from": "https://example.org/catalog.jsonld",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dcat:dataset",
+        "pointer": null,
+        "value": "https://example.org/datasets/community-service-locations"
+      }
+    },
+    {
+      "id": "fetch-d60fd0ec049f0d54",
+      "url": "https://example.org/distributions/community-service-locations-json",
+      "depth": 1,
+      "priority": 50,
+      "reason": "dcat:distribution",
+      "discovered_from": "https://example.org/catalog.jsonld",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dcat:distribution",
+        "pointer": null,
+        "value": "https://example.org/distributions/community-service-locations-json"
+      }
+    },
+    {
+      "id": "fetch-1293069da8bab311",
+      "url": "https://example.org/api/community-service-locations",
+      "depth": 1,
+      "priority": 50,
+      "reason": "dcat:accessURL",
+      "discovered_from": "https://example.org/catalog.jsonld",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dcat:accessURL",
+        "pointer": null,
+        "value": "https://example.org/api/community-service-locations"
+      }
+    },
+    {
+      "id": "fetch-f909b17c617efbd7",
+      "url": "https://example.org/downloads/community-service-locations.json",
+      "depth": 1,
+      "priority": 50,
+      "reason": "dcat:downloadURL",
+      "discovered_from": "https://example.org/catalog.jsonld",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dcat:downloadURL",
+        "pointer": null,
+        "value": "https://example.org/downloads/community-service-locations.json"
+      }
+    },
+    {
+      "id": "fetch-b5c20b19f4f0fdb0",
+      "url": "https://example.org/profiles/community-service-record",
+      "depth": 1,
+      "priority": 50,
+      "reason": "dct:conformsTo",
+      "discovered_from": "https://example.org/catalog.jsonld",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dct:conformsTo",
+        "pointer": null,
+        "value": "https://example.org/profiles/community-service-record"
+      }
+    },
+    {
+      "id": "fetch-c6e8a915063bdbfe",
+      "url": "https://example.org/services/community-services-api",
+      "depth": 1,
+      "priority": 10,
+      "reason": "dcat:service",
+      "discovered_from": "https://example.org/catalog.jsonld",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dcat:service",
+        "pointer": null,
+        "value": "https://example.org/services/community-services-api"
+      }
+    },
+    {
+      "id": "fetch-df9d59740b8b76c6",
+      "url": "https://example.org/openapi.json",
+      "depth": 1,
+      "priority": 50,
+      "reason": "dcat:endpointDescription",
+      "discovered_from": "https://example.org/catalog.jsonld",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dcat:endpointDescription",
+        "pointer": null,
+        "value": "https://example.org/openapi.json"
+      }
+    },
+    {
+      "id": "fetch-84dd61a3b0b21de9",
+      "url": "https://example.org/api",
+      "depth": 1,
+      "priority": 50,
+      "reason": "dcat:endpointURL",
+      "discovered_from": "https://example.org/catalog.jsonld",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dcat:endpointURL",
+        "pointer": null,
+        "value": "https://example.org/api"
+      }
+    },
+    {
+      "id": "fetch-ea97f864afb7d613",
+      "url": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/",
+      "depth": 1,
+      "priority": 50,
+      "reason": "dct:conformsTo",
+      "discovered_from": "https://example.org/catalog.jsonld",
+      "discovered_by": {
+        "source": "json_ld_predicate",
+        "artifact_id": "artifact-ddb4fec6ddf79ddf",
+        "predicate": "dct:conformsTo",
+        "pointer": null,
+        "value": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/"
+      }
+    }
+  ]
+}

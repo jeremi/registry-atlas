@@ -1,0 +1,14 @@
+[workspace]
+members = [
+    "crates/semantic-asset-discovery",
+    "crates/semantic-asset-discovery-core",
+    "crates/semantic-asset-discovery-cli",
+    "crates/semantic-asset-discovery-wasm",
+    "crates/system-capability-discovery",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+license = "MIT"
+repository = "https://example.invalid/dataspace-atlas"

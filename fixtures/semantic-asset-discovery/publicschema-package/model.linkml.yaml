@@ -1,0 +1,76 @@
+id: https://example.org/publicschema/person
+name: example_person
+title: Example Person Semantic Model
+description: Hypothetical LinkML source for semantic asset discovery parser tests.
+version: 1.0.0
+license: CC0-1.0
+default_prefix: experson
+default_range: string
+
+prefixes:
+  experson:
+    prefix_prefix: experson
+    prefix_reference: https://example.org/publicschema/person#
+  linkml:
+    prefix_prefix: linkml
+    prefix_reference: https://w3id.org/linkml/
+  schema:
+    prefix_prefix: schema
+    prefix_reference: https://schema.org/
+  foaf:
+    prefix_prefix: foaf
+    prefix_reference: http://xmlns.com/foaf/0.1/
+  xsd:
+    prefix_prefix: xsd
+    prefix_reference: http://www.w3.org/2001/XMLSchema#
+
+imports:
+  - linkml:types
+  - https://example.org/publicschema/common/model.linkml.yaml
+
+annotations:
+  profile:
+    tag: profile
+    value: https://example.org/profiles/person-record
+  jsonld_context:
+    tag: jsonld_context
+    value: context.jsonld
+  shacl_shapes:
+    tag: shacl_shapes
+    value: shapes.ttl
+  json_schema:
+    tag: json_schema
+    value: ../json-schema/person.schema.json
+
+classes:
+  Person:
+    description: A hypothetical person record.
+    class_uri: schema:Person
+    slots:
+      - id
+      - name
+      - birth_date
+    exact_mappings:
+      - foaf:Person
+
+slots:
+  id:
+    identifier: true
+    range: uriorcurie
+    description: Stable identifier for the person.
+  name:
+    required: true
+    range: string
+    slot_uri: foaf:name
+  birth_date:
+    range: date
+    slot_uri: schema:birthDate
+
+enums:
+  LifecycleStatus:
+    description: Minimal lifecycle status vocabulary.
+    permissible_values:
+      draft:
+        meaning: https://example.org/publicschema/status/draft
+      stable:
+        meaning: https://example.org/publicschema/status/stable

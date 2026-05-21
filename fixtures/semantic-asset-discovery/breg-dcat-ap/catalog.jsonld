@@ -1,0 +1,48 @@
+{
+  "@context": {
+    "adms": "http://www.w3.org/ns/adms#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dct": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/"
+  },
+  "@id": "https://example.org/catalogs/base-registers",
+  "@type": "dcat:Catalog",
+  "dct:title": "Base Register Metadata Catalog",
+  "dct:description": "Hypothetical BRegDCAT-AP style catalog for parser tests.",
+  "dct:publisher": {
+    "@id": "https://example.org/orgs/register-office",
+    "@type": "foaf:Agent",
+    "foaf:name": "Example Register Office"
+  },
+  "dct:conformsTo": [
+    {
+      "@id": "https://semiceu.github.io/DCAT-AP/releases/3.0.0/"
+    },
+    {
+      "@id": "https://semiceu.github.io/BRegDCAT-AP/releases/2.1.0/"
+    }
+  ],
+  "dcat:dataset": {
+    "@id": "https://example.org/registers/person-register",
+    "@type": "dcat:Dataset",
+    "dct:title": "Person Register",
+    "dct:description": "Sample base-register dataset describing registered persons.",
+    "adms:identifier": {
+      "@id": "https://example.org/identifiers/person-register"
+    },
+    "adms:status": {
+      "@id": "http://purl.org/adms/status/Completed"
+    },
+    "dct:conformsTo": {
+      "@id": "https://semiceu.github.io/BRegDCAT-AP/releases/2.1.0/"
+    },
+    "dcat:distribution": {
+      "@id": "https://example.org/registers/person-register/distribution",
+      "@type": "dcat:Distribution",
+      "dct:title": "Person register records API",
+      "dcat:accessURL": {
+        "@id": "https://example.org/records/person-register"
+      }
+    }
+  }
+}

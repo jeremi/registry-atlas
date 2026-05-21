@@ -1,0 +1,47 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Community Services API",
+    "version": "1.0.0",
+    "description": "Hypothetical API description for semantic asset discovery tests."
+  },
+  "servers": [
+    {
+      "url": "https://example.org/api"
+    }
+  ],
+  "externalDocs": {
+    "description": "API profile",
+    "url": "https://example.org/profiles/person-record"
+  },
+  "paths": {
+    "/persons/{id}": {
+      "get": {
+        "summary": "Read a person record",
+        "operationId": "getPerson",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Person record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "https://example.org/schemas/person.schema.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

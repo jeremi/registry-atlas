@@ -1,0 +1,997 @@
+{
+  "schema_version": "semantic-asset-discovery.report.v1",
+  "run_id": "run-08c0f417630ade24",
+  "entry_url": "https://example.org/",
+  "analyzed_at": "2026-05-19T15:51:03.540356+00:00",
+  "summary": {
+    "artifact_count": 6,
+    "asset_count": 11,
+    "standard_count": 0,
+    "profile_count": 0,
+    "failed_artifact_count": 0,
+    "unsupported_artifact_count": 0,
+    "parse_error_count": 0,
+    "next_fetch_count": 19,
+    "truncated": false
+  },
+  "artifacts": [
+    {
+      "id": "artifact-26412809848cf2f6",
+      "url": "https://example.org/semantic-asset-package.v1.toml",
+      "final_url": null,
+      "kind": "semantic_model_package",
+      "status": "fetched",
+      "media_type": "application/toml",
+      "http_status": 200,
+      "title": "example-person",
+      "description": null,
+      "discovered_from": null,
+      "discovered_by": null,
+      "byte_length": 1075,
+      "hash": "sha256:ff7bee2b1452de27038a14a369d15e3a53d30205914fc594d1fe801a1b299d2e",
+      "error": null,
+      "analyzed_at": "2026-05-19T15:51:03.540356+00:00"
+    },
+    {
+      "id": "artifact-047000cc1a4a3d5a",
+      "url": "https://example.org/model.linkml.yaml",
+      "final_url": null,
+      "kind": "link_ml_schema",
+      "status": "fetched",
+      "media_type": "application/yaml",
+      "http_status": 200,
+      "title": "example_person",
+      "description": "Hypothetical LinkML source for semantic asset discovery parser tests.",
+      "discovered_from": null,
+      "discovered_by": null,
+      "byte_length": 1787,
+      "hash": "sha256:7a0234f2c94ade458774af66f9548d3aa0143fc46294302c121fbfcad857a519",
+      "error": null,
+      "analyzed_at": "2026-05-19T15:51:03.540356+00:00"
+    },
+    {
+      "id": "artifact-6be8d79c6263a731",
+      "url": "https://example.org/context.jsonld",
+      "final_url": null,
+      "kind": "json_ld_context",
+      "status": "fetched",
+      "media_type": "application/ld+json",
+      "http_status": 200,
+      "title": null,
+      "description": null,
+      "discovered_from": null,
+      "discovered_by": null,
+      "byte_length": 404,
+      "hash": "sha256:c1f01da246381852758c4d8068d97a7a351312aa4bd7e8d9857535805407c64b",
+      "error": null,
+      "analyzed_at": "2026-05-19T15:51:03.540356+00:00"
+    },
+    {
+      "id": "artifact-ea016971c60dff15",
+      "url": "https://example.org/shapes.ttl",
+      "final_url": null,
+      "kind": "shacl",
+      "status": "fetched",
+      "media_type": "text/turtle",
+      "http_status": 200,
+      "title": null,
+      "description": null,
+      "discovered_from": null,
+      "discovered_by": null,
+      "byte_length": 522,
+      "hash": "sha256:413a65ba3f65d359dfa121f4d1d759096a8d74758468a426caa7237a6c2e1dfa",
+      "error": null,
+      "analyzed_at": "2026-05-19T15:51:03.540356+00:00"
+    },
+    {
+      "id": "artifact-2269c4d5ef350d40",
+      "url": "https://example.org/concepts.ttl",
+      "final_url": null,
+      "kind": "skos",
+      "status": "fetched",
+      "media_type": "text/turtle",
+      "http_status": 200,
+      "title": "Person status concepts",
+      "description": null,
+      "discovered_from": null,
+      "discovered_by": null,
+      "byte_length": 709,
+      "hash": "sha256:a5f73e1f808557b10ec02e2119ac384ecd698a89999fcb0facddb1875410d73b",
+      "error": null,
+      "analyzed_at": "2026-05-19T15:51:03.540356+00:00"
+    },
+    {
+      "id": "artifact-ff9e571dad5d1aa4",
+      "url": "https://example.org/alignments.ttl",
+      "final_url": null,
+      "kind": "skos",
+      "status": "fetched",
+      "media_type": "text/turtle",
+      "http_status": 200,
+      "title": "Example person alignment",
+      "description": "Hypothetical alignment metadata for parser tests.",
+      "discovered_from": null,
+      "discovered_by": null,
+      "byte_length": 591,
+      "hash": "sha256:9444a90550386ec5cbf0922868e8898ce52f9d5d5fb44a0d28bbced2abdf09fb",
+      "error": null,
+      "analyzed_at": "2026-05-19T15:51:03.540356+00:00"
+    }
+  ],
+  "assets": [
+    {
+      "id": "asset-54d6dd816ea95174",
+      "kind": "semantic_model_package",
+      "artifact_id": "artifact-26412809848cf2f6",
+      "uri": "https://example.org/semantic-asset-package.v1.toml",
+      "title": "example-person",
+      "description": null,
+      "publisher": null,
+      "endpoint_url": null,
+      "conforms_to": [],
+      "source_hints": [
+        {
+          "label": "Semantic asset package manifest",
+          "predicate": "package",
+          "path": "/package",
+          "artifact_id": "artifact-26412809848cf2f6"
+        }
+      ],
+      "raw_refs": [
+        {
+          "artifact_id": "artifact-26412809848cf2f6",
+          "pointer": "/",
+          "subject_iri": null
+        }
+      ]
+    },
+    {
+      "id": "asset-311a6edaa28dac3b",
+      "kind": "semantic_model_package",
+      "artifact_id": "artifact-047000cc1a4a3d5a",
+      "uri": "https://example.org/publicschema/person",
+      "title": "example_person",
+      "description": "Hypothetical LinkML source for semantic asset discovery parser tests.",
+      "publisher": null,
+      "endpoint_url": null,
+      "conforms_to": [
+        "linkml:1.0.0"
+      ],
+      "source_hints": [
+        {
+          "label": "LinkML schema",
+          "predicate": "name",
+          "path": "/name",
+          "artifact_id": "artifact-047000cc1a4a3d5a"
+        }
+      ],
+      "raw_refs": [
+        {
+          "artifact_id": "artifact-047000cc1a4a3d5a",
+          "pointer": "/",
+          "subject_iri": null
+        }
+      ]
+    },
+    {
+      "id": "asset-721b3ca39b58ec64",
+      "kind": "class",
+      "artifact_id": "artifact-047000cc1a4a3d5a",
+      "uri": null,
+      "title": "Person",
+      "description": "A hypothetical person record.",
+      "publisher": null,
+      "endpoint_url": null,
+      "conforms_to": [],
+      "source_hints": [
+        {
+          "label": "LinkML classes",
+          "predicate": "classes",
+          "path": "/classes/Person",
+          "artifact_id": "artifact-047000cc1a4a3d5a"
+        }
+      ],
+      "raw_refs": [
+        {
+          "artifact_id": "artifact-047000cc1a4a3d5a",
+          "pointer": "/classes/Person",
+          "subject_iri": null
+        }
+      ]
+    },
+    {
+      "id": "asset-5e3bd0d1849c0184",
+      "kind": "property",
+      "artifact_id": "artifact-047000cc1a4a3d5a",
+      "uri": null,
+      "title": "id",
+      "description": "Stable identifier for the person.",
+      "publisher": null,
+      "endpoint_url": null,
+      "conforms_to": [],
+      "source_hints": [
+        {
+          "label": "LinkML slots",
+          "predicate": "slots",
+          "path": "/slots/id",
+          "artifact_id": "artifact-047000cc1a4a3d5a"
+        }
+      ],
+      "raw_refs": [
+        {
+          "artifact_id": "artifact-047000cc1a4a3d5a",
+          "pointer": "/slots/id",
+          "subject_iri": null
+        }
+      ]
+    },
+    {
+      "id": "asset-ff53f61384322dab",
+      "kind": "property",
+      "artifact_id": "artifact-047000cc1a4a3d5a",
+      "uri": null,
+      "title": "name",
+      "description": null,
+      "publisher": null,
+      "endpoint_url": null,
+      "conforms_to": [],
+      "source_hints": [
+        {
+          "label": "LinkML slots",
+          "predicate": "slots",
+          "path": "/slots/name",
+          "artifact_id": "artifact-047000cc1a4a3d5a"
+        }
+      ],
+      "raw_refs": [
+        {
+          "artifact_id": "artifact-047000cc1a4a3d5a",
+          "pointer": "/slots/name",
+          "subject_iri": null
+        }
+      ]
+    },
+    {
+      "id": "asset-500c85ffdf11bbd7",
+      "kind": "property",
+      "artifact_id": "artifact-047000cc1a4a3d5a",
+      "uri": null,
+      "title": "birth_date",
+      "description": null,
+      "publisher": null,
+      "endpoint_url": null,
+      "conforms_to": [],
+      "source_hints": [
+        {
+          "label": "LinkML slots",
+          "predicate": "slots",
+          "path": "/slots/birth_date",
+          "artifact_id": "artifact-047000cc1a4a3d5a"
+        }
+      ],
+      "raw_refs": [
+        {
+          "artifact_id": "artifact-047000cc1a4a3d5a",
+          "pointer": "/slots/birth_date",
+          "subject_iri": null
+        }
+      ]
+    },
+    {
+      "id": "asset-abf8c744c4bbb079",
+      "kind": "vocabulary",
+      "artifact_id": "artifact-047000cc1a4a3d5a",
+      "uri": null,
+      "title": "LifecycleStatus",
+      "description": "Minimal lifecycle status vocabulary.",
+      "publisher": null,
+      "endpoint_url": null,
+      "conforms_to": [],
+      "source_hints": [
+        {
+          "label": "LinkML enums",
+          "predicate": "enums",
+          "path": "/enums/LifecycleStatus",
+          "artifact_id": "artifact-047000cc1a4a3d5a"
+        }
+      ],
+      "raw_refs": [
+        {
+          "artifact_id": "artifact-047000cc1a4a3d5a",
+          "pointer": "/enums/LifecycleStatus",
+          "subject_iri": null
+        }
+      ]
+    },
+    {
+      "id": "asset-8c81f08f1c2b38d9",
+      "kind": "vocabulary",
+      "artifact_id": "artifact-6be8d79c6263a731",
+      "uri": "https://example.org/context.jsonld",
+      "title": null,
+      "description": null,
+      "publisher": null,
+      "endpoint_url": null,
+      "conforms_to": [],
+      "source_hints": [],
+      "raw_refs": [
+        {
+          "artifact_id": "artifact-6be8d79c6263a731",
+          "pointer": "/",
+          "subject_iri": null
+        }
+      ]
+    },
+    {
+      "id": "asset-03dcb4442bff5c42",
+      "kind": "shape_graph",
+      "artifact_id": "artifact-ea016971c60dff15",
+      "uri": "https://example.org/publicschema/person#PersonShape",
+      "title": null,
+      "description": null,
+      "publisher": null,
+      "endpoint_url": null,
+      "conforms_to": [],
+      "source_hints": [
+        {
+          "label": "sh:NodeShape",
+          "predicate": "rdf:type",
+          "path": null,
+          "artifact_id": "artifact-ea016971c60dff15"
+        }
+      ],
+      "raw_refs": [
+        {
+          "artifact_id": "artifact-ea016971c60dff15",
+          "pointer": null,
+          "subject_iri": "https://example.org/publicschema/person#PersonShape"
+        }
+      ]
+    },
+    {
+      "id": "asset-5499ba573aa6fb2b",
+      "kind": "concept_scheme",
+      "artifact_id": "artifact-2269c4d5ef350d40",
+      "uri": "https://example.org/publicschema/person/status",
+      "title": "Person status concepts",
+      "description": null,
+      "publisher": null,
+      "endpoint_url": null,
+      "conforms_to": [],
+      "source_hints": [
+        {
+          "label": "skos:ConceptScheme",
+          "predicate": "rdf:type",
+          "path": null,
+          "artifact_id": "artifact-2269c4d5ef350d40"
+        }
+      ],
+      "raw_refs": [
+        {
+          "artifact_id": "artifact-2269c4d5ef350d40",
+          "pointer": null,
+          "subject_iri": "https://example.org/publicschema/person/status"
+        }
+      ]
+    },
+    {
+      "id": "asset-0b288c91b20de27a",
+      "kind": "concept_scheme",
+      "artifact_id": "artifact-ff9e571dad5d1aa4",
+      "uri": "https://example.org/publicschema/person/alignment",
+      "title": "Example person alignment",
+      "description": "Hypothetical alignment metadata for parser tests.",
+      "publisher": null,
+      "endpoint_url": null,
+      "conforms_to": [],
+      "source_hints": [
+        {
+          "label": "skos:ConceptScheme",
+          "predicate": "rdf:type",
+          "path": null,
+          "artifact_id": "artifact-ff9e571dad5d1aa4"
+        }
+      ],
+      "raw_refs": [
+        {
+          "artifact_id": "artifact-ff9e571dad5d1aa4",
+          "pointer": null,
+          "subject_iri": "https://example.org/publicschema/person/alignment"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "id": "link-08c16b9b8d9c418a",
+      "from_artifact_id": "artifact-26412809848cf2f6",
+      "from_url": "https://example.org/semantic-asset-package.v1.toml",
+      "to_url": "https://example.org/json-schema/person.schema.json",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "semantic-package-artifact",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "../json-schema/person.schema.json"
+      }
+    },
+    {
+      "id": "link-576b85383add0d9f",
+      "from_artifact_id": "artifact-26412809848cf2f6",
+      "from_url": "https://example.org/semantic-asset-package.v1.toml",
+      "to_url": "https://example.org/alignments.ttl",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "semantic-package-artifact",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "alignments.ttl"
+      }
+    },
+    {
+      "id": "link-9fc389b2e78bf9e8",
+      "from_artifact_id": "artifact-26412809848cf2f6",
+      "from_url": "https://example.org/semantic-asset-package.v1.toml",
+      "to_url": "https://example.org/concepts.ttl",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "semantic-package-artifact",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "concepts.ttl"
+      }
+    },
+    {
+      "id": "link-fb53877efcc07e86",
+      "from_artifact_id": "artifact-26412809848cf2f6",
+      "from_url": "https://example.org/semantic-asset-package.v1.toml",
+      "to_url": "https://example.org/context.jsonld",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "semantic-package-artifact",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "context.jsonld"
+      }
+    },
+    {
+      "id": "link-c6ced0603cdac993",
+      "from_artifact_id": "artifact-26412809848cf2f6",
+      "from_url": "https://example.org/semantic-asset-package.v1.toml",
+      "to_url": "https://example.org/profiles/person-record",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "semantic-package-artifact",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "https://example.org/profiles/person-record"
+      }
+    },
+    {
+      "id": "link-b0c309126fc79ec0",
+      "from_artifact_id": "artifact-26412809848cf2f6",
+      "from_url": "https://example.org/semantic-asset-package.v1.toml",
+      "to_url": "https://example.org/publicschema/person",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "semantic-package-artifact",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "https://example.org/publicschema/person"
+      }
+    },
+    {
+      "id": "link-d94ff871bb15df03",
+      "from_artifact_id": "artifact-26412809848cf2f6",
+      "from_url": "https://example.org/semantic-asset-package.v1.toml",
+      "to_url": "https://w3id.org/linkml/",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "semantic-package-artifact",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "https://w3id.org/linkml/"
+      }
+    },
+    {
+      "id": "link-74ca73693b48636c",
+      "from_artifact_id": "artifact-26412809848cf2f6",
+      "from_url": "https://example.org/semantic-asset-package.v1.toml",
+      "to_url": "https://example.org/model.linkml.yaml",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "semantic-package-artifact",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "model.linkml.yaml"
+      }
+    },
+    {
+      "id": "link-de9cbeb26d7cfd38",
+      "from_artifact_id": "artifact-26412809848cf2f6",
+      "from_url": "https://example.org/semantic-asset-package.v1.toml",
+      "to_url": "https://example.org/shapes.ttl",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "semantic-package-artifact",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "shapes.ttl"
+      }
+    },
+    {
+      "id": "link-e4f1cec29de07112",
+      "from_artifact_id": "artifact-047000cc1a4a3d5a",
+      "from_url": "https://example.org/model.linkml.yaml",
+      "to_url": "https://example.org/publicschema/common/model.linkml.yaml",
+      "rel": "import",
+      "predicate": null,
+      "role": "linkml-import",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/imports",
+        "value": "https://example.org/publicschema/common/model.linkml.yaml"
+      }
+    },
+    {
+      "id": "link-7824951498cd3764",
+      "from_artifact_id": "artifact-047000cc1a4a3d5a",
+      "from_url": "https://example.org/model.linkml.yaml",
+      "to_url": "http://www.w3.org/2001/XMLSchema#",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "linkml-reference",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "http://www.w3.org/2001/XMLSchema#"
+      }
+    },
+    {
+      "id": "link-0e011b032db11ac8",
+      "from_artifact_id": "artifact-047000cc1a4a3d5a",
+      "from_url": "https://example.org/model.linkml.yaml",
+      "to_url": "http://xmlns.com/foaf/0.1/",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "linkml-reference",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "http://xmlns.com/foaf/0.1/"
+      }
+    },
+    {
+      "id": "link-34d1375242e223e9",
+      "from_artifact_id": "artifact-047000cc1a4a3d5a",
+      "from_url": "https://example.org/model.linkml.yaml",
+      "to_url": "https://example.org/profiles/person-record",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "linkml-reference",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "https://example.org/profiles/person-record"
+      }
+    },
+    {
+      "id": "link-7ac87b820a66874e",
+      "from_artifact_id": "artifact-047000cc1a4a3d5a",
+      "from_url": "https://example.org/model.linkml.yaml",
+      "to_url": "https://example.org/publicschema/common/model.linkml.yaml",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "linkml-reference",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "https://example.org/publicschema/common/model.linkml.yaml"
+      }
+    },
+    {
+      "id": "link-dd341a03969cb50c",
+      "from_artifact_id": "artifact-047000cc1a4a3d5a",
+      "from_url": "https://example.org/model.linkml.yaml",
+      "to_url": "https://example.org/publicschema/person",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "linkml-reference",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "https://example.org/publicschema/person"
+      }
+    },
+    {
+      "id": "link-b3665a4d1b335581",
+      "from_artifact_id": "artifact-047000cc1a4a3d5a",
+      "from_url": "https://example.org/model.linkml.yaml",
+      "to_url": "https://example.org/publicschema/person#",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "linkml-reference",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "https://example.org/publicschema/person#"
+      }
+    },
+    {
+      "id": "link-b6e8d168f345afa4",
+      "from_artifact_id": "artifact-047000cc1a4a3d5a",
+      "from_url": "https://example.org/model.linkml.yaml",
+      "to_url": "https://example.org/publicschema/status/draft",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "linkml-reference",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "https://example.org/publicschema/status/draft"
+      }
+    },
+    {
+      "id": "link-e6128fa5be2862d7",
+      "from_artifact_id": "artifact-047000cc1a4a3d5a",
+      "from_url": "https://example.org/model.linkml.yaml",
+      "to_url": "https://example.org/publicschema/status/stable",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "linkml-reference",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "https://example.org/publicschema/status/stable"
+      }
+    },
+    {
+      "id": "link-0dce0a8eaa928cc1",
+      "from_artifact_id": "artifact-047000cc1a4a3d5a",
+      "from_url": "https://example.org/model.linkml.yaml",
+      "to_url": "https://schema.org/",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "linkml-reference",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "https://schema.org/"
+      }
+    },
+    {
+      "id": "link-21220d4a3777f400",
+      "from_artifact_id": "artifact-047000cc1a4a3d5a",
+      "from_url": "https://example.org/model.linkml.yaml",
+      "to_url": "https://w3id.org/linkml/",
+      "rel": "describedby",
+      "predicate": null,
+      "role": "linkml-reference",
+      "confidence": "declared",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "https://w3id.org/linkml/"
+      }
+    }
+  ],
+  "standards": [],
+  "profiles": [],
+  "findings": [],
+  "next_fetches": [
+    {
+      "id": "fetch-3d28098b6fa7101f",
+      "url": "https://example.org/json-schema/person.schema.json",
+      "depth": 1,
+      "priority": 20,
+      "reason": "describedby",
+      "discovered_from": "https://example.org/semantic-asset-package.v1.toml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "../json-schema/person.schema.json"
+      }
+    },
+    {
+      "id": "fetch-c3ef790a36f1d569",
+      "url": "https://example.org/alignments.ttl",
+      "depth": 1,
+      "priority": 20,
+      "reason": "describedby",
+      "discovered_from": "https://example.org/semantic-asset-package.v1.toml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "alignments.ttl"
+      }
+    },
+    {
+      "id": "fetch-15ce2a7af58561a8",
+      "url": "https://example.org/concepts.ttl",
+      "depth": 1,
+      "priority": 20,
+      "reason": "describedby",
+      "discovered_from": "https://example.org/semantic-asset-package.v1.toml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "concepts.ttl"
+      }
+    },
+    {
+      "id": "fetch-7f425cb52c434b24",
+      "url": "https://example.org/context.jsonld",
+      "depth": 1,
+      "priority": 20,
+      "reason": "describedby",
+      "discovered_from": "https://example.org/semantic-asset-package.v1.toml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "context.jsonld"
+      }
+    },
+    {
+      "id": "fetch-91791dd78dacc899",
+      "url": "https://example.org/profiles/person-record",
+      "depth": 1,
+      "priority": 20,
+      "reason": "describedby",
+      "discovered_from": "https://example.org/semantic-asset-package.v1.toml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "https://example.org/profiles/person-record"
+      }
+    },
+    {
+      "id": "fetch-f727ed6d62d40234",
+      "url": "https://example.org/publicschema/person",
+      "depth": 1,
+      "priority": 20,
+      "reason": "describedby",
+      "discovered_from": "https://example.org/semantic-asset-package.v1.toml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "https://example.org/publicschema/person"
+      }
+    },
+    {
+      "id": "fetch-f419e6f271dcacdb",
+      "url": "https://w3id.org/linkml/",
+      "depth": 1,
+      "priority": 20,
+      "reason": "describedby",
+      "discovered_from": "https://example.org/semantic-asset-package.v1.toml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "https://w3id.org/linkml/"
+      }
+    },
+    {
+      "id": "fetch-6a05d0ae407d1091",
+      "url": "https://example.org/model.linkml.yaml",
+      "depth": 1,
+      "priority": 20,
+      "reason": "describedby",
+      "discovered_from": "https://example.org/semantic-asset-package.v1.toml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "model.linkml.yaml"
+      }
+    },
+    {
+      "id": "fetch-c7e1801f7e29c56f",
+      "url": "https://example.org/shapes.ttl",
+      "depth": 1,
+      "priority": 20,
+      "reason": "describedby",
+      "discovered_from": "https://example.org/semantic-asset-package.v1.toml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-26412809848cf2f6",
+        "pointer": "/",
+        "value": "shapes.ttl"
+      }
+    },
+    {
+      "id": "fetch-9abb6230678c3b79",
+      "url": "https://example.org/publicschema/common/model.linkml.yaml",
+      "depth": 1,
+      "priority": 50,
+      "reason": "linkml-import",
+      "discovered_from": "https://example.org/model.linkml.yaml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/imports",
+        "value": "https://example.org/publicschema/common/model.linkml.yaml"
+      }
+    },
+    {
+      "id": "fetch-8bf3e62c943b8dbf",
+      "url": "http://www.w3.org/2001/XMLSchema#",
+      "depth": 1,
+      "priority": 20,
+      "reason": "linkml-reference",
+      "discovered_from": "https://example.org/model.linkml.yaml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "http://www.w3.org/2001/XMLSchema#"
+      }
+    },
+    {
+      "id": "fetch-64e4da47902c531e",
+      "url": "http://xmlns.com/foaf/0.1/",
+      "depth": 1,
+      "priority": 20,
+      "reason": "linkml-reference",
+      "discovered_from": "https://example.org/model.linkml.yaml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "http://xmlns.com/foaf/0.1/"
+      }
+    },
+    {
+      "id": "fetch-1c7d4cc2cdc9f35b",
+      "url": "https://example.org/profiles/person-record",
+      "depth": 1,
+      "priority": 20,
+      "reason": "linkml-reference",
+      "discovered_from": "https://example.org/model.linkml.yaml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "https://example.org/profiles/person-record"
+      }
+    },
+    {
+      "id": "fetch-59e2ac58405aea04",
+      "url": "https://example.org/publicschema/person",
+      "depth": 1,
+      "priority": 20,
+      "reason": "linkml-reference",
+      "discovered_from": "https://example.org/model.linkml.yaml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "https://example.org/publicschema/person"
+      }
+    },
+    {
+      "id": "fetch-5ee07efe08f5c250",
+      "url": "https://example.org/publicschema/person#",
+      "depth": 1,
+      "priority": 20,
+      "reason": "linkml-reference",
+      "discovered_from": "https://example.org/model.linkml.yaml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "https://example.org/publicschema/person#"
+      }
+    },
+    {
+      "id": "fetch-6a795ad73b2cdeeb",
+      "url": "https://example.org/publicschema/status/draft",
+      "depth": 1,
+      "priority": 20,
+      "reason": "linkml-reference",
+      "discovered_from": "https://example.org/model.linkml.yaml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "https://example.org/publicschema/status/draft"
+      }
+    },
+    {
+      "id": "fetch-37430a0b7eeaa62d",
+      "url": "https://example.org/publicschema/status/stable",
+      "depth": 1,
+      "priority": 20,
+      "reason": "linkml-reference",
+      "discovered_from": "https://example.org/model.linkml.yaml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "https://example.org/publicschema/status/stable"
+      }
+    },
+    {
+      "id": "fetch-560fa19a8f7ab010",
+      "url": "https://schema.org/",
+      "depth": 1,
+      "priority": 20,
+      "reason": "linkml-reference",
+      "discovered_from": "https://example.org/model.linkml.yaml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "https://schema.org/"
+      }
+    },
+    {
+      "id": "fetch-29de838211e8f67f",
+      "url": "https://w3id.org/linkml/",
+      "depth": 1,
+      "priority": 20,
+      "reason": "linkml-reference",
+      "discovered_from": "https://example.org/model.linkml.yaml",
+      "discovered_by": {
+        "source": "json_pointer",
+        "artifact_id": "artifact-047000cc1a4a3d5a",
+        "pointer": "/",
+        "value": "https://w3id.org/linkml/"
+      }
+    }
+  ]
+}

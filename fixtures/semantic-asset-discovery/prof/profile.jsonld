@@ -1,0 +1,38 @@
+{
+  "@context": {
+    "dct": "http://purl.org/dc/terms/",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "role": "http://www.w3.org/ns/dx/prof/role/"
+  },
+  "@id": "https://example.org/profiles/person-record",
+  "@type": "prof:Profile",
+  "dct:title": "Person Record Application Profile",
+  "dct:description": "Hypothetical profile that constrains a person vocabulary for discovery tests.",
+  "prof:isProfileOf": {
+    "@id": "https://semiceu.github.io/Core-Person-Vocabulary/releases/2.1.1/"
+  },
+  "prof:hasResource": [
+    {
+      "@id": "https://example.org/profiles/person-record/shapes",
+      "@type": "prof:ResourceDescriptor",
+      "prof:hasRole": {
+        "@id": "role:constraints"
+      },
+      "prof:hasArtifact": {
+        "@id": "https://example.org/profiles/person-record/person-shapes.ttl"
+      },
+      "dct:format": "text/turtle"
+    },
+    {
+      "@id": "https://example.org/profiles/person-record/context",
+      "@type": "prof:ResourceDescriptor",
+      "prof:hasRole": {
+        "@id": "role:vocabulary"
+      },
+      "prof:hasArtifact": {
+        "@id": "https://example.org/profiles/person-record/context.jsonld"
+      },
+      "dct:format": "application/ld+json"
+    }
+  ]
+}
