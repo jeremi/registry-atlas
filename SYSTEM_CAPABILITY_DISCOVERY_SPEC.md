@@ -1509,7 +1509,7 @@ later protocol-specific tests, but they are not the v0.1 baseline.
 Run Registry Relay with the all-standards demo:
 
 ```sh
-cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry_relay
+cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-relay
 just demo-keys
 just demo-run demo/config/all_standards.yaml
 ```
@@ -1520,7 +1520,7 @@ In another shell, harvest the standard-facing catalog:
 cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-atlas
 mkdir -p fixtures/system-capability
 set -a
-. ../registry_relay/demo/.env.local
+. ../registry-relay/demo/.env.local
 set +a
 cargo run -p semantic-asset-discovery-cli -- harvest \
   --allow-private-network \
@@ -1742,7 +1742,7 @@ Tasks:
 Registry Relay live validation commands:
 
 ```sh
-cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry_relay
+cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-relay
 just demo-keys
 just demo-run demo/config/all_standards.yaml
 ```
@@ -1751,7 +1751,7 @@ just demo-run demo/config/all_standards.yaml
 cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-atlas
 mkdir -p fixtures/system-capability
 set -a
-. ../registry_relay/demo/.env.local
+. ../registry-relay/demo/.env.local
 set +a
 cargo run -p semantic-asset-discovery-cli -- harvest \
   --allow-private-network \
@@ -2007,7 +2007,7 @@ pnpm check:release
 The live Registry Relay validation MUST also be run before release:
 
 ```sh
-cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry_relay
+cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-relay
 just demo-run demo/config/all_standards.yaml
 ```
 

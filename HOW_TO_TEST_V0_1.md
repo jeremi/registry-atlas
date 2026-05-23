@@ -40,14 +40,14 @@ Known warnings:
 Focused metadata-core check:
 
 ```bash
-cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry_relay
+cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-relay
 cargo test -p registry-metadata-core --test metadata_core
 ```
 
 Full all-features check:
 
 ```bash
-cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry_relay
+cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-relay
 just test
 ```
 
@@ -62,14 +62,14 @@ Expected result:
 Generate local demo keys once if `demo/.env.local` does not exist:
 
 ```bash
-cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry_relay
+cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-relay
 test -f demo/.env.local || just demo-keys env=demo/.env.local
 ```
 
 Start the all-standards demo:
 
 ```bash
-cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry_relay
+cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-relay
 just demo-run demo/config/all_standards.yaml
 ```
 
@@ -86,7 +86,7 @@ Registry Relay's local env file without printing the token.
 ```bash
 cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-atlas
 set -a
-. /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry_relay/demo/.env.local
+. /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-relay/demo/.env.local
 set +a
 
 mkdir -p target/live-smoke
@@ -192,7 +192,7 @@ key/value URL map.
 ```bash
 cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-atlas
 set -a
-. /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry_relay/demo/.env.local
+. /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-relay/demo/.env.local
 set +a
 
 for path in \
