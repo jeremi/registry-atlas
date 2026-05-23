@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Dataspace Atlas">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Registry Atlas">
   <rect width="64" height="64" rx="12" fill="#0f172a"/>
   <path d="M18 42V22l14-8 14 8v20l-14 8-14-8Z" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linejoin="round"/>
   <path d="M20 24h24M20 40h24M32 16v32" stroke="#a7f3d0" stroke-width="3" stroke-linecap="round"/>

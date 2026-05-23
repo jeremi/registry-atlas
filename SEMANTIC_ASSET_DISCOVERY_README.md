@@ -65,7 +65,7 @@ should not enter parser inputs.
 
 ## CLI
 
-Build or run the CLI from the Dataspace Atlas workspace:
+Build or run the CLI from the Registry Atlas workspace:
 
 ```bash
 cargo run -p semantic-asset-discovery-cli -- --help

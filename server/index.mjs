@@ -444,6 +444,6 @@ export function createApp(config = {}) {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const port = toPositiveInteger(process.env.PORT, DEFAULT_PORT);
   createApp().listen(port, "127.0.0.1", () => {
-    console.log(`Dataspace Atlas server listening on http://127.0.0.1:${port}`);
+    console.log(`Registry Atlas server listening on http://127.0.0.1:${port}`);
   });
 }

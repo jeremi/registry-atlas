@@ -1,6 +1,6 @@
 # How To Test v0.1
 
-This is the release rehearsal for Dataspace Atlas, `semantic-asset-discovery`,
+This is the release rehearsal for Registry Atlas, `semantic-asset-discovery`,
 `system-capability-discovery`, and the Registry Relay demo integration.
 
 The goal is to prove the v0.1 path end to end:
@@ -15,7 +15,7 @@ The goal is to prove the v0.1 path end to end:
 ## 1. Run The Atlas Release Gate
 
 ```bash
-cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/dataspace-atlas
+cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-atlas
 pnpm check:release
 ```
 
@@ -84,7 +84,7 @@ Run this from a second shell. The command reads the demo bearer token from
 Registry Relay's local env file without printing the token.
 
 ```bash
-cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/dataspace-atlas
+cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-atlas
 set -a
 . /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry_relay/demo/.env.local
 set +a
@@ -152,7 +152,7 @@ Expected asset kinds:
 ## 5. Run The Capability Query
 
 ```bash
-cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/dataspace-atlas
+cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-atlas
 cargo run -q -p system-capability-discovery --bin system-capability-query -- \
   --envelope target/live-smoke/registry-relay.envelope.json \
   --demo-social-protection \
@@ -190,7 +190,7 @@ key/value URL map.
 ## 6. Check Canonical Registry Relay Endpoints
 
 ```bash
-cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/dataspace-atlas
+cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-atlas
 set -a
 . /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry_relay/demo/.env.local
 set +a
@@ -227,7 +227,7 @@ The byte counts may change as demo metadata changes.
 Start Atlas:
 
 ```bash
-cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/dataspace-atlas
+cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-atlas
 pnpm dev
 ```
 

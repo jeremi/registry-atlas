@@ -1,8 +1,8 @@
-# Dataspace Atlas Specification
+# Registry Atlas Specification
 
 ## Purpose
 
-Dataspace Atlas is a visual discovery and validation explorer for registry
+Registry Atlas is a visual discovery and validation explorer for registry
 dataspaces. It builds its view from published standards artifacts, not from
 private application configuration.
 
@@ -18,7 +18,7 @@ metadata visible, inspectable, and useful.
 
 ## Product Positioning
 
-Dataspace Atlas is a standards-first catalogue and registry discovery tool.
+Registry Atlas is a standards-first catalogue and registry discovery tool.
 
 It is not a registry admin console in v0. It does not approve participants,
 mutate registries, browse protected rows, or replace governance. It helps data
@@ -38,7 +38,7 @@ be a **Registration Readiness** summary backed by standards evidence.
 
 ## Core Principle
 
-Dataspace Atlas must consume the same published artifacts that another dataspace
+Registry Atlas must consume the same published artifacts that another dataspace
 participant could consume.
 
 For Registry Relay, private YAML config may generate those artifacts, but the
@@ -62,7 +62,7 @@ count toward standards-only readiness.
 
 The v0 target profile is **DCAT-AP 3.0.0**.
 
-Dataspace Atlas should include a fallback parser for **DCAT-AP 2.1.1** because
+Registry Atlas should include a fallback parser for **DCAT-AP 2.1.1** because
 existing catalogues may still publish it. Registry Relay now publishes
 standards-facing `/metadata/*` artifacts, including base DCAT and BRegDCAT-AP
 JSON-LD. The Registry Relay demo remains useful ground truth, but Atlas should
@@ -466,7 +466,7 @@ what published metadata supports.
 
 ## Registry Relay Demo Mapping
 
-For the local Registry Relay demo, Dataspace Atlas should discover:
+For the local Registry Relay demo, Registry Atlas should discover:
 
 - Catalog and participant from `/metadata` and `/metadata/dcat`.
 - Datasets from DCAT catalog entries.
@@ -511,7 +511,7 @@ show discovery metadata and registry capabilities first.
 
 ## SEMIC And EU Compatibility
 
-Dataspace Atlas should work in a SEMIC-oriented environment by treating
+Registry Atlas should work in a SEMIC-oriented environment by treating
 DCAT-AP 3.0.0 and BRegDCAT-AP as first-class inputs.
 
 Initial SEMIC-compatible behavior:
@@ -545,7 +545,7 @@ BRegDCAT-AP support surfaces these registry-specific concepts when present:
 
 ## Decentralized Registration Concept
 
-Dataspace Atlas can later support a registration workflow, but v0 should only
+Registry Atlas can later support a registration workflow, but v0 should only
 preview readiness.
 
 Future workflow:

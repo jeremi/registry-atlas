@@ -153,7 +153,7 @@ describe("semantic asset discovery adapter", () => {
       max_concurrent_fetches: 8,
       timeout_ms: 10_000,
       total_timeout_ms: 120_000,
-      user_agent: "dataspace-atlas-test/0.1",
+      user_agent: "registry-atlas-test/0.1",
       accepted_schemes: ["http", "https"],
       allowed_origins: ["https://publisher.example"],
     };

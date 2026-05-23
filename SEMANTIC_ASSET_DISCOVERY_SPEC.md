@@ -23,7 +23,7 @@ semantic assets from published metadata.
 
 It is designed to be reused from:
 
-- Dataspace Atlas through WebAssembly;
+- Registry Atlas through WebAssembly;
 - native CLI and CI checks;
 - future central registry harvest jobs;
 - publisher test suites, including Registry Relay, without special treatment.
@@ -34,7 +34,7 @@ The core promise is:
 > discover standards links, preserve evidence, and return a typed report.
 
 The library is not specific to Registry Relay. Registry Relay is one possible
-publisher. Dataspace Atlas is one possible registry application built on top.
+publisher. Registry Atlas is one possible registry application built on top.
 
 The library MUST discover semantic model packages, not only catalogues. A
 semantic model package can include LinkML source or exported RDF, JSON-LD
@@ -44,7 +44,7 @@ SEMIC-style vocabulary environments and for PublicSchema.
 
 ## Product Direction
 
-Dataspace Atlas can become a central registry by storing, indexing, comparing,
+Registry Atlas can become a central registry by storing, indexing, comparing,
 and reviewing discovery reports produced by this library.
 
 The reusable library stays smaller:
@@ -54,7 +54,7 @@ Publisher URL
   -> host fetch loop
   -> semantic-asset-discovery core
   -> DiscoveryReport
-  -> Dataspace Atlas storage, search, review, and UI
+  -> Registry Atlas storage, search, review, and UI
 ```
 
 The important boundary is:
@@ -82,7 +82,7 @@ crates/
     for offline analysis, bundle analysis, and report validation.
 
   semantic-asset-discovery-wasm/
-    wasm-bindgen wrapper for Dataspace Atlas and browser consumers.
+    wasm-bindgen wrapper for Registry Atlas and browser consumers.
 ```
 
 The core crate MUST compile standalone:
@@ -108,7 +108,7 @@ gate is acceptable:
 cargo tree -p semantic-asset-discovery-core | rg 'reqwest|hyper|ureq|isahc' && exit 1 || true
 ```
 
-The first implementation MAY live inside the Dataspace Atlas repository, but
+The first implementation MAY live inside the Registry Atlas repository, but
 the crate boundary MUST be real. Atlas may depend on the WASM package and schema
 types, not on hidden internal parser modules.
 
@@ -744,7 +744,7 @@ wrapper MUST return an `ok: false` envelope with error code
 use the native CLI for larger harvests. This guardrail can be revisited when a
 typed `serde-wasm-bindgen` boundary replaces JSON strings.
 
-## Dataspace Atlas Integration
+## Registry Atlas Integration
 
 Atlas should call the WASM wrapper from its discovery path:
 
@@ -1032,7 +1032,7 @@ all of these are true:
 - All wave definitions of done are satisfied.
 - All review gates have a dated reviewer note in the release checklist.
 - All required commands in this section pass from a clean checkout.
-- `pnpm check:release` passes from the Dataspace Atlas workspace.
+- `pnpm check:release` passes from the Registry Atlas workspace.
 - No wave item is marked partial.
 - No test is skipped to make the release pass unless the skip is documented in
   the release checklist with a non-P0/P1 residual risk.

@@ -3,7 +3,7 @@
 ## Release Summary
 
 v0.1 introduces `semantic-asset-discovery` as a reusable Rust discovery engine
-for Dataspace Atlas and other hosts. It accepts already-fetched metadata
+for Registry Atlas and other hosts. It accepts already-fetched metadata
 artifacts, classifies semantic assets, extracts standards and profile claims,
 records tagged evidence, emits fetch candidates, and returns a typed
 `DiscoveryReport` using schema version

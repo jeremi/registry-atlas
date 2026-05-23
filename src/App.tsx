@@ -400,7 +400,7 @@ export function App() {
             <Globe2 size={18} aria-hidden="true" />
           </div>
           <div>
-            <p className="eyebrow">Dataspace Atlas</p>
+            <p className="eyebrow">Registry Atlas</p>
             <h1>Semantic discovery workbench</h1>
           </div>
         </div>

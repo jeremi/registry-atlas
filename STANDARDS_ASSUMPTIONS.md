@@ -1,6 +1,6 @@
 # Standards Assumptions
 
-Dataspace Atlas discovers and interprets semantic metadata. This document keeps
+Registry Atlas discovers and interprets semantic metadata. This document keeps
 the line clear between evidence found in standards-based metadata and the
 derived roles, gaps, and confidence scores that Atlas presents to users.
 

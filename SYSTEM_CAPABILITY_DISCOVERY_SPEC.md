@@ -64,12 +64,12 @@ system-capability-discovery
   questions by deriving candidate answer routes from assets, labels, profiles,
   links, findings, host run envelopes, and optional reviewed mappings.
 
-Dataspace Atlas
+Registry Atlas
   Stores reports, lets people review matches, publishes registry views, and
   controls governance workflow.
 ```
 
-This layer MAY live inside Dataspace Atlas first. It SHOULD become a separate
+This layer MAY live inside Registry Atlas first. It SHOULD become a separate
 library only when another application needs to reuse it.
 
 ## Non-Goals
@@ -1517,7 +1517,7 @@ just demo-run demo/config/all_standards.yaml
 In another shell, harvest the standard-facing catalog:
 
 ```sh
-cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/dataspace-atlas
+cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-atlas
 mkdir -p fixtures/system-capability
 set -a
 . ../registry_relay/demo/.env.local
@@ -1638,7 +1638,7 @@ pnpm check:release
 
 ## Relationship To Atlas
 
-Dataspace Atlas SHOULD use this layer to power:
+Registry Atlas SHOULD use this layer to power:
 
 - system and capability search;
 - candidate answer route review queues;
@@ -1748,7 +1748,7 @@ just demo-run demo/config/all_standards.yaml
 ```
 
 ```sh
-cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/dataspace-atlas
+cd /Users/jeremi/Projects/204-programs-delivery-commons/apps/registry-atlas
 mkdir -p fixtures/system-capability
 set -a
 . ../registry_relay/demo/.env.local

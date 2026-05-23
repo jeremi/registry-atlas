@@ -1,6 +1,6 @@
-# Dataspace Atlas
+# Registry Atlas
 
-Dataspace Atlas is a standards-first workbench for inspecting published
+Registry Atlas is a standards-first workbench for inspecting published
 catalogue and registry discovery artifacts.
 
 ## Run
@@ -21,7 +21,7 @@ against Registry Relay.
 
 ## Registry Relay Demo
 
-Start Registry Relay separately, then use the curated local demo in the Atlas
+Start Registry Relay separately, then use the curated local demo in the atlas
 top bar:
 
 ```text

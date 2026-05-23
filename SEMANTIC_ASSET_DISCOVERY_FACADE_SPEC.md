@@ -54,7 +54,7 @@ The facade MUST be:
 
 - small enough to understand in one sitting;
 - safe by default for public-web discovery;
-- host-neutral and not specific to Dataspace Atlas or Registry Relay;
+- host-neutral and not specific to Registry Atlas or Registry Relay;
 - able to expose discovered assets, links, access methods, policy signals,
   evidence, and conditions as primitives for higher-level system discovery;
 - useful for SEMIC-style, PublicSchema-style, national profile, and sectoral
