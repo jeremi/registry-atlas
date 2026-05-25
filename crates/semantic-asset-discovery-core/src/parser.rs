@@ -101,12 +101,16 @@ struct ReportBuilder {
     profile_packs: Vec<ProfilePack>,
     artifacts: Vec<DiscoveredArtifact>,
     assets: Vec<SemanticAsset>,
+    relations: Vec<SemanticRelation>,
+    relation_claims: Vec<RelationClaim>,
     links: Vec<DiscoveredLink>,
     standards: Vec<StandardClaim>,
     profiles: Vec<ProfileClaim>,
     findings: Vec<DiscoveryFinding>,
     next_fetches: Vec<FetchCandidate>,
     seen_assets: HashSet<String>,
+    seen_relations: HashSet<String>,
+    seen_relation_claims: HashSet<String>,
     seen_links: HashSet<String>,
     seen_standards: HashSet<String>,
     seen_profiles: HashSet<String>,
@@ -128,12 +132,16 @@ impl ReportBuilder {
             profile_packs,
             artifacts: Vec::new(),
             assets: Vec::new(),
+            relations: Vec::new(),
+            relation_claims: Vec::new(),
             links: Vec::new(),
             standards: Vec::new(),
             profiles: Vec::new(),
             findings: Vec::new(),
             next_fetches: Vec::new(),
             seen_assets: HashSet::new(),
+            seen_relations: HashSet::new(),
+            seen_relation_claims: HashSet::new(),
             seen_links: HashSet::new(),
             seen_standards: HashSet::new(),
             seen_profiles: HashSet::new(),
@@ -193,6 +201,8 @@ impl ReportBuilder {
             summary,
             artifacts: self.artifacts,
             assets: self.assets,
+            relations: self.relations,
+            relation_claims: self.relation_claims,
             links: self.links,
             standards: self.standards,
             profiles: self.profiles,
@@ -387,6 +397,134 @@ impl ReportBuilder {
                 .map(|iri| expand_compact_iri(&iri, &context_prefixes).unwrap_or(iri))
                 .collect::<Vec<_>>();
 
+            if has_semantic_type(&node_types, "cpsv:PublicService", &context_prefixes) {
+                let source_label =
+                    if json_values_for_canonical_keys(node, &["cpsv:produces"], &context_prefixes)
+                        .is_empty()
+                    {
+                        "cpsv:PublicService"
+                    } else {
+                        "cpsv:PublicRegistryService"
+                    };
+                let asset_id = json_asset_id(artifact_id, uri.as_deref(), source_label);
+                self.add_asset(json_asset(
+                    artifact_id,
+                    if source_label == "cpsv:PublicRegistryService" {
+                        SemanticAssetKind::PublicRegistryService
+                    } else {
+                        SemanticAssetKind::PublicService
+                    },
+                    uri.clone(),
+                    title.clone(),
+                    description.clone(),
+                    get_json_string_map(
+                        node,
+                        &[
+                            "cv:hasCompetentAuthority",
+                            "http://data.europa.eu/m8g/hasCompetentAuthority",
+                            "dcterms:publisher",
+                            "dct:publisher",
+                            "publisher",
+                        ],
+                    ),
+                    None,
+                    conforms_to.clone(),
+                    source_label,
+                ));
+                self.add_standard_signal_findings(artifact_id, &asset_id, node, &context_prefixes);
+            }
+            for (canonical_type, kind, source_label) in [
+                ("cv:Channel", SemanticAssetKind::Channel, "cv:Channel"),
+                (
+                    "cv:PublicOrganisation",
+                    SemanticAssetKind::PublicOrganisation,
+                    "cv:PublicOrganisation",
+                ),
+                (
+                    "cccev:Requirement",
+                    SemanticAssetKind::Requirement,
+                    "cccev:Requirement",
+                ),
+                (
+                    "cccev:InformationRequirement",
+                    SemanticAssetKind::InformationRequirement,
+                    "cccev:InformationRequirement",
+                ),
+                (
+                    "cccev:InformationConcept",
+                    SemanticAssetKind::InformationConcept,
+                    "cccev:InformationConcept",
+                ),
+                (
+                    "cccev:EvidenceType",
+                    SemanticAssetKind::EvidenceType,
+                    "cccev:EvidenceType",
+                ),
+                (
+                    "cccev:EvidenceTypeList",
+                    SemanticAssetKind::EvidenceTypeList,
+                    "cccev:EvidenceTypeList",
+                ),
+                (
+                    "registry_manifest:FormDefinition",
+                    SemanticAssetKind::FormDefinition,
+                    "registry_manifest:FormDefinition",
+                ),
+                (
+                    "registry_manifest:FormSection",
+                    SemanticAssetKind::FormSection,
+                    "registry_manifest:FormSection",
+                ),
+                (
+                    "registry_manifest:FormField",
+                    SemanticAssetKind::FormField,
+                    "registry_manifest:FormField",
+                ),
+                (
+                    "registry_manifest:EvidenceOffering",
+                    SemanticAssetKind::EvidenceOffering,
+                    "registry_manifest:EvidenceOffering",
+                ),
+                (
+                    "registry_manifest:EvidenceProvider",
+                    SemanticAssetKind::EvidenceProvider,
+                    "registry_manifest:EvidenceProvider",
+                ),
+            ] {
+                if has_semantic_type(&node_types, canonical_type, &context_prefixes)
+                    || (canonical_type == "cccev:Requirement"
+                        && has_semantic_type(&node_types, "cv:Requirement", &context_prefixes))
+                    || (canonical_type == "registry_manifest:FormDefinition"
+                        && has_semantic_type(
+                            &node_types,
+                            "registry_manifest:Form",
+                            &context_prefixes,
+                        ))
+                {
+                    let asset_id = json_asset_id(artifact_id, uri.as_deref(), source_label);
+                    self.add_asset(json_asset(
+                        artifact_id,
+                        kind,
+                        uri.clone(),
+                        title.clone(),
+                        description.clone(),
+                        get_json_string_map(
+                            node,
+                            &["dcterms:publisher", "dct:publisher", "publisher"],
+                        ),
+                        None,
+                        conforms_to.clone(),
+                        source_label,
+                    ));
+                    self.add_standard_signal_findings(
+                        artifact_id,
+                        &asset_id,
+                        node,
+                        &context_prefixes,
+                    );
+                }
+            }
+
             if has_type(&node_types, "dcat:Catalog")
                 || has_type(&node_types, "http://www.w3.org/ns/dcat#Catalog")
             {
@@ -543,7 +681,10 @@ impl ReportBuilder {
             }
         }
 
+        self.add_json_ld_semantic_relations(artifact_id, &value, &context_prefixes);
+
         for (predicate, url) in json_ld_links(&value) {
+            let predicate = canonical_compact_iri(&predicate, &context_prefixes);
             let url = expand_compact_iri(&url, &context_prefixes).unwrap_or(url);
             self.add_link_and_candidate(
                 artifact_id,
@@ -977,7 +1118,7 @@ impl ReportBuilder {
                 .map(|triple| triple.object.clone())
                 .collect();
             let title = object_for_predicates(
-                &subject_triples,
+                subject_triples,
                 &[
                     "http://www.w3.org/2000/01/rdf-schema#label",
                     "http://purl.org/dc/terms/title",
@@ -985,7 +1126,7 @@ impl ReportBuilder {
                 ],
             );
             let description = object_for_predicates(
-                &subject_triples,
+                subject_triples,
                 &[
                     "http://purl.org/dc/terms/description",
                     "http://www.w3.org/2004/02/skos/core#definition",
@@ -993,7 +1134,7 @@ impl ReportBuilder {
             );
 
             if type_contains(&types, "NodeShape")
-                || has_predicate(&subject_triples, "http://www.w3.org/ns/shacl#targetClass")
+                || has_predicate(subject_triples, "http://www.w3.org/ns/shacl#targetClass")
             {
                 *kind = ArtifactKind::Shacl;
                 self.add_asset(turtle_asset(
@@ -1519,6 +1660,163 @@ impl ReportBuilder {
         }
     }
 
+    fn add_json_ld_semantic_relations(
+        &mut self,
+        artifact_id: &str,
+        value: &Value,
+        prefixes: &HashMap<String, String>,
+    ) {
+        for node in json_nodes(value) {
+            let Some(subject) = self.relation_endpoint_for_node(artifact_id, node, prefixes) else {
+                continue;
+            };
+            for (key, raw_value) in node {
+                if key.starts_with('@') {
+                    continue;
+                }
+                let predicate = canonical_compact_iri(key, prefixes);
+                if !is_required_relation_predicate(&predicate) {
+                    continue;
+                }
+                for object in self.relation_endpoints_for_value(artifact_id, raw_value, prefixes) {
+                    self.add_semantic_relation_claim(
+                        artifact_id,
+                        subject.clone(),
+                        predicate.clone(),
+                        object,
+                        DiscoveryEvidence::JsonLdPredicate {
+                            artifact_id: Some(artifact_id.to_string()),
+                            predicate: predicate.clone(),
+                            pointer: None,
+                            value: Some(json_value_for_evidence(raw_value)),
+                        },
+                    );
+                }
+            }
+        }
+    }
+
+    fn relation_endpoint_for_node(
+        &self,
+        artifact_id: &str,
+        node: &Map<String, Value>,
+        prefixes: &HashMap<String, String>,
+    ) -> Option<RelationEndpoint> {
+        if let Some(uri) = json_id(node).map(|value| expanded_iri(&value, prefixes)) {
+            return Some(self.relation_endpoint_for_uri(&uri));
+        }
+        serde_json::to_string(node)
+            .ok()
+            .map(|key| RelationEndpoint::BlankNode {
+                artifact_id: artifact_id.to_string(),
+                node_id: deterministic_id("blank", [artifact_id, key.as_str()]),
+            })
+    }
+
+    fn relation_endpoints_for_value(
+        &self,
+        artifact_id: &str,
+        value: &Value,
+        prefixes: &HashMap<String, String>,
+    ) -> Vec<RelationEndpoint> {
+        match value {
+            Value::Array(values) => values
+                .iter()
+                .flat_map(|value| self.relation_endpoints_for_value(artifact_id, value, prefixes))
+                .collect(),
+            Value::Object(object) => {
+                if let Some(uri) = json_id(object).map(|value| expanded_iri(&value, prefixes)) {
+                    vec![self.relation_endpoint_for_uri(&uri)]
+                } else {
+                    serde_json::to_string(object)
+                        .ok()
+                        .map(|key| {
+                            vec![RelationEndpoint::BlankNode {
+                                artifact_id: artifact_id.to_string(),
+                                node_id: deterministic_id("blank", [artifact_id, key.as_str()]),
+                            }]
+                        })
+                        .unwrap_or_default()
+                }
+            }
+            Value::String(value) => {
+                let uri = expanded_iri(value, prefixes);
+                if is_relation_resource_identifier(&uri) {
+                    vec![self.relation_endpoint_for_uri(&uri)]
+                } else {
+                    Vec::new()
+                }
+            }
+            _ => Vec::new(),
+        }
+    }
+
+    fn relation_endpoint_for_uri(&self, uri: &str) -> RelationEndpoint {
+        let uri = if Url::parse(uri)
+            .ok()
+            .as_ref()
+            .is_some_and(contains_url_secret_material)
+        {
+            redact_url(uri)
+        } else {
+            uri.to_string()
+        };
+        if let Some(asset) = self
+            .assets
+            .iter()
+            .find(|asset| asset.uri.as_deref() == Some(uri.as_str()))
+        {
+            RelationEndpoint::Asset {
+                asset_id: asset.id.clone(),
+                uri: Some(uri),
+            }
+        } else {
+            RelationEndpoint::External { uri }
+        }
+    }
+
+    fn add_semantic_relation_claim(
+        &mut self,
+        artifact_id: &str,
+        subject: RelationEndpoint,
+        predicate: String,
+        object: RelationEndpoint,
+        evidence: DiscoveryEvidence,
+    ) {
+        let relation_key = [
+            relation_endpoint_key(&subject),
+            predicate.clone(),
+            relation_endpoint_key(&object),
+        ]
+        .join("|");
+        let relation_id = deterministic_id("relation", [relation_key.as_str()]);
+        if self.seen_relations.insert(relation_id.clone()) {
+            self.relations.push(SemanticRelation {
+                id: relation_id.clone(),
+                subject,
+                predicate,
+                object,
+                label: None,
+            });
+        }
+
+        let evidence_key = serde_json::to_string(&evidence).unwrap_or_default();
+        let claim_id = deterministic_id(
+            "relation-claim",
+            [relation_id.as_str(), artifact_id, evidence_key.as_str()],
+        );
+        if self.seen_relation_claims.insert(claim_id.clone()) {
+            self.relation_claims.push(RelationClaim {
+                id: claim_id,
+                relation_id,
+                asserted_by_artifact_id: artifact_id.to_string(),
+                evidence,
+                qualifiers: Vec::new(),
+                contradicts: Vec::new(),
+            });
+        }
+    }
+
     fn add_finding(&mut self, finding: DiscoveryFinding) {
         if !self
             .findings
@@ -1787,7 +2085,14 @@ fn classify_json_body(body_text: &str) -> ArtifactKind {
     }
     if text.contains("dcat:catalog")
         || text.contains("dcat:dataset")
+        || text.contains("dcat:dataservice")
         || text.contains("dcat#catalog")
+        || text.contains("cpsv:publicservice")
+        || text.contains("cv:channel")
+        || text.contains("cv:requirement")
+        || text.contains("cccev:requirement")
+        || text.contains("cccev:evidencetype")
+        || text.contains("data.europa.eu/m8g")
     {
         return ArtifactKind::DcatCatalog;
     }
@@ -2011,7 +2316,7 @@ fn json_strings(value: &Value) -> Vec<String> {
             .or_else(|| object.get("name"))
             .or_else(|| object.get("dcterms:title"))
             .or_else(|| object.get("dct:title"))
-            .map(|value| json_strings(value))
+            .map(json_strings)
             .unwrap_or_default(),
         _ => Vec::new(),
     }
@@ -2070,7 +2375,9 @@ fn collect_context_value(value: &Value, prefixes: &mut HashMap<String, String>) 
 fn built_in_prefixes() -> HashMap<String, String> {
     [
         ("adms", "http://www.w3.org/ns/adms#"),
+        ("cccev", "http://data.europa.eu/m8g/"),
         ("cpsv", "http://purl.org/vocab/cpsv#"),
+        ("cv", "http://data.europa.eu/m8g/"),
         ("dcat", "http://www.w3.org/ns/dcat#"),
         ("dcatap", "http://data.europa.eu/r5r/"),
         ("dct", "http://purl.org/dc/terms/"),
@@ -2083,6 +2390,7 @@ fn built_in_prefixes() -> HashMap<String, String> {
         ("owl", "http://www.w3.org/2002/07/owl#"),
         ("prof", "http://www.w3.org/ns/dx/prof/"),
         ("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#"),
+        ("registry_manifest", "https://registry-manifest.dev/ns/v1#"),
         ("rdfs", "http://www.w3.org/2000/01/rdf-schema#"),
         ("sh", "http://www.w3.org/ns/shacl#"),
         ("skos", "http://www.w3.org/2004/02/skos/core#"),
@@ -2105,6 +2413,68 @@ fn expand_compact_iri(value: &str, prefixes: &HashMap<String, String>) -> Option
     prefixes.get(prefix).map(|base| format!("{base}{suffix}"))
 }
 
+fn expanded_iri(value: &str, prefixes: &HashMap<String, String>) -> String {
+    expand_compact_iri(value, prefixes).unwrap_or_else(|| value.to_string())
+}
+
+fn is_relation_resource_identifier(value: &str) -> bool {
+    value.starts_with('#')
+        || value.starts_with("http://")
+        || value.starts_with("https://")
+        || value.starts_with("urn:")
+        || value.starts_with("did:")
+}
+
+fn canonical_compact_iri(value: &str, prefixes: &HashMap<String, String>) -> String {
+    let expanded = expanded_iri(value, prefixes);
+    compact_expanded_iri(&expanded).unwrap_or(expanded)
+}
+
+fn compact_expanded_iri(value: &str) -> Option<String> {
+    let (prefix, suffix) = if let Some(suffix) = value.strip_prefix("http://data.europa.eu/m8g/") {
+        let prefix = match suffix {
+            "hasChannel"
+            | "hasCompetentAuthority"
+            | "holdsRequirement"
+            | "Channel"
+            | "PublicOrganisation" => "cv",
+            _ => "cccev",
+        };
+        (prefix, suffix)
+    } else if let Some(suffix) = value.strip_prefix("http://purl.org/vocab/cpsv#") {
+        ("cpsv", suffix)
+    } else if let Some(suffix) = value.strip_prefix("http://www.w3.org/ns/dcat#") {
+        ("dcat", suffix)
+    } else if let Some(suffix) = value.strip_prefix("http://purl.org/dc/terms/") {
+        ("dcterms", suffix)
+    } else if let Some(suffix) = value.strip_prefix("http://data.europa.eu/r5r/") {
+        ("dcatap", suffix)
+    } else if let Some(suffix) = value.strip_prefix("http://www.w3.org/2004/02/skos/core#") {
+        ("skos", suffix)
+    } else if let Some(suffix) = value.strip_prefix("http://www.w3.org/2000/01/rdf-schema#") {
+        ("rdfs", suffix)
+    } else if let Some(suffix) = value.strip_prefix("https://registry-manifest.dev/ns/v1#") {
+        ("registry_manifest", suffix)
+    } else if let Some(suffix) = value.strip_prefix("http://www.w3.org/ns/dx/prof/") {
+        ("prof", suffix)
+    } else if let Some(suffix) = value.strip_prefix("http://www.w3.org/ns/shacl#") {
+        ("sh", suffix)
+    } else {
+        return None;
+    };
+    Some(format!("{prefix}:{suffix}"))
+}
+
+fn has_semantic_type(
+    types: &[String],
+    canonical_type: &str,
+    prefixes: &HashMap<String, String>,
+) -> bool {
+    types
+        .iter()
+        .any(|value| canonical_compact_iri(value, prefixes) == canonical_type)
+}
+
 fn has_type(types: &[String], needle: &str) -> bool {
     types.iter().any(|value| {
         value == needle
@@ -2113,6 +2483,7 @@ fn has_type(types: &[String], needle: &str) -> bool {
     })
 }
 
+#[allow(clippy::too_many_arguments)]
 fn json_asset(
     artifact_id: &str,
     kind: SemanticAssetKind,
@@ -2403,6 +2774,22 @@ fn json_values_for_keys<'a>(object: &'a Map<String, Value>, keys: &[&str]) -> Ve
     keys.iter().filter_map(|key| object.get(*key)).collect()
 }
 
+fn json_values_for_canonical_keys<'a>(
+    object: &'a Map<String, Value>,
+    canonical_keys: &[&str],
+    prefixes: &HashMap<String, String>,
+) -> Vec<&'a Value> {
+    object
+        .iter()
+        .filter_map(|(key, value)| {
+            canonical_keys
+                .iter()
+                .any(|canonical| canonical_compact_iri(key, prefixes) == *canonical)
+                .then_some(value)
+        })
+        .collect()
+}
+
 fn json_object_items(value: &Value) -> Vec<&Map<String, Value>> {
     match value {
         Value::Object(object) => vec![object],
@@ -2433,8 +2820,9 @@ fn collect_json_ld_links(value: &Value, links: &mut Vec<(String, String)>) {
 }
 
 fn is_required_link_predicate(predicate: &str) -> bool {
+    let predicate = canonical_compact_iri(predicate, &built_in_prefixes());
     matches!(
-        predicate,
+        predicate.as_str(),
         "dcat:catalog"
             | "dcat:dataset"
             | "dcat:service"
@@ -2459,6 +2847,68 @@ fn is_required_link_predicate(predicate: &str) -> bool {
             | "odrl:hasPolicy"
             | "sh:shapesGraph"
     )
+}
+
+fn is_required_relation_predicate(predicate: &str) -> bool {
+    matches!(
+        predicate,
+        "cv:hasChannel"
+            | "cv:hasCompetentAuthority"
+            | "cv:holdsRequirement"
+            | "cpsv:hasInput"
+            | "cpsv:produces"
+            | "dcterms:type"
+            | "cccev:hasRequirement"
+            | "cccev:hasConcept"
+            | "cccev:hasEvidenceTypeList"
+            | "cccev:specifiesEvidenceType"
+            | "cccev:isDerivedFrom"
+            | "dcat:dataset"
+            | "dcat:distribution"
+            | "dcat:service"
+            | "dcat:accessService"
+            | "dcat:servesDataset"
+            | "dcat:endpointURL"
+            | "dcat:endpointDescription"
+            | "dcat:landingPage"
+            | "dcat:accessURL"
+            | "dcat:downloadURL"
+            | "dcterms:conformsTo"
+            | "dcterms:hasPart"
+            | "dcatap:applicableLegislation"
+    ) || predicate.starts_with("registry_manifest:")
+}
+
+fn relation_endpoint_key(endpoint: &RelationEndpoint) -> String {
+    match endpoint {
+        RelationEndpoint::Asset { asset_id, uri } => {
+            format!("asset:{asset_id}:{}", uri.as_deref().unwrap_or(""))
+        }
+        RelationEndpoint::External { uri } => format!("external:{uri}"),
+        RelationEndpoint::BlankNode {
+            artifact_id,
+            node_id,
+        } => format!("blank:{artifact_id}:{node_id}"),
+    }
+}
+
+fn json_value_for_evidence(value: &Value) -> String {
+    if let Some(value) = json_value_string(value) {
+        return redact_url(&value);
+    }
+    match serde_json::to_string(value) {
+        Ok(serialized) if serialized.len() <= 512 => serialized,
+        Ok(serialized) => {
+            let boundary = serialized
+                .char_indices()
+                .map(|(index, _)| index)
+                .take_while(|index| *index <= 512)
+                .last()
+                .unwrap_or(0);
+            format!("{}...", &serialized[..boundary])
+        }
+        Err(_) => String::new(),
+    }
 }
 
 fn predicate_role(predicate: &str) -> Option<String> {
@@ -3014,14 +3464,7 @@ fn is_alignment_predicate(predicate: &str) -> bool {
 }
 
 fn compact_predicate(predicate: &str) -> String {
-    predicate
-        .strip_prefix("http://www.w3.org/ns/dcat#")
-        .map(|value| format!("dcat:{value}"))
-        .or_else(|| {
-            predicate
-                .strip_prefix("http://purl.org/dc/terms/")
-                .map(|value| format!("dcterms:{value}"))
-        })
+    compact_expanded_iri(predicate)
         .or_else(|| {
             predicate
                 .strip_prefix("http://www.w3.org/ns/dx/prof/")
@@ -3712,5 +4155,16 @@ mod tests {
             profile.iri == "https://semiceu.github.io/BRegDCAT-AP/releases/2.1.0/"
                 && profile.label.as_deref() == Some("BRegDCAT-AP")
         }));
+    }
+
+    #[test]
+    fn long_structured_relation_evidence_truncates_on_utf8_boundary() {
+        let value = serde_json::json!({
+            "nested": "é".repeat(400)
+        });
+        let evidence = json_value_for_evidence(&value);
+
+        assert!(evidence.ends_with("..."));
+        assert!(evidence.is_char_boundary(evidence.len()));
     }
 }

@@ -105,13 +105,13 @@ mod tests {
         assert_eq!(value["ok"], true);
         assert_eq!(
             value["report"]["schema_version"],
-            "semantic-asset-discovery.report.v1"
+            "semantic-asset-discovery.report.v2"
         );
     }
 
     #[test]
     fn exposes_report_schema_version() {
-        assert_eq!(version(), "semantic-asset-discovery.report.v1");
+        assert_eq!(version(), "semantic-asset-discovery.report.v2");
     }
 
     #[test]

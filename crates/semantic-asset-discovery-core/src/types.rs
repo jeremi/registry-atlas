@@ -1,7 +1,8 @@
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use thiserror::Error;
 
-pub const REPORT_SCHEMA_VERSION: &str = "semantic-asset-discovery.report.v1";
+pub const REPORT_SCHEMA_VERSION: &str = "semantic-asset-discovery.report.v2";
+pub const LEGACY_REPORT_SCHEMA_VERSION_V1: &str = "semantic-asset-discovery.report.v1";
 pub const DEFAULT_MAX_NEXT_FETCHES: u64 = 20;
 pub const DEFAULT_WASM_BODY_BUDGET_BYTES: u64 = 16_777_216;
 pub const SENSITIVE_HEADER_NAMES: &[&str] = &[
@@ -152,7 +153,7 @@ impl<'de> Deserialize<'de> for SchemaVersion {
         D: Deserializer<'de>,
     {
         let value = String::deserialize(deserializer)?;
-        if value == REPORT_SCHEMA_VERSION {
+        if value == REPORT_SCHEMA_VERSION || value == LEGACY_REPORT_SCHEMA_VERSION_V1 {
             Ok(Self(value))
         } else {
             Err(serde::de::Error::custom(format!(
@@ -172,6 +173,10 @@ pub struct DiscoveryReport {
     pub summary: DiscoverySummary,
     pub artifacts: Vec<DiscoveredArtifact>,
     pub assets: Vec<SemanticAsset>,
+    #[serde(default)]
+    pub relations: Vec<SemanticRelation>,
+    #[serde(default)]
+    pub relation_claims: Vec<RelationClaim>,
     pub links: Vec<DiscoveredLink>,
     pub standards: Vec<StandardClaim>,
     pub profiles: Vec<ProfileClaim>,
@@ -255,6 +260,20 @@ pub struct DiscoveredArtifact {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 pub enum SemanticAssetKind {
+    PublicService,
+    Channel,
+    Requirement,
+    InformationRequirement,
+    InformationConcept,
+    EvidenceType,
+    EvidenceTypeList,
+    FormDefinition,
+    FormSection,
+    FormField,
+    PublicRegistryService,
+    EvidenceOffering,
+    EvidenceProvider,
+    PublicOrganisation,
     SemanticModelPackage,
     Catalog,
     Dataset,
@@ -294,6 +313,50 @@ pub struct SemanticAsset {
     pub conforms_to: Vec<String>,
     pub source_hints: Vec<SourceHint>,
     pub raw_refs: Vec<RawReference>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(tag = "kind", rename_all = "snake_case")]
+pub enum RelationEndpoint {
+    Asset {
+        asset_id: String,
+        uri: Option<String>,
+    },
+    External {
+        uri: String,
+    },
+    BlankNode {
+        artifact_id: String,
+        node_id: String,
+    },
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub struct SemanticRelation {
+    pub id: String,
+    pub subject: RelationEndpoint,
+    pub predicate: String,
+    pub object: RelationEndpoint,
+    pub label: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub struct RelationClaim {
+    pub id: String,
+    pub relation_id: String,
+    pub asserted_by_artifact_id: String,
+    pub evidence: DiscoveryEvidence,
+    #[serde(default)]
+    pub qualifiers: Vec<RelationQualifier>,
+    #[serde(default)]
+    pub contradicts: Vec<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub struct RelationQualifier {
+    pub predicate: String,
+    pub value: String,
+    pub evidence: Option<DiscoveryEvidence>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
@@ -441,6 +504,32 @@ pub enum DiscoveryEvidence {
     },
 }
 
+impl DiscoveryEvidence {
+    pub fn location(&self) -> Option<String> {
+        match self {
+            DiscoveryEvidence::HttpHeader { value, .. } => value.clone(),
+            DiscoveryEvidence::JsonLdPredicate { pointer, value, .. } => {
+                pointer.clone().or_else(|| value.clone())
+            }
+            DiscoveryEvidence::JsonPointer { pointer, .. } => Some(pointer.clone()),
+            DiscoveryEvidence::HtmlLink { pointer, href, .. } => {
+                pointer.clone().or_else(|| Some(href.clone()))
+            }
+            DiscoveryEvidence::UrlPattern { value, .. } => Some(value.clone()),
+            DiscoveryEvidence::ContentSniff { marker, .. } => Some(marker.clone()),
+            DiscoveryEvidence::HostPolicy { value, policy, .. } => {
+                value.clone().or_else(|| Some(policy.clone()))
+            }
+            DiscoveryEvidence::SchemaProperty { schema_pointer, .. } => {
+                Some(schema_pointer.clone())
+            }
+            DiscoveryEvidence::ShaclProperty { path, .. } => Some(path.clone()),
+            DiscoveryEvidence::OpenApiOperation { path, .. } => Some(path.clone()),
+            DiscoveryEvidence::OgcCollection { collection_id, .. } => Some(collection_id.clone()),
+        }
+    }
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct SourceHint {
     pub label: String,
@@ -456,6 +545,7 @@ pub struct RawReference {
     pub subject_iri: Option<String>,
 }
 
+#[allow(clippy::large_enum_variant)]
 #[derive(Debug, Clone, PartialEq)]
 pub enum WasmAnalyzeResult {
     Ok { report: DiscoveryReport },

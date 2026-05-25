@@ -355,6 +355,8 @@ fn sample_report() -> DiscoveryReport {
                 Some("did:web:publisher.example"),
             ),
         ],
+        relations: Vec::new(),
+        relation_claims: Vec::new(),
         links: vec![DiscoveredLink {
             id: "link-1".to_string(),
             from_artifact_id: Some("artifact-catalog".to_string()),

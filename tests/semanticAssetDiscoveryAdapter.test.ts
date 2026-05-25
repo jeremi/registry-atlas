@@ -277,6 +277,8 @@ function minimalReport(overrides: Partial<DiscoveryReport> = {}): DiscoveryRepor
     },
     artifacts: [],
     assets: [],
+    relations: [],
+    relation_claims: [],
     links: [],
     standards: [],
     profiles: [],

@@ -7,5 +7,6 @@ export * from "./parser";
 export * from "./profiles";
 export * from "./readiness";
 export * from "./semanticAssetDiscovery";
+export * from "./serviceFirstDiscovery";
 export * from "./systemCapabilityDiscovery";
 export * from "./types";

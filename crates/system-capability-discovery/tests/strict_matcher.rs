@@ -159,6 +159,8 @@ fn sample_report(findings: Vec<DiscoveryFinding>) -> DiscoveryReport {
             analyzed_at: ANALYZED_AT.to_string(),
         }],
         assets: Vec::new(),
+        relations: Vec::new(),
+        relation_claims: Vec::new(),
         links: Vec::new(),
         standards: Vec::new(),
         profiles: Vec::new(),

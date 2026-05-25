@@ -1,0 +1,1013 @@
+{
+  "@context": {
+    "adms": "http://www.w3.org/ns/adms#",
+    "adms:status": {
+      "@type": "@id"
+    },
+    "cccev": "http://data.europa.eu/m8g/",
+    "cccev:hasConcept": {
+      "@type": "@id"
+    },
+    "cccev:hasEvidenceTypeList": {
+      "@type": "@id"
+    },
+    "cccev:isDerivedFrom": {
+      "@type": "@id"
+    },
+    "cccev:isSpecifiedIn": {
+      "@type": "@id"
+    },
+    "cccev:specifiesEvidenceType": {
+      "@type": "@id"
+    },
+    "cpsv": "http://purl.org/vocab/cpsv#",
+    "cpsv:holdsRequirement": {
+      "@type": "@id"
+    },
+    "cpsv:produces": {
+      "@type": "@id"
+    },
+    "cv": "http://data.europa.eu/m8g/",
+    "cv:hasChannel": {
+      "@type": "@id"
+    },
+    "cv:hasCompetentAuthority": {
+      "@type": "@id"
+    },
+    "cv:holdsRequirement": {
+      "@type": "@id"
+    },
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcat:accessService": {
+      "@type": "@id"
+    },
+    "dcat:accessURL": {
+      "@type": "@id"
+    },
+    "dcat:dataset": {
+      "@type": "@id"
+    },
+    "dcat:distribution": {
+      "@type": "@id"
+    },
+    "dcat:endpointDescription": {
+      "@type": "@id"
+    },
+    "dcat:endpointURL": {
+      "@type": "@id"
+    },
+    "dcat:landingPage": {
+      "@type": "@id"
+    },
+    "dcat:mediaType": {
+      "@type": "@id"
+    },
+    "dcat:servesDataset": {
+      "@type": "@id"
+    },
+    "dcat:service": {
+      "@type": "@id"
+    },
+    "dcat:theme": {
+      "@type": "@id"
+    },
+    "dcat:themeTaxonomy": {
+      "@type": "@id"
+    },
+    "dcatap": "http://data.europa.eu/r5r/",
+    "dcatap:applicableLegislation": {
+      "@type": "@id"
+    },
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcterms:accessRights": {
+      "@type": "@id"
+    },
+    "dcterms:accrualPeriodicity": {
+      "@type": "@id"
+    },
+    "dcterms:conformsTo": {
+      "@type": "@id"
+    },
+    "dcterms:format": {
+      "@type": "@id"
+    },
+    "dcterms:isPartOf": {
+      "@type": "@id"
+    },
+    "dcterms:spatial": {
+      "@type": "@id"
+    },
+    "dcterms:type": {
+      "@type": "@id"
+    },
+    "eli": "http://data.europa.eu/eli/ontology#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "odrl:action": {
+      "@type": "@id"
+    },
+    "odrl:assignee": {
+      "@type": "@id"
+    },
+    "odrl:assigner": {
+      "@type": "@id"
+    },
+    "odrl:hasPolicy": {
+      "@type": "@id"
+    },
+    "odrl:leftOperand": {
+      "@type": "@id"
+    },
+    "odrl:operator": {
+      "@type": "@id"
+    },
+    "odrl:profile": {
+      "@type": "@id"
+    },
+    "odrl:target": {
+      "@type": "@id"
+    },
+    "odrl:uid": {
+      "@type": "@id"
+    },
+    "odrl:unit": {
+      "@type": "@id"
+    },
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "rdfs:seeAlso": {
+      "@type": "@id"
+    },
+    "registry_manifest": "https://registry-manifest.dev/ns/v1#",
+    "registry_manifest:dataType": {
+      "@type": "@id"
+    },
+    "registry_manifest:evidenceService": {
+      "@type": "@id"
+    },
+    "registry_manifest:evidenceType": {
+      "@type": "@id"
+    },
+    "registry_manifest:forChannel": {
+      "@type": "@id"
+    },
+    "registry_manifest:forPublicService": {
+      "@type": "@id"
+    },
+    "registry_manifest:hasField": {
+      "@type": "@id"
+    },
+    "registry_manifest:hasForm": {
+      "@type": "@id"
+    },
+    "registry_manifest:hasSection": {
+      "@type": "@id"
+    },
+    "registry_manifest:issuingAuthority": {
+      "@type": "@id"
+    },
+    "registry_manifest:servesEntity": {
+      "@type": "@id"
+    },
+    "registry_manifest:supportsRequirement": {
+      "@type": "@id"
+    },
+    "registry_manifest:usesDataService": {
+      "@type": "@id"
+    },
+    "registry_manifest:validatesWithJsonSchema": {
+      "@type": "@id"
+    },
+    "registry_manifest:validatesWithShacl": {
+      "@type": "@id"
+    },
+    "sh": "http://www.w3.org/ns/shacl#",
+    "sh:class": {
+      "@type": "@id"
+    },
+    "sh:datatype": {
+      "@type": "@id"
+    },
+    "sh:nodeKind": {
+      "@type": "@id"
+    },
+    "sh:path": {
+      "@type": "@id"
+    },
+    "sh:targetClass": {
+      "@type": "@id"
+    },
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "skos:hasTopConcept": {
+      "@type": "@id"
+    },
+    "skos:inScheme": {
+      "@type": "@id"
+    },
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "did:web:civil-registry.demo.example.gov",
+      "@type": "cv:PublicOrganisation",
+      "dcterms:identifier": "civil_registration_authority",
+      "dcterms:spatial": {
+        "@id": "https://demo.example.gov/jurisdictions/ZZ"
+      },
+      "dcterms:title": "Civil Registration Authority",
+      "skos:prefLabel": "Civil Registration Authority"
+    },
+    {
+      "@id": "did:web:health-registry.demo.example.gov",
+      "@type": "cv:PublicOrganisation",
+      "dcterms:identifier": "health_services_authority",
+      "dcterms:spatial": {
+        "@id": "https://demo.example.gov/jurisdictions/ZZ"
+      },
+      "dcterms:title": "Health Services Authority",
+      "skos:prefLabel": "Health Services Authority"
+    },
+    {
+      "@id": "did:web:static-metadata.demo.example.gov",
+      "@type": "cv:PublicOrganisation",
+      "dcterms:identifier": "interoperability_metadata_publisher",
+      "dcterms:spatial": {
+        "@id": "https://demo.example.gov/jurisdictions/ZZ"
+      },
+      "dcterms:title": "Interoperability Metadata Publisher",
+      "skos:prefLabel": "Interoperability Metadata Publisher"
+    },
+    {
+      "@id": "did:web:social-protection.demo.example.gov",
+      "@type": "cv:PublicOrganisation",
+      "dcterms:identifier": "social_protection_authority",
+      "dcterms:spatial": {
+        "@id": "https://demo.example.gov/jurisdictions/ZZ"
+      },
+      "dcterms:title": "Social Protection Authority",
+      "skos:prefLabel": "Social Protection Authority"
+    },
+    {
+      "@id": "https://demo.example.gov/services/health-linked-child-support",
+      "@type": "cpsv:PublicService",
+      "cv:hasChannel": [
+        {
+          "@id": "https://demo.example.gov/services/health-linked-child-support/channels/online"
+        }
+      ],
+      "cv:hasCompetentAuthority": {
+        "@id": "did:web:social-protection.demo.example.gov"
+      },
+      "cv:holdsRequirement": [
+        {
+          "@id": "https://demo.example.gov/requirements/child-identity"
+        },
+        {
+          "@id": "https://demo.example.gov/requirements/household-support"
+        },
+        {
+          "@id": "https://demo.example.gov/requirements/health-linked-support"
+        }
+      ],
+      "dcterms:description": "Public service for reviewing child support eligibility using civil, social protection, and health evidence.",
+      "dcterms:identifier": "health_linked_child_support",
+      "dcterms:spatial": {
+        "@id": "https://demo.example.gov/jurisdictions/ZZ"
+      },
+      "dcterms:title": "Health-linked child support eligibility review",
+      "registry_manifest:hasForm": [
+        {
+          "@id": "https://demo.example.gov/forms/health-linked-child-support/v1"
+        }
+      ],
+      "registry_manifest:usesDataService": [
+        {
+          "@id": "https://demo.example.gov/data-services/health-facility-lookup"
+        }
+      ]
+    },
+    {
+      "@id": "https://demo.example.gov/services/civil-registry-service",
+      "@type": "cpsv:PublicService",
+      "cpsv:holdsRequirement": [
+        {
+          "@id": "https://demo.example.gov/requirements/child-identity"
+        }
+      ],
+      "cpsv:produces": "#dataset-civil_registry",
+      "cv:hasCompetentAuthority": {
+        "@id": "did:web:static-metadata.demo.example.gov",
+        "@type": [
+          "foaf:Agent",
+          "cv:PublicOrganisation"
+        ],
+        "dcterms:identifier": "did:web:static-metadata.demo.example.gov",
+        "dcterms:spatial": {
+          "@id": "http://publications.europa.eu/resource/authority/country/EUR",
+          "@type": "dcterms:Location"
+        },
+        "dcterms:title": "Interoperability Metadata Publisher (Demo)",
+        "foaf:name": "Interoperability Metadata Publisher (Demo)",
+        "skos:prefLabel": "Interoperability Metadata Publisher (Demo)"
+      },
+      "dcterms:description": "Service responsible for maintaining civil registration data.",
+      "dcterms:identifier": "https://demo.example.gov/services/civil-registry-service",
+      "dcterms:title": "Civil registry service"
+    },
+    {
+      "@id": "https://demo.example.gov/services/health-facility-registry-service",
+      "@type": "cpsv:PublicService",
+      "cpsv:holdsRequirement": [
+        {
+          "@id": "https://demo.example.gov/requirements/health-linked-support"
+        }
+      ],
+      "cpsv:produces": "#dataset-health_registry",
+      "cv:hasCompetentAuthority": {
+        "@id": "did:web:static-metadata.demo.example.gov",
+        "@type": [
+          "foaf:Agent",
+          "cv:PublicOrganisation"
+        ],
+        "dcterms:identifier": "did:web:static-metadata.demo.example.gov",
+        "dcterms:spatial": {
+          "@id": "http://publications.europa.eu/resource/authority/country/EUR",
+          "@type": "dcterms:Location"
+        },
+        "dcterms:title": "Interoperability Metadata Publisher (Demo)",
+        "foaf:name": "Interoperability Metadata Publisher (Demo)",
+        "skos:prefLabel": "Interoperability Metadata Publisher (Demo)"
+      },
+      "dcterms:description": "Service responsible for maintaining health facility availability data.",
+      "dcterms:identifier": "https://demo.example.gov/services/health-facility-registry-service",
+      "dcterms:title": "Health facility registry service"
+    },
+    {
+      "@id": "https://demo.example.gov/services/social-protection-registry-service",
+      "@type": "cpsv:PublicService",
+      "cpsv:holdsRequirement": [
+        {
+          "@id": "https://demo.example.gov/requirements/household-support"
+        }
+      ],
+      "cpsv:produces": "#dataset-social_protection_registry",
+      "cv:hasCompetentAuthority": {
+        "@id": "did:web:static-metadata.demo.example.gov",
+        "@type": [
+          "foaf:Agent",
+          "cv:PublicOrganisation"
+        ],
+        "dcterms:identifier": "did:web:static-metadata.demo.example.gov",
+        "dcterms:spatial": {
+          "@id": "http://publications.europa.eu/resource/authority/country/EUR",
+          "@type": "dcterms:Location"
+        },
+        "dcterms:title": "Interoperability Metadata Publisher (Demo)",
+        "foaf:name": "Interoperability Metadata Publisher (Demo)",
+        "skos:prefLabel": "Interoperability Metadata Publisher (Demo)"
+      },
+      "dcterms:description": "Service responsible for maintaining social protection registry data.",
+      "dcterms:identifier": "https://demo.example.gov/services/social-protection-registry-service",
+      "dcterms:title": "Social protection registry service"
+    },
+    {
+      "@id": "https://demo.example.gov/services/health-linked-child-support/channels/online",
+      "@type": "cv:Channel",
+      "dcat:accessURL": "https://demo.example.gov/services/health-linked-child-support",
+      "dcterms:description": "",
+      "dcterms:identifier": "health_linked_child_support_online",
+      "dcterms:title": "Online review channel",
+      "dcterms:type": {
+        "@id": "http://data.europa.eu/m8g/OnlineChannel"
+      }
+    },
+    {
+      "@id": "https://demo.example.gov/data-services/health-facility-lookup",
+      "@type": "dcat:DataService",
+      "dcat:endpointDescription": "https://demo.example.gov/openapi/health-facilities.yaml",
+      "dcat:endpointURL": "https://demo.example.gov/api/health/facilities",
+      "dcat:servesDataset": [
+        {
+          "@id": "#dataset-health_registry"
+        }
+      ],
+      "dcterms:conformsTo": "https://spec.openapis.org/oas/v3.1.0",
+      "dcterms:description": "API route used to verify licensed health service availability.",
+      "dcterms:identifier": "health_facility_lookup_api",
+      "dcterms:title": "Health facility lookup API"
+    },
+    {
+      "@id": "https://demo.example.gov/forms/health-linked-child-support/v1",
+      "@type": [
+        "registry_manifest:FormDefinition",
+        "registry_manifest:Form"
+      ],
+      "dcterms:description": "Form used to start the health-linked child support review.",
+      "dcterms:identifier": "health_linked_child_support_form",
+      "dcterms:title": "Health-linked child support application form",
+      "registry_manifest:forChannel": {
+        "@id": "https://demo.example.gov/services/health-linked-child-support/channels/online"
+      },
+      "registry_manifest:forPublicService": {
+        "@id": "https://demo.example.gov/services/health-linked-child-support"
+      },
+      "registry_manifest:hasField": [
+        {
+          "@id": "https://demo.example.gov/forms/health-linked-child-support/v1#field-support_type",
+          "@type": "registry_manifest:FormField",
+          "cccev:hasConcept": {
+            "@id": "https://demo.example.gov/concepts/support-type"
+          },
+          "dcterms:identifier": "support_type",
+          "rdfs:label": "Support type",
+          "registry_manifest:dataType": {
+            "@id": "xsd:string"
+          },
+          "registry_manifest:fieldName": "supportType",
+          "registry_manifest:fulfillmentMode": [
+            "manual_input"
+          ],
+          "registry_manifest:preferredFulfillmentMode": "manual_input",
+          "registry_manifest:required": true,
+          "registry_manifest:widgetType": "select"
+        },
+        {
+          "@id": "https://demo.example.gov/forms/health-linked-child-support/v1#field-applicant_national_id",
+          "@type": "registry_manifest:FormField",
+          "cccev:hasConcept": {
+            "@id": "https://demo.example.gov/concepts/national-id"
+          },
+          "dcterms:identifier": "applicant_national_id",
+          "rdfs:label": "Applicant national ID",
+          "registry_manifest:dataType": {
+            "@id": "xsd:string"
+          },
+          "registry_manifest:fieldName": "applicantNationalId",
+          "registry_manifest:fulfillmentMode": [
+            "manual_input",
+            "registry_lookup"
+          ],
+          "registry_manifest:maxOccurs": 1,
+          "registry_manifest:minOccurs": 1,
+          "registry_manifest:preferredFulfillmentMode": "registry_lookup",
+          "registry_manifest:required": true,
+          "registry_manifest:supportsRequirement": {
+            "@id": "https://demo.example.gov/requirements/child-identity"
+          },
+          "registry_manifest:widgetType": "text"
+        },
+        {
+          "@id": "https://demo.example.gov/forms/health-linked-child-support/v1#field-child_national_id",
+          "@type": "registry_manifest:FormField",
+          "cccev:hasConcept": {
+            "@id": "https://demo.example.gov/concepts/national-id"
+          },
+          "dcterms:identifier": "child_national_id",
+          "rdfs:label": "Child national ID",
+          "registry_manifest:dataType": {
+            "@id": "xsd:string"
+          },
+          "registry_manifest:fieldName": "childNationalId",
+          "registry_manifest:maxOccurs": 1,
+          "registry_manifest:minOccurs": 1,
+          "registry_manifest:required": true,
+          "registry_manifest:supportsRequirement": {
+            "@id": "https://demo.example.gov/requirements/child-identity"
+          },
+          "registry_manifest:widgetType": "text"
+        },
+        {
+          "@id": "https://demo.example.gov/forms/health-linked-child-support/v1#field-health_district",
+          "@type": "registry_manifest:FormField",
+          "cccev:hasConcept": {
+            "@id": "https://demo.example.gov/concepts/health-district"
+          },
+          "dcterms:identifier": "health_district",
+          "rdfs:label": "Health district",
+          "registry_manifest:dataType": {
+            "@id": "xsd:string"
+          },
+          "registry_manifest:fieldName": "healthDistrict",
+          "registry_manifest:fulfillmentMode": [
+            "registry_lookup",
+            "known_from_context"
+          ],
+          "registry_manifest:preferredFulfillmentMode": "registry_lookup",
+          "registry_manifest:required": true,
+          "registry_manifest:supportsRequirement": {
+            "@id": "https://demo.example.gov/requirements/health-linked-support"
+          },
+          "registry_manifest:widgetType": "text"
+        }
+      ],
+      "registry_manifest:hasSection": [
+        {
+          "@id": "https://demo.example.gov/forms/health-linked-child-support/v1#section-applicant",
+          "@type": "registry_manifest:FormSection",
+          "dcterms:identifier": "applicant",
+          "dcterms:title": "Applicant",
+          "registry_manifest:hasField": [
+            {
+              "@id": "https://demo.example.gov/forms/health-linked-child-support/v1#field-applicant_national_id",
+              "@type": "registry_manifest:FormField",
+              "cccev:hasConcept": {
+                "@id": "https://demo.example.gov/concepts/national-id"
+              },
+              "dcterms:identifier": "applicant_national_id",
+              "rdfs:label": "Applicant national ID",
+              "registry_manifest:dataType": {
+                "@id": "xsd:string"
+              },
+              "registry_manifest:fieldName": "applicantNationalId",
+              "registry_manifest:fulfillmentMode": [
+                "manual_input",
+                "registry_lookup"
+              ],
+              "registry_manifest:maxOccurs": 1,
+              "registry_manifest:minOccurs": 1,
+              "registry_manifest:preferredFulfillmentMode": "registry_lookup",
+              "registry_manifest:required": true,
+              "registry_manifest:supportsRequirement": {
+                "@id": "https://demo.example.gov/requirements/child-identity"
+              },
+              "registry_manifest:widgetType": "text"
+            }
+          ],
+          "registry_manifest:maxOccurs": 1,
+          "registry_manifest:minOccurs": 1,
+          "registry_manifest:repeatable": false
+        },
+        {
+          "@id": "https://demo.example.gov/forms/health-linked-child-support/v1#section-children",
+          "@type": "registry_manifest:FormSection",
+          "dcterms:identifier": "children",
+          "dcterms:title": "Children",
+          "registry_manifest:hasField": [
+            {
+              "@id": "https://demo.example.gov/forms/health-linked-child-support/v1#field-child_national_id",
+              "@type": "registry_manifest:FormField",
+              "cccev:hasConcept": {
+                "@id": "https://demo.example.gov/concepts/national-id"
+              },
+              "dcterms:identifier": "child_national_id",
+              "rdfs:label": "Child national ID",
+              "registry_manifest:dataType": {
+                "@id": "xsd:string"
+              },
+              "registry_manifest:fieldName": "childNationalId",
+              "registry_manifest:maxOccurs": 1,
+              "registry_manifest:minOccurs": 1,
+              "registry_manifest:required": true,
+              "registry_manifest:supportsRequirement": {
+                "@id": "https://demo.example.gov/requirements/child-identity"
+              },
+              "registry_manifest:widgetType": "text"
+            }
+          ],
+          "registry_manifest:minOccurs": 1,
+          "registry_manifest:repeatable": true
+        },
+        {
+          "@id": "https://demo.example.gov/forms/health-linked-child-support/v1#section-health_linked",
+          "@type": "registry_manifest:FormSection",
+          "dcterms:identifier": "health_linked",
+          "dcterms:title": "Health service context",
+          "registry_manifest:hasField": [
+            {
+              "@id": "https://demo.example.gov/forms/health-linked-child-support/v1#field-health_district",
+              "@type": "registry_manifest:FormField",
+              "cccev:hasConcept": {
+                "@id": "https://demo.example.gov/concepts/health-district"
+              },
+              "dcterms:identifier": "health_district",
+              "rdfs:label": "Health district",
+              "registry_manifest:dataType": {
+                "@id": "xsd:string"
+              },
+              "registry_manifest:fieldName": "healthDistrict",
+              "registry_manifest:fulfillmentMode": [
+                "registry_lookup",
+                "known_from_context"
+              ],
+              "registry_manifest:preferredFulfillmentMode": "registry_lookup",
+              "registry_manifest:required": true,
+              "registry_manifest:supportsRequirement": {
+                "@id": "https://demo.example.gov/requirements/health-linked-support"
+              },
+              "registry_manifest:widgetType": "text"
+            }
+          ],
+          "registry_manifest:repeatable": false,
+          "registry_manifest:visibleWhen": {
+            "registry_manifest:equals": "health_linked",
+            "registry_manifest:field": "supportType"
+          }
+        }
+      ],
+      "registry_manifest:validatesWithJsonSchema": {
+        "@id": "http://static-metadata-publisher:8080/metadata/forms/health_linked_child_support_form/schema.json"
+      },
+      "registry_manifest:validatesWithShacl": {
+        "@id": "http://static-metadata-publisher:8080/metadata/forms/health_linked_child_support_form/shacl"
+      }
+    },
+    {
+      "@id": "https://demo.example.gov/requirements/child-identity",
+      "@type": "http://data.europa.eu/m8g/Requirement",
+      "cccev:hasEvidenceTypeList": [
+        {
+          "@id": "https://demo.example.gov/requirements/child-identity#evidence-type-list"
+        }
+      ],
+      "dcterms:description": "Requirement to confirm the child has a civil registry record and is alive.",
+      "dcterms:identifier": "child_identity_requirement",
+      "dcterms:title": "Child support identity and alive-status requirement",
+      "skos:prefLabel": "Child support identity and alive-status requirement"
+    },
+    {
+      "@id": "https://demo.example.gov/requirements/child-identity#evidence-type-list",
+      "@type": "cccev:EvidenceTypeList",
+      "cccev:specifiesEvidenceType": [
+        {
+          "@id": "https://demo.example.gov/evidence-types/civil-child-status"
+        }
+      ],
+      "dcterms:identifier": "child_identity_requirement-evidence-type-list",
+      "skos:prefLabel": "Evidence type Civil child status evidence for Child support identity and alive-status requirement"
+    },
+    {
+      "@id": "https://demo.example.gov/requirements/combined-support-bundle",
+      "@type": "http://data.europa.eu/m8g/Requirement",
+      "cccev:hasEvidenceTypeList": [
+        {
+          "@id": "https://demo.example.gov/requirements/combined-support-bundle#evidence-type-list"
+        }
+      ],
+      "dcterms:description": "Requirement represented by the legacy combined cross-authority evidence bundle.",
+      "dcterms:identifier": "combined_support_bundle_requirement",
+      "dcterms:title": "Combined support evidence bundle requirement",
+      "skos:prefLabel": "Combined support evidence bundle requirement"
+    },
+    {
+      "@id": "https://demo.example.gov/requirements/combined-support-bundle#evidence-type-list",
+      "@type": "cccev:EvidenceTypeList",
+      "cccev:specifiesEvidenceType": [
+        {
+          "@id": "https://demo.example.gov/evidence-types/combined-support"
+        }
+      ],
+      "dcterms:identifier": "combined_support_bundle_requirement-evidence-type-list",
+      "skos:prefLabel": "Evidence type Combined cross-authority support evidence for Combined support evidence bundle requirement"
+    },
+    {
+      "@id": "https://demo.example.gov/requirements/health-linked-support",
+      "@type": "http://data.europa.eu/m8g/Requirement",
+      "cccev:hasEvidenceTypeList": [
+        {
+          "@id": "https://demo.example.gov/requirements/health-linked-support#evidence-type-list"
+        }
+      ],
+      "dcterms:description": "Requirement to confirm licensed health services are available for the applicant context.",
+      "dcterms:identifier": "health_linked_support_requirement",
+      "dcterms:title": "Health-linked conditional support requirement",
+      "skos:prefLabel": "Health-linked conditional support requirement"
+    },
+    {
+      "@id": "https://demo.example.gov/requirements/health-linked-support#evidence-type-list",
+      "@type": "cccev:EvidenceTypeList",
+      "cccev:specifiesEvidenceType": [
+        {
+          "@id": "https://demo.example.gov/evidence-types/health-service-availability"
+        }
+      ],
+      "dcterms:identifier": "health_linked_support_requirement-evidence-type-list",
+      "skos:prefLabel": "Evidence type Health service availability evidence for Health-linked conditional support requirement"
+    },
+    {
+      "@id": "https://demo.example.gov/requirements/household-support",
+      "@type": "http://data.europa.eu/m8g/Requirement",
+      "cccev:hasEvidenceTypeList": [
+        {
+          "@id": "https://demo.example.gov/requirements/household-support#evidence-type-list"
+        }
+      ],
+      "dcterms:description": "Requirement to confirm the household has an active support record.",
+      "dcterms:identifier": "household_support_requirement",
+      "dcterms:title": "Household support review requirement",
+      "skos:prefLabel": "Household support review requirement"
+    },
+    {
+      "@id": "https://demo.example.gov/requirements/household-support#evidence-type-list",
+      "@type": "cccev:EvidenceTypeList",
+      "cccev:specifiesEvidenceType": [
+        {
+          "@id": "https://demo.example.gov/evidence-types/household-support"
+        }
+      ],
+      "dcterms:identifier": "household_support_requirement-evidence-type-list",
+      "skos:prefLabel": "Evidence type Household support evidence for Household support review requirement"
+    },
+    {
+      "@id": "https://demo.example.gov/evidence-types/civil-child-status",
+      "@type": "cccev:EvidenceType",
+      "cccev:isSpecifiedIn": [
+        {
+          "@id": "https://demo.example.gov/requirements/child-identity#evidence-type-list"
+        }
+      ],
+      "dcterms:description": "",
+      "dcterms:identifier": "civil_child_status_evidence",
+      "dcterms:title": "Civil child status evidence",
+      "skos:prefLabel": "Civil child status evidence"
+    },
+    {
+      "@id": "https://demo.example.gov/evidence-types/combined-support",
+      "@type": "cccev:EvidenceType",
+      "cccev:isSpecifiedIn": [
+        {
+          "@id": "https://demo.example.gov/requirements/combined-support-bundle#evidence-type-list"
+        }
+      ],
+      "dcterms:description": "",
+      "dcterms:identifier": "combined_support_evidence",
+      "dcterms:title": "Combined cross-authority support evidence",
+      "skos:prefLabel": "Combined cross-authority support evidence"
+    },
+    {
+      "@id": "https://demo.example.gov/evidence-types/health-service-availability",
+      "@type": "cccev:EvidenceType",
+      "cccev:isSpecifiedIn": [
+        {
+          "@id": "https://demo.example.gov/requirements/health-linked-support#evidence-type-list"
+        }
+      ],
+      "dcterms:description": "",
+      "dcterms:identifier": "health_service_availability_evidence",
+      "dcterms:title": "Health service availability evidence",
+      "skos:prefLabel": "Health service availability evidence"
+    },
+    {
+      "@id": "https://demo.example.gov/evidence-types/household-support",
+      "@type": "cccev:EvidenceType",
+      "cccev:isSpecifiedIn": [
+        {
+          "@id": "https://demo.example.gov/requirements/household-support#evidence-type-list"
+        }
+      ],
+      "dcterms:description": "",
+      "dcterms:identifier": "household_support_evidence",
+      "dcterms:title": "Household support evidence",
+      "skos:prefLabel": "Household support evidence"
+    },
+    {
+      "@id": "https://demo.example.gov/concepts/health-district",
+      "@type": "cccev:InformationConcept",
+      "dcterms:identifier": "health-district",
+      "skos:prefLabel": "health-district"
+    },
+    {
+      "@id": "https://demo.example.gov/concepts/national-id",
+      "@type": "cccev:InformationConcept",
+      "dcterms:identifier": "national-id",
+      "skos:prefLabel": "national-id"
+    },
+    {
+      "@id": "https://demo.example.gov/concepts/support-type",
+      "@type": "cccev:InformationConcept",
+      "dcterms:identifier": "support-type",
+      "skos:prefLabel": "support-type"
+    },
+    {
+      "@id": "https://demo.example.gov/evidence-offerings/civil-child-status",
+      "@type": "registry_manifest:EvidenceOffering",
+      "dcterms:description": "",
+      "dcterms:identifier": "civil_child_status_evidence_service",
+      "dcterms:title": "Civil child status evidence service",
+      "registry_manifest:accessKind": "registry-witness",
+      "registry_manifest:evidenceService": {
+        "@id": "https://demo.example.gov/evidence-offerings/civil-child-status#evidence-service",
+        "@type": "dcat:DataService",
+        "dcat:endpointDescription": "http://civil-witness:8080/.well-known/evidence-service",
+        "dcat:endpointURL": "http://civil-witness:8080",
+        "dcterms:conformsTo": "registry_relay:registry-witness-v1"
+      },
+      "registry_manifest:evidenceType": {
+        "@id": "https://demo.example.gov/evidence-types/civil-child-status"
+      },
+      "registry_manifest:issuingAuthority": {
+        "@id": "did:web:civil-registry.demo.example.gov",
+        "@type": "foaf:Agent",
+        "dcterms:identifier": "civil_registration_authority",
+        "foaf:name": "Civil Registration Authority",
+        "registry_manifest:country": "ZZ"
+      },
+      "registry_manifest:servesEntity": "#dataset-civil_registry-entity-civil_person"
+    },
+    {
+      "@id": "https://demo.example.gov/evidence-offerings/combined-support",
+      "@type": "registry_manifest:EvidenceOffering",
+      "dcterms:description": "Shared Evidence Server claim that composes civil, social protection, and health registry facts.",
+      "dcterms:identifier": "combined_support_evidence_service",
+      "dcterms:title": "Combined support evidence service",
+      "registry_manifest:accessKind": "registry-witness",
+      "registry_manifest:evidenceService": {
+        "@id": "https://demo.example.gov/evidence-offerings/combined-support#evidence-service",
+        "@type": "dcat:DataService",
+        "dcat:endpointDescription": "http://shared-eligibility-witness:8080/.well-known/evidence-service",
+        "dcat:endpointURL": "http://shared-eligibility-witness:8080",
+        "dcterms:conformsTo": "registry_relay:registry-witness-v1"
+      },
+      "registry_manifest:evidenceType": {
+        "@id": "https://demo.example.gov/evidence-types/combined-support"
+      },
+      "registry_manifest:issuingAuthority": {
+        "@id": "did:web:static-metadata.demo.example.gov",
+        "@type": "foaf:Agent",
+        "dcterms:identifier": "interoperability_metadata_publisher",
+        "foaf:name": "Interoperability Metadata Publisher",
+        "registry_manifest:country": "ZZ"
+      },
+      "registry_manifest:servesEntity": "#dataset-combined_support_registry_view-entity-applicant"
+    },
+    {
+      "@id": "https://demo.example.gov/evidence-offerings/health-service-availability",
+      "@type": "registry_manifest:EvidenceOffering",
+      "dcterms:description": "Evidence Server endpoint that computes facility license and service availability.",
+      "dcterms:identifier": "health_service_availability_evidence_service",
+      "dcterms:title": "Health service availability evidence service",
+      "registry_manifest:accessKind": "registry-witness",
+      "registry_manifest:evidenceService": {
+        "@id": "https://demo.example.gov/evidence-offerings/health-service-availability#evidence-service",
+        "@type": "dcat:DataService",
+        "dcat:endpointDescription": "http://shared-eligibility-witness:8080/.well-known/evidence-service",
+        "dcat:endpointURL": "http://shared-eligibility-witness:8080",
+        "dcterms:conformsTo": "registry_relay:registry-witness-v1"
+      },
+      "registry_manifest:evidenceType": {
+        "@id": "https://demo.example.gov/evidence-types/health-service-availability"
+      },
+      "registry_manifest:issuingAuthority": {
+        "@id": "did:web:health-registry.demo.example.gov",
+        "@type": "foaf:Agent",
+        "dcterms:identifier": "health_services_authority",
+        "foaf:name": "Health Services Authority",
+        "registry_manifest:country": "ZZ"
+      },
+      "registry_manifest:servesEntity": "#dataset-health_registry-entity-health_facility"
+    },
+    {
+      "@id": "https://demo.example.gov/evidence-offerings/household-support",
+      "@type": "registry_manifest:EvidenceOffering",
+      "dcterms:description": "",
+      "dcterms:identifier": "household_support_evidence_service",
+      "dcterms:title": "Household support evidence service",
+      "registry_manifest:accessKind": "registry-witness",
+      "registry_manifest:evidenceService": {
+        "@id": "https://demo.example.gov/evidence-offerings/household-support#evidence-service",
+        "@type": "dcat:DataService",
+        "dcat:endpointDescription": "http://social-protection-witness:8080/.well-known/evidence-service",
+        "dcat:endpointURL": "http://social-protection-witness:8080",
+        "dcterms:conformsTo": "registry_relay:registry-witness-v1"
+      },
+      "registry_manifest:evidenceType": {
+        "@id": "https://demo.example.gov/evidence-types/household-support"
+      },
+      "registry_manifest:issuingAuthority": {
+        "@id": "did:web:social-protection.demo.example.gov",
+        "@type": "foaf:Agent",
+        "dcterms:identifier": "social_protection_authority",
+        "foaf:name": "Social Protection Authority",
+        "registry_manifest:country": "ZZ"
+      },
+      "registry_manifest:servesEntity": "#dataset-social_protection_registry-entity-program_enrollment"
+    },
+    {
+      "@id": "#dataset-civil_registry",
+      "@type": [
+        "dcat:Dataset",
+        "cv:Output"
+      ],
+      "dcat:landingPage": "#dataset-civil_registry",
+      "dcterms:conformsTo": [],
+      "dcterms:description": "Static description of the simulated civil registry authority.",
+      "dcterms:identifier": "civil_registry",
+      "dcterms:title": "Civil Registry",
+      "odrl:hasPolicy": {
+        "@id": "#policy-civil_registry-offer",
+        "@type": "odrl:Offer",
+        "odrl:assigner": {
+          "@id": "did:web:static-metadata.demo.example.gov"
+        },
+        "odrl:permission": [
+          {
+            "odrl:action": {
+              "@id": "odrl:use"
+            },
+            "odrl:assigner": {
+              "@id": "did:web:static-metadata.demo.example.gov"
+            },
+            "odrl:target": {
+              "@id": "#dataset-civil_registry"
+            }
+          }
+        ],
+        "odrl:uid": "#policy-civil_registry-offer"
+      }
+    },
+    {
+      "@id": "#dataset-health_registry",
+      "@type": [
+        "dcat:Dataset",
+        "cv:Output"
+      ],
+      "dcat:landingPage": "#dataset-health_registry",
+      "dcterms:conformsTo": [],
+      "dcterms:description": "Static description of simulated facility licensing and service availability records.",
+      "dcterms:identifier": "health_registry",
+      "dcterms:title": "Health Facility Registry",
+      "odrl:hasPolicy": {
+        "@id": "#policy-health_registry-offer",
+        "@type": "odrl:Offer",
+        "odrl:assigner": {
+          "@id": "did:web:static-metadata.demo.example.gov"
+        },
+        "odrl:permission": [
+          {
+            "odrl:action": {
+              "@id": "odrl:use"
+            },
+            "odrl:assigner": {
+              "@id": "did:web:static-metadata.demo.example.gov"
+            },
+            "odrl:target": {
+              "@id": "#dataset-health_registry"
+            }
+          }
+        ],
+        "odrl:uid": "#policy-health_registry-offer"
+      }
+    },
+    {
+      "@id": "#dataset-social_protection_registry",
+      "@type": [
+        "dcat:Dataset",
+        "cv:Output"
+      ],
+      "dcat:landingPage": "#dataset-social_protection_registry",
+      "dcterms:conformsTo": [],
+      "dcterms:description": "Static description of the simulated social protection registry authority.",
+      "dcterms:identifier": "social_protection_registry",
+      "dcterms:title": "Social Protection Registry",
+      "odrl:hasPolicy": {
+        "@id": "#policy-social_protection_registry-offer",
+        "@type": "odrl:Offer",
+        "odrl:assigner": {
+          "@id": "did:web:static-metadata.demo.example.gov"
+        },
+        "odrl:permission": [
+          {
+            "odrl:action": {
+              "@id": "odrl:use"
+            },
+            "odrl:assigner": {
+              "@id": "did:web:static-metadata.demo.example.gov"
+            },
+            "odrl:target": {
+              "@id": "#dataset-social_protection_registry"
+            }
+          }
+        ],
+        "odrl:uid": "#policy-social_protection_registry-offer"
+      }
+    }
+  ],
+  "@id": "http://static-metadata-publisher:8080/metadata/cpsv-ap",
+  "@type": "dcat:Catalog",
+  "dcat:service": [
+    {
+      "@id": "https://demo.example.gov/data-services/health-facility-lookup"
+    }
+  ],
+  "dcterms:conformsTo": "https://semiceu.github.io/CPSV-AP/releases/3.2.0/",
+  "dcterms:description": "Static portable metadata for simulated registry and evidence services.",
+  "dcterms:hasPart": [
+    {
+      "@id": "https://demo.example.gov/services/health-linked-child-support"
+    },
+    {
+      "@id": "https://demo.example.gov/services/civil-registry-service"
+    },
+    {
+      "@id": "https://demo.example.gov/services/health-facility-registry-service"
+    },
+    {
+      "@id": "https://demo.example.gov/services/social-protection-registry-service"
+    }
+  ],
+  "dcterms:identifier": "decentralized-demo-static-publication",
+  "dcterms:publisher": {
+    "@id": "did:web:static-metadata.demo.example.gov",
+    "@type": "foaf:Agent",
+    "foaf:name": "Interoperability Metadata Publisher (Demo)"
+  },
+  "dcterms:title": "Decentralized Demo Static Metadata"
+}

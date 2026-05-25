@@ -24,6 +24,7 @@ const ALLOWED_CONTENT_TYPES = [
   "application/yaml",
   "text/",
 ];
+const SEMANTIC_TEXT_EXTENSIONS = new Set([".json", ".jsonld", ".geojson", ".ttl", ".yaml", ".yml"]);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
@@ -68,6 +69,19 @@ function isAllowedContentType(contentType) {
   return ALLOWED_CONTENT_TYPES.some((allowed) =>
     allowed.endsWith("/") ? normalized.startsWith(allowed) : normalized === allowed,
   );
+}
+
+function hasSemanticTextExtension(url) {
+  return SEMANTIC_TEXT_EXTENSIONS.has(path.extname(url.pathname).toLowerCase());
+}
+
+function isAllowedUpstreamBody(contentType, finalUrl) {
+  if (isAllowedContentType(contentType)) {
+    return true;
+  }
+
+  const normalized = contentType.toLowerCase().split(";")[0].trim();
+  return normalized === "application/octet-stream" && hasSemanticTextExtension(finalUrl);
 }
 
 function isLocalDevHost(hostname, address) {
@@ -378,7 +392,7 @@ export function createApp(config = {}) {
     const { response, finalUrl } = result;
     const contentType = response.headers.get("content-type") ?? "";
 
-    if (!contentType || !isAllowedContentType(contentType)) {
+    if (!contentType || !isAllowedUpstreamBody(contentType, finalUrl)) {
       res.status(415).json({
         ok: false,
         status: response.status,

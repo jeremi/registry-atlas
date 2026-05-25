@@ -28,10 +28,10 @@ import {
 } from "lucide-react";
 import localDemoFixtureText from "./fixtures/registry-relay-dcat-ap.jsonld?raw";
 import localDemoRunEnvelope from "./fixtures/registry-relay-system-capability.envelope.json";
-import { discoverAtlas, discoveryRunEnvelopeToAtlasModel, getId, getValues, parseDcatJsonLd, searchCapabilities } from "./lib";
+import { buildServiceFirstDiscovery, discoverAtlas, discoveryRunEnvelopeToAtlasModel, getId, getValues, parseDcatJsonLd } from "./lib";
 import type { AtlasDiscoveryReportSummary } from "./lib";
-import type { CapabilitySearchResult } from "./lib";
 import type { DiscoveryRunEnvelope } from "./lib";
+import type { EvidenceRoute, RelationProvenance, ServiceDiscoveryGap, ServiceFirstDiscovery } from "./lib";
 import type {
   ArtifactStatus,
   AtlasModel,
@@ -52,7 +52,7 @@ type ViewState =
   | "parse-error"
   | "auth-required"
   | "unsupported";
-type WorkspaceTab = "overview" | "registry" | "capabilities" | "evidence";
+type WorkspaceTab = "overview" | "registry" | "services" | "evidence";
 type RegistryViewMode = "list" | "map";
 type ComparisonMode = "core" | "publisher" | "diff";
 
@@ -103,6 +103,11 @@ const curatedDemos = [
     note: "Publisher: Registry Relay",
   },
   {
+    label: "Registry Lab CPSV-AP service catalogue",
+    url: "http://127.0.0.1:4331/metadata/cpsv-ap.jsonld",
+    note: "Service-first discovery",
+  },
+  {
     label: "OpenAPI service description",
     url: "http://127.0.0.1:4242/openapi.json",
     note: "Publisher: Registry Relay",
@@ -118,7 +123,7 @@ let sessionRecentCatalogues: string[] = [];
 
 async function discoverAtlasModel(request: AppDiscoveryRequest): Promise<AtlasModel> {
   if (request.url === "fixture:registry-relay-dcat-ap") {
-    return discoveryRunEnvelopeToAtlasModel(localDemoRunEnvelope as DiscoveryRunEnvelope, request.profile);
+    return discoveryRunEnvelopeToAtlasModel(localDemoRunEnvelope as unknown as DiscoveryRunEnvelope, request.profile);
   }
   const url = resolveCatalogueUrl(request.url);
   try {
@@ -327,8 +332,8 @@ export function App() {
     () => (includePublisherMetadata ? model?.missingItems : model?.missingItems.filter((item) => !item.publisherSpecific)) ?? [],
     [includePublisherMetadata, model],
   );
-  const capabilityResult = useMemo(
-    () => (model?.semanticDiscovery ? searchCapabilities(model.semanticDiscovery) : null),
+  const serviceDiscovery = useMemo(
+    () => buildServiceFirstDiscovery(model?.semanticDiscovery),
     [model],
   );
 
@@ -548,11 +553,11 @@ export function App() {
               label="Semantic assets"
             />
             <TabButton
-              id="capabilities"
+              id="services"
               activeTab={activeTab}
               setActiveTab={setActiveTab}
               icon={<Waypoints size={15} />}
-              label="Capabilities"
+              label="Services"
             />
             <TabButton id="evidence" activeTab={activeTab} setActiveTab={setActiveTab} icon={<ListChecks size={15} />} label="Evidence" />
           </nav>
@@ -573,8 +578,8 @@ export function App() {
                 onSelect={setSelectedRecordId}
                 onScopeChange={setCatalogueScopeId}
               />
-            ) : activeTab === "capabilities" ? (
-              <CapabilitiesView result={capabilityResult} />
+            ) : activeTab === "services" ? (
+              <ServiceDiscoveryView discovery={serviceDiscovery} />
             ) : (
               <EvidenceView
                 artifacts={visibleArtifacts}
@@ -1024,15 +1029,15 @@ function RegistryView({
   );
 }
 
-function CapabilitiesView({ result }: { result: CapabilitySearchResult | null }) {
-  if (!result) {
+function ServiceDiscoveryView({ discovery }: { discovery: ServiceFirstDiscovery | null }) {
+  if (!discovery) {
     return (
-      <div className="capability-view">
+      <div className="service-discovery-view">
         <StateBlock
           state="empty"
           notice={{
-            title: "Capability discovery needs semantic evidence",
-            message: "Run semantic discovery first. The strict matcher uses accepted terms only.",
+            title: "Service discovery needs semantic evidence",
+            message: "Run semantic discovery against CPSV-AP and CCCEV metadata to inspect public services, requirements, and evidence bundles.",
           }}
           compact
         />
@@ -1041,67 +1046,175 @@ function CapabilitiesView({ result }: { result: CapabilitySearchResult | null })
   }
 
   return (
-    <div className="capability-view">
+    <div className="service-discovery-view">
       <header className="view-intro">
         <div>
-          <p className="eyebrow">Strict capability discovery</p>
-          <h3>Candidate answer routes</h3>
+          <p className="eyebrow">Service-first discovery</p>
+          <h3>Public services, requirements, and evidence bundles</h3>
         </div>
-        <p>Question text is shown for context only. Matches come from accepted terms and machine-verifiable metadata evidence.</p>
+        <p>Evidence groups come from CCCEV lists. Each list is evaluated as a bundle, and multiple lists remain alternatives.</p>
       </header>
 
-      <div className="capability-grid">
-        {result.needs.map(({ need, routes }) => (
-          <section key={need.id} className="capability-need" aria-label={`${need.label} capability routes`}>
-            <header>
-              <div>
-                <p className="eyebrow">{need.id}</p>
-                <h3>{need.label}</h3>
+      <div className="service-metrics">
+        <OverviewMetric label="Public services" value={discovery.assetCounts.publicServices} detail="CPSV-AP services" />
+        <OverviewMetric label="Requirements" value={discovery.assetCounts.requirements} detail="CCCEV requirements" />
+        <OverviewMetric label="Evidence lists" value={discovery.assetCounts.evidenceTypeLists} detail="grouped options" />
+        <OverviewMetric label="Access services" value={discovery.assetCounts.accessServices} detail="data service routes" />
+      </div>
+
+      {discovery.gaps.length > 0 ? <GapList gaps={discovery.gaps} /> : null}
+
+      <div className="service-stack">
+        {discovery.services.length === 0 ? (
+          <p className="muted">No CPSV public services were discovered in this report.</p>
+        ) : (
+          discovery.services.map((service) => (
+            <section key={service.asset.id} className="service-panel" aria-label={`${service.asset.label} service discovery`}>
+              <header>
+                <div>
+                  <p className="eyebrow">Public service</p>
+                  <h3>{service.asset.label}</h3>
+                </div>
+                <span className={`pill ${service.gaps.length === 0 ? "positive" : "warning"}`}>
+                  {service.gaps.length === 0 ? "complete" : `${service.gaps.length} gap${service.gaps.length === 1 ? "" : "s"}`}
+                </span>
+              </header>
+
+              <div className="service-context-grid">
+                <ServiceAssetList label="Channels" assets={service.channels} empty="No channel relation." />
+                <ServiceAssetList label="Authority" assets={service.authorities} empty="No competent authority relation." />
+                <ServiceAssetList label="Forms" assets={service.forms} empty="No form relation." />
               </div>
-              <span className={`pill ${routes.length > 0 ? "positive" : "warning"}`}>
-                {routes.length} route{routes.length === 1 ? "" : "s"}
-              </span>
-            </header>
-            <p className="question-context">{need.question}</p>
-            <div className="accepted-terms">
-              {[...need.requiresAny, ...(need.requiresAll ?? [])].map((term) => (
-                <span key={`${term.kind}:${term.value}`}>{term.kind}: {term.value}</span>
-              ))}
-            </div>
-            {routes.length > 0 ? (
-              <div className="capability-routes">
-                {routes.slice(0, 4).map((route) => (
-                  <article key={route.id} className="capability-route">
-                    <div>
-                      <h4>{route.label}</h4>
-                      <span className={`pill ${route.confidence === "high" ? "positive" : route.confidence === "medium" ? "warning" : "neutral"}`}>
-                        {route.confidence}
+
+              <div className="requirement-list">
+                {service.requirements.map((requirement) => (
+                  <article key={requirement.asset.id} className="requirement-panel">
+                    <header>
+                      <div>
+                        <p className="eyebrow">Requirement</p>
+                        <h4>{requirement.asset.label}</h4>
+                      </div>
+                      <span className={`pill ${requirement.evidenceBundles.some((bundle) => bundle.satisfiable) ? "positive" : "warning"}`}>
+                        {requirement.evidenceBundles.length} option{requirement.evidenceBundles.length === 1 ? "" : "s"}
                       </span>
-                    </div>
-                    <p>{route.role.replaceAll("_", " ")} / {route.accessKind.replaceAll("_", " ")}</p>
-                    {route.sourceUrl ? <code>{route.sourceUrl}</code> : null}
-                    <dl>
-                      <dt>Evidence</dt>
-                      <dd>{route.evidence.map((item) => item.location).slice(0, 2).join(", ")}</dd>
-                      <dt>Gaps</dt>
-                      <dd>{route.gaps.slice(0, 3).join(", ")}</dd>
-                    </dl>
-                    {route.reviewFlags.length > 0 ? (
-                      <div className="review-flags">
-                        {route.reviewFlags.map((flag) => (
-                          <span key={flag}>{flag}</span>
+                    </header>
+
+                    {requirement.evidenceBundles.length > 0 ? (
+                      <div className="evidence-bundle-grid">
+                        {requirement.evidenceBundles.map((bundle, index) => (
+                          <section key={bundle.id} className="evidence-bundle">
+                            <header>
+                              <span>Option {index + 1}</span>
+                              <strong>{bundle.label}</strong>
+                              <span className={`pill ${bundle.satisfiable ? "positive" : "warning"}`}>
+                                {bundle.satisfiable ? "satisfiable" : "missing route"}
+                              </span>
+                            </header>
+                            <div className="evidence-type-list">
+                              {bundle.evidenceTypes.map((evidenceType) => (
+                                <article key={evidenceType.asset.id} className="evidence-type-card">
+                                  <div>
+                                    <h5>{evidenceType.asset.label}</h5>
+                                    <span className={`pill ${evidenceType.hasAccessRoute ? "positive" : "warning"}`}>
+                                      {evidenceType.hasAccessRoute ? "route found" : "no access route"}
+                                    </span>
+                                  </div>
+                                  <ServiceAssetList label="Providers" assets={evidenceType.providers} empty="No provider." compact />
+                                  <ServiceAssetList label="Access" assets={evidenceType.accessServices} empty="No access service." compact />
+                                </article>
+                              ))}
+                            </div>
+                          </section>
                         ))}
                       </div>
-                    ) : null}
+                    ) : (
+                      <p className="muted">No CCCEV evidence type list was declared for this requirement.</p>
+                    )}
+                    {requirement.gaps.length > 0 ? <GapList gaps={requirement.gaps} compact /> : null}
                   </article>
                 ))}
               </div>
-            ) : (
-              <p className="muted">No route matched the accepted terms. The question text was not searched.</p>
-            )}
-          </section>
+
+              <RouteList routes={service.routes} />
+              {service.gaps.length > 0 ? <GapList gaps={service.gaps} /> : null}
+            </section>
+          ))
+        )}
+      </div>
+    </div>
+  );
+}
+
+function ServiceAssetList({
+  label,
+  assets,
+  empty,
+  compact = false,
+}: {
+  label: string;
+  assets: Array<{ asset: { id: string; label: string; uri?: string; endpointUrl?: string }; provenance: RelationProvenance[] }>;
+  empty: string;
+  compact?: boolean;
+}) {
+  return (
+    <div className={`service-asset-list ${compact ? "compact" : ""}`}>
+      <span>{label}</span>
+      {assets.length === 0 ? (
+        <p>{empty}</p>
+      ) : (
+        assets.map((item) => (
+          <div key={item.asset.id}>
+            <strong>{item.asset.label || shortenGraphId(item.asset.id)}</strong>
+            {item.asset.uri ? <code>{item.asset.uri}</code> : null}
+          </div>
+        ))
+      )}
+    </div>
+  );
+}
+
+function RouteList({ routes }: { routes: EvidenceRoute[] }) {
+  if (routes.length === 0) {
+    return <p className="muted">No discovered service routes are attached to this public service.</p>;
+  }
+  return (
+    <div className="service-route-list">
+      <div className="catalogue-section-header">
+        <h3>Discovered routes</h3>
+        <span>{routes.length}</span>
+      </div>
+      <div className="route-grid">
+        {routes.slice(0, 8).map((route) => (
+          <article key={route.id} className="route-card">
+            <div>
+              <strong>{route.kind.replaceAll("_", " ")}</strong>
+              <span className={`pill ${route.gaps.length === 0 ? "positive" : "warning"}`}>
+                {route.gaps.length === 0 ? "evidenced" : "gap"}
+              </span>
+            </div>
+            <p>{route.accessService?.label ?? route.form?.label ?? route.offering?.label ?? "Metadata route"}</p>
+            {route.endpointUrl ? <code>{route.endpointUrl}</code> : null}
+            <small>{route.provenance.slice(0, 2).map((item) => item.predicate).join(", ")}</small>
+          </article>
         ))}
       </div>
+    </div>
+  );
+}
+
+function GapList({ gaps, compact = false }: { gaps: ServiceDiscoveryGap[]; compact?: boolean }) {
+  if (gaps.length === 0) {
+    return null;
+  }
+  return (
+    <div className={`service-gap-list ${compact ? "compact" : ""}`}>
+      {gaps.map((gap) => (
+        <span key={`${gap.assetId}:${gap.predicate}:${gap.message}`}>
+          <AlertTriangle size={13} aria-hidden="true" />
+          <strong>{gap.predicate}</strong>
+          {gap.message}
+        </span>
+      ))}
     </div>
   );
 }

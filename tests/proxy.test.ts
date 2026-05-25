@@ -175,6 +175,24 @@ describe("server proxy", () => {
       });
   });
 
+  it("accepts octet-stream responses for known semantic text URL extensions", async () => {
+    const upstream = await startFixture((_req, res) => {
+      res.setHeader("content-type", "application/octet-stream");
+      res.end(JSON.stringify({ "@id": "catalog" }));
+    });
+    const app = createApp({ allowLocalhost: true });
+
+    await request(app)
+      .get("/api/proxy")
+      .query({ url: `${upstream}/metadata/cpsv-ap.jsonld` })
+      .expect(200)
+      .expect(({ body }) => {
+        expect(body.ok).toBe(true);
+        expect(body.contentType).toBe("application/octet-stream");
+        expect(body.json).toEqual({ "@id": "catalog" });
+      });
+  });
+
   it("stops following redirects after the configured limit", async () => {
     const upstream = await startFixture((req, res) => {
       res.statusCode = 302;

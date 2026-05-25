@@ -1579,9 +1579,7 @@ fn confidence_from_score(score: &EvidenceScore) -> Option<MatchConfidence> {
     }
 }
 
-fn match_sort_key(
-    item: &CapabilityMatch,
-) -> (
+type MatchSortKey = (
     Reverse<u32>,
     Reverse<u32>,
     Reverse<u32>,
@@ -1590,7 +1588,9 @@ fn match_sort_key(
     MatchConfidence,
     String,
     Vec<String>,
-) {
+);
+
+fn match_sort_key(item: &CapabilityMatch) -> MatchSortKey {
     (
         Reverse(item.score.direct_structured_matches),
         Reverse(item.score.direct_metadata_matches),

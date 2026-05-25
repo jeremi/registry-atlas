@@ -2,9 +2,14 @@ use assert_cmd::Command;
 use predicates::prelude::*;
 use serde_json::json;
 use std::fs;
+use std::path::{Path, PathBuf};
 use std::thread;
 use tempfile::tempdir;
 use tiny_http::{Header, Response, Server};
+
+const SERVICE_FIRST_FIXTURE: &str =
+    "../../fixtures/service-first/health-linked-child-support.cpsv-ap.jsonld";
+const SERVICE_IRI: &str = "https://demo.example.gov/services/health-linked-child-support";
 
 #[test]
 fn analyze_bundle_outputs_report() {
@@ -42,8 +47,154 @@ fn analyze_bundle_outputs_report() {
         .assert()
         .success()
         .stdout(predicate::str::contains(
-            "\"schema_version\": \"semantic-asset-discovery.report.v1\"",
+            "\"schema_version\": \"semantic-asset-discovery.report.v2\"",
         ));
+}
+
+#[test]
+fn service_view_outputs_registry_lab_explainability_view_from_bundle() {
+    let dir = tempdir().expect("tempdir");
+    let bundle = write_service_first_bundle(dir.path().join("bundle.json"));
+
+    let output = Command::cargo_bin("semantic-asset-discovery")
+        .expect("binary")
+        .args([
+            "service-view",
+            SERVICE_IRI,
+            "--bundle",
+            bundle.to_str().expect("path"),
+        ])
+        .output()
+        .expect("run service-view");
+    assert!(
+        output.status.success(),
+        "service-view failed: {}",
+        String::from_utf8_lossy(&output.stderr)
+    );
+
+    let value: serde_json::Value =
+        serde_json::from_slice(&output.stdout).expect("service-view emits json");
+    assert_eq!(
+        value["schema_version"],
+        "semantic-asset-discovery.service-view.v1"
+    );
+    assert_eq!(value["service"]["asset"]["iri"], SERVICE_IRI);
+    assert_eq!(
+        value["requirements"]
+            .as_array()
+            .expect("requirements")
+            .len(),
+        3
+    );
+    assert!(value["requirements"]
+        .as_array()
+        .expect("requirements")
+        .iter()
+        .all(|requirement| !requirement["evidence_options"]
+            .as_array()
+            .expect("evidence options")
+            .is_empty()));
+    assert!(value["requirements"]
+        .as_array()
+        .expect("requirements")
+        .iter()
+        .flat_map(|requirement| requirement["evidence_options"]
+            .as_array()
+            .expect("evidence options"))
+        .all(|option| option["satisfiable"] == true
+            && !option["evidence_types"]
+                .as_array()
+                .expect("evidence types")
+                .is_empty()));
+    assert_eq!(
+        value["accepted_evidence_types"]
+            .as_array()
+            .expect("accepted evidence types")
+            .len(),
+        3
+    );
+    assert_eq!(value["providers"].as_array().expect("providers").len(), 3);
+    assert_eq!(value["forms"].as_array().expect("forms").len(), 1);
+    assert!(value["gaps"].as_array().expect("gaps").is_empty());
+    assert!(value["routes"]
+        .as_array()
+        .expect("routes")
+        .iter()
+        .any(|route| route["kind"] == "evidence_provider"));
+    assert!(value["routes"]
+        .as_array()
+        .expect("routes")
+        .iter()
+        .any(|route| route["kind"] == "supporting_data_service"));
+    assert!(value["routes"]
+        .as_array()
+        .expect("routes")
+        .iter()
+        .any(|route| route["kind"] == "evidence_access_service"
+            && route["target"]["endpoint_url"].as_str().is_some()
+            && route["target"]["endpoint_relation_id"].as_str().is_some()));
+    assert!(value["routes"]
+        .as_array()
+        .expect("routes")
+        .iter()
+        .all(|route| !route["source_evidence_refs"]
+            .as_array()
+            .expect("source evidence refs")
+            .is_empty()));
+}
+
+#[test]
+fn service_view_accepts_discovery_report_json() {
+    let dir = tempdir().expect("tempdir");
+    let bundle = write_service_first_bundle(dir.path().join("bundle.json"));
+    let report = dir.path().join("report.json");
+
+    let analyze_output = Command::cargo_bin("semantic-asset-discovery")
+        .expect("binary")
+        .args(["analyze-bundle", bundle.to_str().expect("path")])
+        .output()
+        .expect("run analyze-bundle");
+    assert!(
+        analyze_output.status.success(),
+        "analyze-bundle failed: {}",
+        String::from_utf8_lossy(&analyze_output.stderr)
+    );
+    fs::write(&report, analyze_output.stdout).expect("write report");
+
+    Command::cargo_bin("semantic-asset-discovery")
+        .expect("binary")
+        .args([
+            "service-view",
+            SERVICE_IRI,
+            "--report",
+            report.to_str().expect("path"),
+        ])
+        .assert()
+        .success()
+        .stdout(predicate::str::contains(
+            "\"schema_version\": \"semantic-asset-discovery.service-view.v1\"",
+        ))
+        .stdout(predicate::str::contains("\"kind\": \"evidence_provider\""));
+}
+
+#[test]
+fn validate_report_accepts_legacy_v1_fixtures() {
+    let workspace = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
+    Command::cargo_bin("semantic-asset-discovery")
+        .expect("binary")
+        .args([
+            "validate-report",
+            workspace
+                .join("fixtures/reports/dcat-ap-report.json")
+                .to_str()
+                .expect("fixture path"),
+            workspace
+                .join("fixtures/reports/semantic-package-report.json")
+                .to_str()
+                .expect("fixture path"),
+        ])
+        .assert()
+        .success();
 }
 
 #[test]
@@ -70,7 +221,7 @@ fn validate_report_rejects_supported_version_with_invalid_shape() {
     let report = dir.path().join("report.json");
     fs::write(
         &report,
-        r#"{"schema_version":"semantic-asset-discovery.report.v1","run_id":"run"}"#,
+        r#"{"schema_version":"semantic-asset-discovery.report.v2","run_id":"run"}"#,
     )
     .expect("write report");
 
@@ -80,6 +231,35 @@ fn validate_report_rejects_supported_version_with_invalid_shape() {
         .assert()
         .failure()
         .stderr(predicate::str::contains("missing field"));
+}
+
+#[test]
+fn validate_report_rejects_unclaimed_v2_relations() {
+    let dir = tempdir().expect("tempdir");
+    let bundle = write_service_first_bundle(dir.path().join("bundle.json"));
+    let report = dir.path().join("report.json");
+
+    let analyze_output = Command::cargo_bin("semantic-asset-discovery")
+        .expect("binary")
+        .args(["analyze-bundle", bundle.to_str().expect("path")])
+        .output()
+        .expect("run analyze-bundle");
+    assert!(analyze_output.status.success());
+    let mut value: serde_json::Value =
+        serde_json::from_slice(&analyze_output.stdout).expect("report json");
+    value["relation_claims"] = json!([]);
+    fs::write(
+        &report,
+        serde_json::to_string(&value).expect("serialize report"),
+    )
+    .expect("write report");
+
+    Command::cargo_bin("semantic-asset-discovery")
+        .expect("binary")
+        .args(["validate-report", report.to_str().expect("path")])
+        .assert()
+        .failure()
+        .stderr(predicate::str::contains("has no relation claim"));
 }
 
 #[test]
@@ -202,7 +382,7 @@ fn harvest_outputs_discovery_run_envelope_after_facade_migration() {
         serde_json::from_slice(&output.stdout).expect("harvest emits json");
     assert_eq!(
         value["report"]["schema_version"],
-        "semantic-asset-discovery.report.v1"
+        "semantic-asset-discovery.report.v2"
     );
     assert_eq!(value["fetched"]["entry_url"], catalog_url);
     assert!(value["fetched"]["fetched_count"].as_u64().is_some());
@@ -274,4 +454,37 @@ fn harvest_sends_bearer_token_from_env_without_echoing_secret() {
     assert!(!String::from_utf8_lossy(&output.stderr).contains("super-secret-demo-token"));
 
     server_thread.join().expect("server thread");
+}
+
+fn write_service_first_bundle(path: PathBuf) -> PathBuf {
+    let body = fs::read(service_first_fixture_path()).expect("service-first fixture exists");
+    fs::write(
+        &path,
+        serde_json::to_string(&json!({
+            "entry_url": "https://demo.example.gov/metadata/cpsv-ap",
+            "analyzed_at": "2026-05-25T00:00:00Z",
+            "options": {},
+            "artifacts": [{
+                "url": "https://demo.example.gov/metadata/cpsv-ap",
+                "final_url": null,
+                "status": 200,
+                "media_type": "application/ld+json",
+                "request_accept": null,
+                "redirect_chain": [],
+                "headers": [],
+                "body": body,
+                "fetched_at": "2026-05-25T00:00:00Z",
+                "depth": 0,
+                "discovered_from": null,
+                "discovered_by": null
+            }]
+        }))
+        .expect("serialize bundle"),
+    )
+    .expect("write bundle");
+    path
+}
+
+fn service_first_fixture_path() -> PathBuf {
+    Path::new(env!("CARGO_MANIFEST_DIR")).join(SERVICE_FIRST_FIXTURE)
 }

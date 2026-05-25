@@ -38,19 +38,14 @@ const SAFE_RESPONSE_HEADERS: &[&str] = &[
     "location",
 ];
 
-#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, Default, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 pub enum DiscoveryPolicyName {
+    #[default]
     PublicWeb,
     LocalDevelopment,
     #[serde(other)]
     Unknown,
-}
-
-impl Default for DiscoveryPolicyName {
-    fn default() -> Self {
-        Self::PublicWeb
-    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]

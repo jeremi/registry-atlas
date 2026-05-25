@@ -20,6 +20,8 @@ fn report_with_findings(asset: SemanticAsset, findings: Vec<DiscoveryFinding>) -
         summary: DiscoverySummary::default(),
         artifacts: Vec::new(),
         assets: vec![asset],
+        relations: Vec::new(),
+        relation_claims: Vec::new(),
         links: Vec::new(),
         standards: Vec::new(),
         profiles: Vec::new(),

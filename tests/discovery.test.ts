@@ -248,7 +248,7 @@ function semanticReport(artifactCount: number, artifacts: Array<{ status: number
       : [];
 
   return {
-    schema_version: "semantic-asset-discovery.report.v1",
+    schema_version: "semantic-asset-discovery.report.v2",
     run_id: "run-test",
     entry_url: "https://example.gov/catalog.jsonld",
     analyzed_at: "2026-05-19T00:00:00Z",
@@ -308,6 +308,8 @@ function semanticReport(artifactCount: number, artifacts: Array<{ status: number
         raw_refs: [],
       },
     ],
+    relations: [],
+    relation_claims: [],
     links: [],
     standards: [],
     profiles: [
@@ -331,7 +333,7 @@ function semanticReport(artifactCount: number, artifacts: Array<{ status: number
 
 function policySemanticReport(): unknown {
   return {
-    schema_version: "semantic-asset-discovery.report.v1",
+    schema_version: "semantic-asset-discovery.report.v2",
     run_id: "run-policy-test",
     entry_url: "https://registry.example.gov/metadata/dcat/bregdcat-ap",
     analyzed_at: "2026-05-19T00:00:00Z",
@@ -391,6 +393,8 @@ function policySemanticReport(): unknown {
         raw_refs: [],
       },
     ],
+    relations: [],
+    relation_claims: [],
     links: [],
     standards: [],
     profiles: [],

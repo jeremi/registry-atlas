@@ -1,6 +1,6 @@
 import type { ProxyFetchResult } from "./types";
 
-export const SEMANTIC_ASSET_DISCOVERY_REPORT_SCHEMA_VERSION = "semantic-asset-discovery.report.v1" as const;
+export const SEMANTIC_ASSET_DISCOVERY_REPORT_SCHEMA_VERSION = "semantic-asset-discovery.report.v2" as const;
 export const SEMANTIC_ASSET_DISCOVERY_SENSITIVE_HEADER_NAMES = [
   "authorization",
   "cookie",
@@ -50,6 +50,20 @@ export type ArtifactDiscoveryStatus = ForwardCompatibleString<
 >;
 
 export type SemanticAssetKind = ForwardCompatibleString<
+  | "public_service"
+  | "channel"
+  | "requirement"
+  | "information_requirement"
+  | "information_concept"
+  | "evidence_type"
+  | "evidence_type_list"
+  | "form_definition"
+  | "form_section"
+  | "form_field"
+  | "public_registry_service"
+  | "evidence_offering"
+  | "evidence_provider"
+  | "public_organisation"
   | "semantic_model_package"
   | "catalog"
   | "dataset"
@@ -259,6 +273,45 @@ export interface DiscoveredLink {
   discovered_by: DiscoveryEvidence;
 }
 
+export type RelationEndpoint =
+  | {
+      kind: "asset";
+      asset_id: string;
+      uri?: string | null;
+    }
+  | {
+      kind: "external";
+      uri: string;
+    }
+  | {
+      kind: "blank_node";
+      artifact_id: string;
+      node_id: string;
+    };
+
+export interface SemanticRelation {
+  id: string;
+  subject: RelationEndpoint;
+  predicate: string;
+  object: RelationEndpoint;
+  label?: string | null;
+}
+
+export interface RelationQualifier {
+  predicate: string;
+  value: string;
+  evidence?: DiscoveryEvidence | null;
+}
+
+export interface RelationClaim {
+  id: string;
+  relation_id: string;
+  asserted_by_artifact_id: string;
+  evidence: DiscoveryEvidence;
+  qualifiers: RelationQualifier[];
+  contradicts: string[];
+}
+
 export interface FetchCandidate {
   id: string;
   url: string;
@@ -307,6 +360,8 @@ export interface DiscoveryReport {
   summary: DiscoverySummary;
   artifacts: DiscoveredArtifact[];
   assets: SemanticAsset[];
+  relations: SemanticRelation[];
+  relation_claims: RelationClaim[];
   links: DiscoveredLink[];
   standards: StandardClaim[];
   profiles: ProfileClaim[];
@@ -414,6 +469,8 @@ export interface AtlasDiscoveryReportSummary {
   fetched?: FetchSummary;
   rejectedFetches: RejectedFetch[];
   assets: AtlasSemanticAssetSummary[];
+  relations: SemanticRelation[];
+  relationClaims: RelationClaim[];
   links: AtlasDiscoveredLinkSummary[];
   findings: DiscoveryFinding[];
   standards: StandardClaim[];
@@ -506,6 +563,8 @@ export function normalizeDiscoveryReport(report: DiscoveryReport): AtlasDiscover
     counts: report.summary,
     rejectedFetches: [],
     assets: report.assets.map((asset) => summarizeAsset(asset, artifactsById)),
+    relations: report.relations ?? [],
+    relationClaims: report.relation_claims ?? [],
     links: report.links.map((link) => summarizeLink(link, artifactsById)),
     findings: report.findings,
     standards: report.standards,

@@ -26,6 +26,27 @@ cargo run -p semantic-asset-discovery-cli --bin semantic-asset-discovery -- \
   analyze-bundle target/discovery-bundle.json
 ```
 
+Render a service-first explainability view for one public service:
+
+```sh
+cargo run -p semantic-asset-discovery-cli --bin semantic-asset-discovery -- \
+  service-view https://example.test/services/permit \
+  --report target/discovery-report.json
+```
+
+`service-view` emits `semantic-asset-discovery.service-view.v1` JSON with:
+
+- the public service asset and declared channels;
+- requirements and accepted evidence types;
+- evidence providers, form definitions, and route summaries;
+- source evidence references for each relation path;
+- explicit gaps for missing declared metadata.
+
+Gap entries describe absence in the discovered metadata, not absence in reality.
+For example, a missing `registry_manifest:evidenceService` relation means the
+report did not declare an access data service for an evidence offering. It does
+not prove that no access service exists outside the analyzed artifacts.
+
 ## Security Notes
 
 - Treat tokens passed to the CLI as secrets.
