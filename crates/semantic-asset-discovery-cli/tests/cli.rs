@@ -79,6 +79,7 @@ fn service_view_outputs_registry_lab_explainability_view_from_bundle() {
         "semantic-asset-discovery.service-view.v1"
     );
     assert_eq!(value["service"]["asset"]["iri"], SERVICE_IRI);
+    assert_eq!(value["service"]["asset"]["uri"], SERVICE_IRI);
     assert_eq!(
         value["requirements"]
             .as_array()
@@ -113,9 +114,35 @@ fn service_view_outputs_registry_lab_explainability_view_from_bundle() {
             .len(),
         3
     );
+    assert_eq!(
+        value["evidence_provider_map"]
+            .as_array()
+            .expect("evidence provider map")
+            .len(),
+        3
+    );
+    assert!(value["evidence_provider_map"]
+        .as_array()
+        .expect("evidence provider map")
+        .iter()
+        .flat_map(|entry| entry["offerings"].as_array().expect("offerings"))
+        .any(|offering| !offering["access_services"]
+            .as_array()
+            .expect("access services")
+            .is_empty()));
     assert_eq!(value["providers"].as_array().expect("providers").len(), 3);
     assert_eq!(value["forms"].as_array().expect("forms").len(), 1);
     assert!(value["gaps"].as_array().expect("gaps").is_empty());
+    assert_eq!(
+        value["report"]["schema_version"],
+        "semantic-asset-discovery.report.v2"
+    );
+    assert!(
+        value["report"]["relation_claim_count"]
+            .as_u64()
+            .expect("relation claim count")
+            > 0
+    );
     assert!(value["routes"]
         .as_array()
         .expect("routes")

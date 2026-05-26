@@ -323,6 +323,7 @@ fn build_service_view(
             asset: asset_ref(&graph, channel.asset),
             relations: relation_refs(channel.relations()),
             source_evidence_refs: evidence_refs(channel.relations(), channel.claims()),
+            source_evidence: evidence_values(channel.evidence()),
         })
         .collect();
     let requirements = service
@@ -347,6 +348,7 @@ fn build_service_view(
                                 evidence_type.relations(),
                                 evidence_type.claims(),
                             ),
+                            source_evidence: evidence_values(evidence_type.evidence()),
                         })
                         .collect(),
                     missing_evidence_types: option
@@ -356,6 +358,7 @@ fn build_service_view(
                         .collect(),
                     satisfiable: option.is_satisfiable(),
                     source_evidence_refs: evidence_refs(option.relations(), option.claims()),
+                    source_evidence: evidence_values(option.evidence()),
                 })
                 .collect(),
             accepted_evidence_types: requirement
@@ -368,9 +371,11 @@ fn build_service_view(
                         evidence_type.relations(),
                         evidence_type.claims(),
                     ),
+                    source_evidence: evidence_values(evidence_type.evidence()),
                 })
                 .collect(),
             source_evidence_refs: evidence_refs(requirement.relations(), requirement.claims()),
+            source_evidence: evidence_values(requirement.evidence()),
         })
         .collect();
     let accepted_evidence_types = service
@@ -380,6 +385,60 @@ fn build_service_view(
             asset: asset_ref(&graph, evidence_type.asset),
             relations: relation_refs(evidence_type.relations()),
             source_evidence_refs: evidence_refs(evidence_type.relations(), evidence_type.claims()),
+            source_evidence: evidence_values(evidence_type.evidence()),
+        })
+        .collect();
+    let evidence_provider_map = service
+        .accepted_evidence_types()
+        .into_iter()
+        .map(|evidence_type| EvidenceProviderMapOutput {
+            evidence_type: asset_ref(&graph, evidence_type.asset),
+            providers: evidence_type
+                .providers()
+                .into_iter()
+                .map(|provider| PathAssetView {
+                    asset: asset_ref(&graph, provider.asset),
+                    relations: relation_refs(provider.relations()),
+                    source_evidence_refs: evidence_refs(provider.relations(), provider.claims()),
+                    source_evidence: evidence_values(provider.evidence()),
+                })
+                .collect(),
+            offerings: evidence_type
+                .evidence_offerings()
+                .into_iter()
+                .map(|offering| EvidenceOfferingOutput {
+                    asset: asset_ref(&graph, offering.asset),
+                    providers: offering
+                        .providers()
+                        .into_iter()
+                        .map(|provider| PathAssetView {
+                            asset: asset_ref(&graph, provider.asset),
+                            relations: relation_refs(provider.relations()),
+                            source_evidence_refs: evidence_refs(
+                                provider.relations(),
+                                provider.claims(),
+                            ),
+                            source_evidence: evidence_values(provider.evidence()),
+                        })
+                        .collect(),
+                    access_services: offering
+                        .access_services()
+                        .into_iter()
+                        .map(|service| PathAssetView {
+                            asset: asset_ref(&graph, service.asset),
+                            relations: relation_refs(service.relations()),
+                            source_evidence_refs: evidence_refs(
+                                service.relations(),
+                                service.claims(),
+                            ),
+                            source_evidence: evidence_values(service.evidence()),
+                        })
+                        .collect(),
+                    relations: relation_refs(offering.relations()),
+                    source_evidence_refs: evidence_refs(offering.relations(), offering.claims()),
+                    source_evidence: evidence_values(offering.evidence()),
+                })
+                .collect(),
         })
         .collect();
     let providers = service
@@ -389,6 +448,7 @@ fn build_service_view(
             asset: asset_ref(&graph, provider.asset),
             relations: relation_refs(provider.relations()),
             source_evidence_refs: evidence_refs(provider.relations(), provider.claims()),
+            source_evidence: evidence_values(provider.evidence()),
         })
         .collect();
     let forms = service
@@ -398,6 +458,7 @@ fn build_service_view(
             asset: asset_ref(&graph, form.asset),
             relations: relation_refs(form.relations()),
             source_evidence_refs: evidence_refs(form.relations(), form.claims()),
+            source_evidence: evidence_values(form.evidence()),
         })
         .collect();
     let routes = graph
@@ -409,6 +470,7 @@ fn build_service_view(
             target: asset_ref(&graph, route.target),
             relations: relation_refs(route.relations()),
             source_evidence_refs: evidence_refs(route.relations(), route.claims()),
+            source_evidence: evidence_values(route.evidence()),
         })
         .collect();
 
@@ -421,6 +483,7 @@ fn build_service_view(
         },
         requirements,
         accepted_evidence_types,
+        evidence_provider_map,
         providers,
         routes,
         forms,
@@ -433,6 +496,14 @@ fn build_service_view(
                 message: gap.message,
             })
             .collect(),
+        report: ReportSummary {
+            run_id: report.run_id.clone(),
+            schema_version: report.schema_version.0.clone(),
+            artifact_count: report.artifacts.len(),
+            asset_count: report.assets.len(),
+            relation_count: report.relations.len(),
+            relation_claim_count: report.relation_claims.len(),
+        },
     })
 }
 
@@ -443,10 +514,12 @@ struct ServiceFirstView {
     service: ServiceOutput,
     requirements: Vec<RequirementOutput>,
     accepted_evidence_types: Vec<PathAssetView>,
+    evidence_provider_map: Vec<EvidenceProviderMapOutput>,
     providers: Vec<PathAssetView>,
     routes: Vec<RouteOutput>,
     forms: Vec<PathAssetView>,
     gaps: Vec<GapOutput>,
+    report: ReportSummary,
 }
 
 #[derive(Debug, Serialize)]
@@ -462,6 +535,7 @@ struct RequirementOutput {
     evidence_options: Vec<EvidenceOptionOutput>,
     accepted_evidence_types: Vec<PathAssetView>,
     source_evidence_refs: Vec<SourceEvidenceRef>,
+    source_evidence: Vec<SourceEvidenceValue>,
 }
 
 #[derive(Debug, Serialize)]
@@ -472,6 +546,7 @@ struct EvidenceOptionOutput {
     missing_evidence_types: Vec<AssetRef>,
     satisfiable: bool,
     source_evidence_refs: Vec<SourceEvidenceRef>,
+    source_evidence: Vec<SourceEvidenceValue>,
 }
 
 #[derive(Debug, Serialize)]
@@ -479,6 +554,24 @@ struct PathAssetView {
     asset: AssetRef,
     relations: Vec<RelationRef>,
     source_evidence_refs: Vec<SourceEvidenceRef>,
+    source_evidence: Vec<SourceEvidenceValue>,
+}
+
+#[derive(Debug, Serialize)]
+struct EvidenceProviderMapOutput {
+    evidence_type: AssetRef,
+    providers: Vec<PathAssetView>,
+    offerings: Vec<EvidenceOfferingOutput>,
+}
+
+#[derive(Debug, Serialize)]
+struct EvidenceOfferingOutput {
+    asset: AssetRef,
+    providers: Vec<PathAssetView>,
+    access_services: Vec<PathAssetView>,
+    relations: Vec<RelationRef>,
+    source_evidence_refs: Vec<SourceEvidenceRef>,
+    source_evidence: Vec<SourceEvidenceValue>,
 }
 
 #[derive(Debug, Serialize)]
@@ -488,6 +581,7 @@ struct RouteOutput {
     target: AssetRef,
     relations: Vec<RelationRef>,
     source_evidence_refs: Vec<SourceEvidenceRef>,
+    source_evidence: Vec<SourceEvidenceValue>,
 }
 
 #[derive(Debug, Serialize)]
@@ -495,6 +589,7 @@ struct AssetRef {
     id: String,
     kind: String,
     iri: Option<String>,
+    uri: Option<String>,
     title: Option<String>,
     description: Option<String>,
     endpoint_url: Option<String>,
@@ -517,10 +612,26 @@ struct SourceEvidenceRef {
 }
 
 #[derive(Debug, Serialize)]
+struct SourceEvidenceValue {
+    location: Option<String>,
+    evidence: DiscoveryEvidence,
+}
+
+#[derive(Debug, Serialize)]
 struct GapOutput {
     asset_id: String,
     predicate: String,
     message: String,
+}
+
+#[derive(Debug, Serialize)]
+struct ReportSummary {
+    run_id: String,
+    schema_version: String,
+    artifact_count: usize,
+    asset_count: usize,
+    relation_count: usize,
+    relation_claim_count: usize,
 }
 
 fn asset_ref(graph: &ServiceGraph<'_>, asset: &SemanticAsset) -> AssetRef {
@@ -529,6 +640,7 @@ fn asset_ref(graph: &ServiceGraph<'_>, asset: &SemanticAsset) -> AssetRef {
         id: asset.id.clone(),
         kind: asset_kind_name(asset),
         iri: asset.uri.clone(),
+        uri: asset.uri.clone(),
         title: asset.title.clone(),
         description: asset.description.clone(),
         endpoint_url: endpoint.map(|endpoint| endpoint.url.to_string()),
@@ -570,6 +682,16 @@ fn evidence_refs(
             asserted_by_artifact_id: claim.asserted_by_artifact_id.clone(),
             location: claim.evidence.location(),
             evidence: claim.evidence.clone(),
+        })
+        .collect()
+}
+
+fn evidence_values(evidence: Vec<&DiscoveryEvidence>) -> Vec<SourceEvidenceValue> {
+    evidence
+        .into_iter()
+        .map(|item| SourceEvidenceValue {
+            location: item.location(),
+            evidence: item.clone(),
         })
         .collect()
 }
