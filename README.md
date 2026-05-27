@@ -1,5 +1,7 @@
 # Registry Atlas
 
+> **Experimental:** This codebase is under active development. Its APIs are evolving quickly and may be unstable.
+
 Registry Atlas is a standards-first workbench for inspecting published
 catalogue and registry discovery artifacts.
 
