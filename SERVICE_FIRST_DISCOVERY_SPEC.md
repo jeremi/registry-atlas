@@ -3,7 +3,7 @@
 ## Status
 
 Draft implementation contract for coordinated changes across Registry Atlas,
-Registry Manifest, Registry Lab, Registry Relay, and Registry Witness.
+Registry Manifest, Registry Lab, Registry Relay, and Registry Notary.
 
 Normative words use RFC 2119 meaning:
 
@@ -64,7 +64,7 @@ evidence, not the evidence instance and not the service that provides evidence.
 provider can supply or evaluate evidence of a given type.
 
 **Evidence provider** means the organization or service that can provide or
-evaluate evidence. Registry Witness can be one provider implementation.
+evaluate evidence. Registry Notary can be one provider implementation.
 
 **Explainability artifact** means a generated demo artifact that records the
 service, requirement, evidence type, provider, route, gaps, and source evidence
@@ -241,7 +241,7 @@ Registry Lab MUST support this narrated discovery story:
 4. Atlas shows the service requirements.
 5. Atlas shows accepted evidence types for each requirement.
 6. Atlas resolves evidence providers and registry data services.
-7. The demo calls the relevant Witness endpoints.
+7. The demo calls the relevant Notary endpoints.
 8. The demo writes an explainability artifact with gaps and source evidence.
 ```
 
@@ -870,7 +870,7 @@ Select health-linked child support eligibility review
 Show requirements
 Show accepted evidence types
 Resolve evidence providers
-Call the relevant Witness endpoints
+Call the relevant Notary endpoints
 Write explainability artifacts
 ```
 
@@ -899,11 +899,11 @@ Relay MUST:
 If Relay serves top-level public services from a manifest, it MUST treat them as
 standards-facing metadata, not runtime authorization or eligibility logic.
 
-## Registry Witness Contract
+## Registry Notary Contract
 
-Registry Witness does not own service discovery.
+Registry Notary does not own service discovery.
 
-Witness discovery MUST remain evidence-provider discovery:
+Notary discovery MUST remain evidence-provider discovery:
 
 ```text
 Evidence type
@@ -912,8 +912,8 @@ Supported formats
 Policies and access hints
 ```
 
-Atlas and Lab MAY link Witness service documents into the service-first graph
-through evidence offerings. Witness MUST NOT decide which public service
+Atlas and Lab MAY link Notary service documents into the service-first graph
+through evidence offerings. Notary MUST NOT decide which public service
 requires its evidence.
 
 ## Local Form Profile
@@ -1034,7 +1034,7 @@ Return:
 Requirements
 Evidence types
 Evidence offerings
-Witness endpoints
+Notary endpoints
 Registry datasets and data services
 ```
 
@@ -1185,7 +1185,7 @@ Rust API, renderer, or Registry Lab script story.
 This work MUST NOT:
 
 - generate application procedures from Registry Relay runtime table config;
-- add public-service requirement ownership to Registry Witness;
+- add public-service requirement ownership to Registry Notary;
 - claim source-of-truth status from a field match alone;
 - infer legal authority from a public service link alone;
 - emit `cv:hasInputType` as if it were CPSV-AP;
@@ -1219,7 +1219,7 @@ Route discovery derives conservative service routes from reports.
 Registry Manifest models and renders portable metadata.
 Registry Lab demonstrates the story.
 Registry Relay publishes registry and dataset metadata.
-Registry Witness publishes evidence provider metadata.
+Registry Notary publishes evidence provider metadata.
 ```
 
 This keeps each project honest about its role while giving the demo a complete
@@ -1369,7 +1369,7 @@ Definition of done:
 - `/metadata` links to `/metadata/cpsv-ap` using `dcterms:hasPart`.
 - `/metadata/cpsv-ap` is reachable in the lab.
 - The live story discovers the service, requirements, evidence types, evidence
-  providers, and Witness endpoints without hand-coded JSON-LD graph traversal.
+  providers, and Notary endpoints without hand-coded JSON-LD graph traversal.
 - Smoke artifacts include service discovery response, service graph excerpt,
   requirement-to-evidence map, provider map, route status, gaps, and source
   evidence references.
