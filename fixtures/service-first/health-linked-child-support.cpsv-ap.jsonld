@@ -138,6 +138,7 @@
       "@type": "@id"
     },
     "registry_manifest": "https://registry-manifest.dev/ns/v1#",
+    "registry_relay": "https://registry-relay.dev/ns/v1#",
     "registry_manifest:dataType": {
       "@type": "@id"
     },
@@ -782,13 +783,13 @@
       "dcterms:description": "",
       "dcterms:identifier": "civil_child_status_evidence_service",
       "dcterms:title": "Civil child status evidence service",
-      "registry_manifest:accessKind": "registry-witness",
+      "registry_manifest:accessKind": "registry-notary",
       "registry_manifest:evidenceService": {
         "@id": "https://demo.example.gov/evidence-offerings/civil-child-status#evidence-service",
         "@type": "dcat:DataService",
-        "dcat:endpointDescription": "http://civil-witness:8080/.well-known/evidence-service",
-        "dcat:endpointURL": "http://civil-witness:8080",
-        "dcterms:conformsTo": "registry_relay:registry-witness-v1"
+        "dcat:endpointDescription": "http://civil-notary:8080/.well-known/registry-notary",
+        "dcat:endpointURL": "http://civil-notary:8080",
+        "dcterms:conformsTo": "registry_relay:registry-notary-v1"
       },
       "registry_manifest:evidenceType": {
         "@id": "https://demo.example.gov/evidence-types/civil-child-status"
@@ -805,16 +806,16 @@
     {
       "@id": "https://demo.example.gov/evidence-offerings/combined-support",
       "@type": "registry_manifest:EvidenceOffering",
-      "dcterms:description": "Shared Evidence Server claim that composes civil, social protection, and health registry facts.",
+      "dcterms:description": "Shared Registry Notary claim that composes civil, social protection, and health registry facts.",
       "dcterms:identifier": "combined_support_evidence_service",
       "dcterms:title": "Combined support evidence service",
-      "registry_manifest:accessKind": "registry-witness",
+      "registry_manifest:accessKind": "registry-notary",
       "registry_manifest:evidenceService": {
         "@id": "https://demo.example.gov/evidence-offerings/combined-support#evidence-service",
         "@type": "dcat:DataService",
-        "dcat:endpointDescription": "http://shared-eligibility-witness:8080/.well-known/evidence-service",
-        "dcat:endpointURL": "http://shared-eligibility-witness:8080",
-        "dcterms:conformsTo": "registry_relay:registry-witness-v1"
+        "dcat:endpointDescription": "http://shared-eligibility-notary:8080/.well-known/registry-notary",
+        "dcat:endpointURL": "http://shared-eligibility-notary:8080",
+        "dcterms:conformsTo": "registry_relay:registry-notary-v1"
       },
       "registry_manifest:evidenceType": {
         "@id": "https://demo.example.gov/evidence-types/combined-support"
@@ -831,16 +832,16 @@
     {
       "@id": "https://demo.example.gov/evidence-offerings/health-service-availability",
       "@type": "registry_manifest:EvidenceOffering",
-      "dcterms:description": "Evidence Server endpoint that computes facility license and service availability.",
+      "dcterms:description": "Registry Notary endpoint that computes facility license and service availability.",
       "dcterms:identifier": "health_service_availability_evidence_service",
       "dcterms:title": "Health service availability evidence service",
-      "registry_manifest:accessKind": "registry-witness",
+      "registry_manifest:accessKind": "registry-notary",
       "registry_manifest:evidenceService": {
         "@id": "https://demo.example.gov/evidence-offerings/health-service-availability#evidence-service",
         "@type": "dcat:DataService",
-        "dcat:endpointDescription": "http://shared-eligibility-witness:8080/.well-known/evidence-service",
-        "dcat:endpointURL": "http://shared-eligibility-witness:8080",
-        "dcterms:conformsTo": "registry_relay:registry-witness-v1"
+        "dcat:endpointDescription": "http://shared-eligibility-notary:8080/.well-known/registry-notary",
+        "dcat:endpointURL": "http://shared-eligibility-notary:8080",
+        "dcterms:conformsTo": "registry_relay:registry-notary-v1"
       },
       "registry_manifest:evidenceType": {
         "@id": "https://demo.example.gov/evidence-types/health-service-availability"
@@ -860,13 +861,13 @@
       "dcterms:description": "",
       "dcterms:identifier": "household_support_evidence_service",
       "dcterms:title": "Household support evidence service",
-      "registry_manifest:accessKind": "registry-witness",
+      "registry_manifest:accessKind": "registry-notary",
       "registry_manifest:evidenceService": {
         "@id": "https://demo.example.gov/evidence-offerings/household-support#evidence-service",
         "@type": "dcat:DataService",
-        "dcat:endpointDescription": "http://social-protection-witness:8080/.well-known/evidence-service",
-        "dcat:endpointURL": "http://social-protection-witness:8080",
-        "dcterms:conformsTo": "registry_relay:registry-witness-v1"
+        "dcat:endpointDescription": "http://social-protection-notary:8080/.well-known/registry-notary",
+        "dcat:endpointURL": "http://social-protection-notary:8080",
+        "dcterms:conformsTo": "registry_relay:registry-notary-v1"
       },
       "registry_manifest:evidenceType": {
         "@id": "https://demo.example.gov/evidence-types/household-support"
