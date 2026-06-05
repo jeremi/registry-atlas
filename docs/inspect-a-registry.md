@@ -166,7 +166,7 @@ broken down as follows: 1 `api_description`, 3 `catalog`, 22 `class`, 44 `data_s
 These counts are verified against the bundled fixture at
 [`fixtures/system-capability/registry-relay-all-standards.report.json`](https://github.com/jeremi/registry-atlas/blob/main/fixtures/system-capability/registry-relay-all-standards.report.json)
 and match the expected values documented in
-[`HOW_TO_TEST_V0_1.md`](https://github.com/jeremi/registry-atlas/blob/main/HOW_TO_TEST_V0_1.md#L128-L149).
+[`HOW_TO_TEST_V0_1.md`](https://github.com/jeremi/registry-atlas/blob/main/HOW_TO_TEST_V0_1.md).
 
 ## Troubleshooting
 
